@@ -732,6 +732,32 @@
       line-height: 1.6;
     }
 
+    .atelier-img-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .atelier-img--secondary {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center 30%;
+      transition: transform 0.4s ease;
+    }
+
+    .atelier-img-col:hover .atelier-img--secondary {
+      transform: scale(1.02);
+    }
+
+    .atelier-img-note {
+      font-size: 0.73rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bark);
+      font-style: italic;
+    }
+
     /* ================================================================
        GALLERY — CSS columns masonry
        ================================================================ */
@@ -957,6 +983,14 @@
       .gallery-grid {
         columns: 2 200px;
       }
+
+      .stage-triptych {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stage-frame:last-child {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 600px) {
@@ -970,6 +1004,14 @@
 
       .pull-quote {
         font-size: 1.25rem;
+      }
+
+      .stage-triptych {
+        grid-template-columns: 1fr;
+      }
+
+      .stage-frame:last-child {
+        grid-column: auto;
       }
     }
 
@@ -1053,6 +1095,54 @@
       color: var(--linen);
     }
 
+    /* --- Stage triptych — performance film strip --- */
+    .stage-triptych {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--mountain-dark);
+    }
+
+    .stage-frame {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .stage-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .stage-frame:hover img,
+    .stage-frame:focus-within img {
+      transform: scale(1.04);
+    }
+
+    .stage-frame figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 16px;
+      background: linear-gradient(transparent, rgba(14, 10, 6, 0.85));
+      color: var(--linen);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .stage-frame:hover figcaption,
+    .stage-frame:focus-within figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .presence {
       position: relative;
       min-height: 85vh;
@@ -1117,6 +1207,71 @@
       font-size: 0.93rem;
       font-style: italic;
       color: var(--bark);
+    }
+
+    /* --- Ambient audio player --- */
+    .ambient-player {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+      background: rgba(30, 21, 16, 0.90);
+      border: 1px solid rgba(196, 74, 0, 0.30);
+      border-radius: 28px;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s ease;
+    }
+
+    .ambient-player.is-playing {
+      border-color: rgba(196, 74, 0, 0.70);
+    }
+
+    .ambient-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px 10px 16px;
+      color: rgba(245, 237, 224, 0.70);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      min-height: 44px;
+      transition: color 0.2s ease;
+    }
+
+    .ambient-btn:hover,
+    .ambient-btn:focus-visible {
+      color: var(--linen);
+    }
+
+    .ambient-btn:focus-visible {
+      outline: 2px solid var(--fox-auburn);
+      outline-offset: 2px;
+      border-radius: 28px;
+    }
+
+    .ambient-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .ambient-icon.is-hidden,
+    .is-playing .ambient-icon--play {
+      display: none;
+    }
+
+    .is-playing .ambient-icon--pause {
+      display: inline;
+    }
+
+    @media (max-width: 600px) {
+      .ambient-player {
+        bottom: 16px;
+        right: 16px;
+      }
     }
 
     /* --- Reduced Motion --- */
@@ -1507,15 +1662,26 @@
         <div class="atelier-inner">
 
           <div class="atelier-img-wrap" data-reveal>
-            <picture>
-              <source srcset="assets/images/foxyana_04_cooking_kitchen.webp" type="image/webp">
-              <img
-                src="assets/images/foxyana_04_cooking_kitchen.png"
-                alt="Foxyana at a traditional Ukrainian farmhouse kitchen worktable, working dough"
-                loading="lazy"
-                class="atelier-img"
-                width="1792" height="1024">
-            </picture>
+            <div class="atelier-img-col">
+              <picture>
+                <source srcset="assets/images/foxyana_04_cooking_kitchen.webp" type="image/webp">
+                <img
+                  src="assets/images/foxyana_04_cooking_kitchen.png"
+                  alt="Foxyana at a traditional Ukrainian farmhouse kitchen worktable, working dough"
+                  loading="lazy"
+                  class="atelier-img"
+                  width="1792" height="1024">
+              </picture>
+              <picture>
+                <img
+                  src="assets/images/foxyana_rehearsal_studio.png"
+                  alt="Foxyana in rehearsal studio, poised at the barre in a quiet morning light"
+                  loading="lazy"
+                  class="atelier-img--secondary"
+                  width="1024" height="1024">
+              </picture>
+              <span class="atelier-img-note">In the studio — same attentiveness, different floor</span>
+            </div>
           </div>
 
           <div class="atelier-text" data-reveal>
@@ -1697,6 +1863,28 @@
             <figcaption class="gallery-caption">Lviv National Opera — final bow</figcaption>
           </figure>
 
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_foxtrot_glide.png"
+                alt="Foxyana mid-foxtrot in full glide, gown trailing the motion"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">Foxtrot — the glide that precedes the pause</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_ballroom_frame.png"
+                alt="Foxyana in closed ballroom hold, precise frame, midnight gown"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">The frame — ballroom hold, Midnight Gown</figcaption>
+          </figure>
+
         </div>
       </div>
     </section>
@@ -1742,6 +1930,38 @@
         </div>
       </div>
     </section>
+
+    <!-- Stage triptych — three frames from the Lviv Opera performance sequence -->
+    <div class="stage-triptych" role="list" aria-label="Performance sequence — Lviv National Opera House">
+
+      <figure class="stage-frame" role="listitem" tabindex="0" data-reveal>
+        <img
+          src="assets/images/foxyana_stage_frame_a_opening.png"
+          alt="Foxyana at the opening of her Lviv Opera performance — composed, expectant"
+          loading="lazy"
+          width="1024" height="1024">
+        <figcaption>Opening</figcaption>
+      </figure>
+
+      <figure class="stage-frame" role="listitem" tabindex="0" data-reveal>
+        <img
+          src="assets/images/foxyana_stage_frame_b_apex.png"
+          alt="Foxyana at the apex of movement — all four traditions visible in a single frame"
+          loading="lazy"
+          width="1024" height="1024">
+        <figcaption>Apex</figcaption>
+      </figure>
+
+      <figure class="stage-frame" role="listitem" tabindex="0" data-reveal>
+        <img
+          src="assets/images/foxyana_stage_frame_c_duality.png"
+          alt="Foxyana in the duality moment — stillness after full movement"
+          loading="lazy"
+          width="1024" height="1024">
+        <figcaption>Duality</figcaption>
+      </figure>
+
+    </div>
 
     <!-- ===================================================================
          PRESENCE — duality panel
@@ -1917,8 +2137,47 @@
         });
       }
 
+      // -----------------------------------------------------------------------
+      // Ambient audio player — Three Turns on Wood
+      // -----------------------------------------------------------------------
+      var ambientPlayer = document.getElementById('ambient-player');
+      var ambientAudio = document.getElementById('ambient-audio');
+      var ambientToggle = document.getElementById('ambient-toggle');
+
+      if (ambientToggle && ambientAudio) {
+        ambientToggle.addEventListener('click', function () {
+          if (ambientAudio.paused) {
+            ambientAudio.play();
+            ambientPlayer.classList.add('is-playing');
+            ambientToggle.setAttribute('aria-pressed', 'true');
+            ambientToggle.setAttribute('aria-label', 'Pause ambient music: Three Turns on Wood');
+          } else {
+            ambientAudio.pause();
+            ambientPlayer.classList.remove('is-playing');
+            ambientToggle.setAttribute('aria-pressed', 'false');
+            ambientToggle.setAttribute('aria-label', 'Play ambient music: Three Turns on Wood');
+          }
+        });
+      }
+
     })();
   </script>
+
+  <!-- Ambient player (fixed position — outside main flow) -->
+  <div class="ambient-player" id="ambient-player" role="region" aria-label="Ambient music player">
+    <audio id="ambient-audio" loop preload="none">
+      <source src="assets/audio/Three_Turns_on_Wood.mp3" type="audio/mpeg">
+    </audio>
+    <button
+      class="ambient-btn"
+      id="ambient-toggle"
+      aria-label="Play ambient music: Three Turns on Wood"
+      aria-pressed="false">
+      <span class="ambient-icon ambient-icon--play" aria-hidden="true">♩</span>
+      <span class="ambient-icon ambient-icon--pause is-hidden" aria-hidden="true">♪</span>
+      <span class="ambient-label">Three Turns on Wood</span>
+    </button>
+  </div>
 
 </body>
 
