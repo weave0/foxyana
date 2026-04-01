@@ -1,8 +1,9 @@
 name = "foxyana"
 compatibility_date = "2025-01-01"
 
-# Cloudflare Pages — serves the static site from the repo root
-pages_build_output_dir = "."
+# Static assets — served from repo root via wrangler deploy
+[assets]
+directory = "."
 
 [vars]
 NODE_ENV = "production"
