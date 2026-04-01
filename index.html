@@ -500,7 +500,7 @@
 
     .discipline-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
@@ -875,11 +875,7 @@
        ================================================================ */
     @media (max-width: 1024px) {
       .discipline-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .discipline-grid .discipline-card:last-child {
-        grid-column: span 2;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -996,6 +992,67 @@
     /* ================================================================
        PRESENCE — full-bleed duality panel
        ================================================================ */
+    /* --- Stage — On Stage full-bleed section --- */
+    .stage {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .stage-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .stage-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .stage-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(14, 10, 6, 0.93) 0%,
+          rgba(14, 10, 6, 0.62) 55%,
+          rgba(14, 10, 6, 0.18) 100%);
+    }
+
+    .stage-content-wrap {
+      position: relative;
+      z-index: 1;
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+      width: 100%;
+    }
+
+    .stage-content {
+      max-width: 580px;
+    }
+
+    .stage-body p {
+      color: rgba(245, 237, 224, 0.82);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .stage-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .stage-body em {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1em;
+      color: var(--linen);
+    }
+
     .presence {
       position: relative;
       min-height: 85vh;
@@ -1088,10 +1145,10 @@
     "@type": "Person",
     "name": "Foxyana",
     "alternateName": "Лисичка",
-    "description": "Master of Kozachok, Kolomyika, and classical form. Rooted in the Carpathian highlands of Ukraine. Devoted to movement, craft, and the art of presence.",
+    "description": "Master of Kozachok, Kolomyika, classical form, and ballroom. Rooted in the Carpathian highlands of Ukraine. Devoted to movement, craft, and the art of presence.",
     "url": "https://foxyana.com",
     "image": "https://foxyana.com/assets/images/foxyana_web_portrait.webp",
-    "knowsAbout": ["Ukrainian folk dance", "Kozachok", "Kolomyika", "Classical dance", "Hutsul culture", "Carpathian heritage", "Ukrainian cuisine"],
+    "knowsAbout": ["Ukrainian folk dance", "Kozachok", "Kolomyika", "Classical dance", "Ballroom dance", "Viennese Waltz", "Tango", "Foxtrot", "Hutsul culture", "Carpathian heritage", "Ukrainian cuisine"],
     "hasOccupation": {
       "@type": "Occupation",
       "name": "Dancer and Cultural Artist"
@@ -1128,6 +1185,7 @@
         <a href="#roots" class="nav-link">Roots</a>
         <a href="#atelier" class="nav-link">Atelier</a>
         <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#stage" class="nav-link">Stage</a>
         <a href="#presence" class="nav-link">Presence</a>
       </nav>
     </div>
@@ -1158,7 +1216,7 @@
         <span class="section-label" aria-hidden="true">FOXYANA</span>
         <h1 class="hero-headline" id="hero-headline">She dances where the mountains meet the sky.</h1>
         <p class="hero-sub">
-          Kozachok. Kolomyika. Classical form.<br>
+          Kozachok. Kolomyika. Classical form. Ballroom.<br>
           Rooted in the Carpathians — at home on any stage.
         </p>
         <a href="#movement" class="cta-btn">Discover her work</a>
@@ -1240,9 +1298,9 @@
 
         <div class="movement-header" data-reveal>
           <span class="section-label section-label--center">Movement</span>
-          <h2 class="section-headline" id="movement-headline">Three traditions. One body.</h2>
+          <h2 class="section-headline" id="movement-headline">Four traditions. One body.</h2>
           <p class="section-intro">
-            Foxyana holds mastery across three distinct dance forms — each with
+            Foxyana holds mastery across four distinct dance forms — each with
             its own demands, its own music, its own history in the body.
           </p>
         </div>
@@ -1316,8 +1374,30 @@
               <p>
                 European classical technique, earned across years of formal training.
                 Foxyana carries it not as a departure from tradition but as its
-                continuation — all three forms live in the same body, and the body
+                continuation — all four forms live in the same body, and the body
                 does not forget.
+              </p>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-reveal>
+            <div class="discipline-img-wrap">
+              <picture>
+                <img
+                  src="assets/images/foxyana_ballroom_viennese.png"
+                  alt="Foxyana in ballroom hold, Midnight Gown's Hutsul beadwork catching the light"
+                  loading="lazy"
+                  class="discipline-img"
+                  width="1024" height="1024">
+              </picture>
+            </div>
+            <div class="discipline-body">
+              <h3 class="discipline-name">Ballroom</h3>
+              <p>
+                Viennese Waltz, Tango Argentino, Foxtrot —
+                each earned in the same spirit as the folk forms that preceded them.
+                She does not wear ballroom like a borrowed garment.
+                She wears it the way she wears everything: as if she always intended to.
               </p>
             </div>
           </article>
@@ -1573,6 +1653,92 @@
             <figcaption class="gallery-caption">In the kitchen — morning</figcaption>
           </figure>
 
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_ballroom_portrait_gown.png"
+                alt="Foxyana in a sweeping ballroom gown, midnight navy with Hutsul gold beadwork"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">Midnight Gown — pre-performance</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_tango_pause.png"
+                alt="Foxyana in the stillness between tango phrases, poised and intent"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">Tango pause — the silence is part of it</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_genre_bridge_editorial.png"
+                alt="Foxyana in editorial pose bridging folk and ballroom traditions"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">Genre bridge — editorial</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <picture>
+              <img
+                src="assets/images/foxyana_stage_bow.png"
+                alt="Foxyana taking a stage bow at the Lviv National Opera House"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="gallery-caption">Lviv National Opera — final bow</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ON STAGE — ballroom & genre-bridge
+         =================================================================== -->
+    <section class="stage" id="stage" aria-labelledby="stage-headline">
+      <div class="stage-media" aria-hidden="true">
+        <picture>
+          <img
+            src="assets/images/foxyana_lviv_05_the_crossing.png"
+            alt=""
+            class="stage-img"
+            loading="lazy"
+            aria-hidden="true"
+            width="1792" height="1024">
+        </picture>
+        <div class="stage-overlay"></div>
+      </div>
+      <div class="container stage-content-wrap">
+        <div class="stage-content" data-reveal>
+          <span class="section-label section-label--light">On Stage</span>
+          <h2 class="section-headline section-headline--light" id="stage-headline">
+            She does not switch between forms.<br>She holds all four simultaneously.
+          </h2>
+          <div class="stage-body">
+            <p>
+              At the Lviv National Opera House, critics came with categories.
+              They left without them. The question "what kind of dancer is she?"
+              dissolved somewhere in the second movement.
+            </p>
+            <p>
+              Kozachok precision in the spine. Kolomyika fire in the footwork.
+              Classical line in every transition. And underneath it all —
+              the long, unhurried sweep of ballroom, as if the stage itself
+              had agreed to become a ballroom floor.
+            </p>
+            <p>
+              When they tried to name what they had just seen, the answer was: <em>yes</em>.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1644,6 +1810,7 @@
         <a href="#roots" class="footer-link">Roots</a>
         <a href="#atelier" class="footer-link">Atelier</a>
         <a href="#gallery" class="footer-link">Gallery</a>
+        <a href="#stage" class="footer-link">Stage</a>
         <a href="#presence" class="footer-link">Presence</a>
       </nav>
 
