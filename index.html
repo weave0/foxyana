@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foxyana — Grace is not given. It is practiced.</title>
+  <meta name="description" content="Foxyana — master of Kozachok, Kolomyika, and classical form. Rooted in the Carpathian highlands. Devoted to movement, craft, and the art of presence.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Foxyana">
+  <meta property="og:description" content="Grace is not given. It is practiced.">
+  <meta property="og:image" content="https://foxyana.com/assets/images/foxyana_web_hero.png">
+  <meta property="og:url" content="https://foxyana.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Foxyana">
+  <meta name="twitter:description" content="Grace is not given. It is practiced.">
+  <meta name="twitter:image" content="https://foxyana.com/assets/images/foxyana_web_hero.png">
+  <link rel="canonical" href="https://foxyana.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================================
+       FOXYANA — STYLESHEET
+       Brand tokens: config/foxyana_brand.yaml
+       Content spec: data/foxyana_website.yaml
+       © Good Flippin Design Studio
+       ============================================================= */
+
+    /* --- Custom Properties (Design Tokens) --- */
+    :root {
+      /* Primary */
+      --fox-auburn: #C44A00;
+      --ember: #9B3800;
+      /* Supporting */
+      --hutsul-cobalt: #1A3A8F;
+      --vyshyvanka-gold: #C49A1A;
+      --carpathian-burgundy: #7A1818;
+      /* Neutrals */
+      --linen: #F5EDE0;
+      --studio-white: #FBF7F2;
+      --mountain-dark: #1E1510;
+      --bark: #5A4030;
+      --carpathian-forest: #1A4A2A;
+      --night-overture: #0E0A06;
+      /* Typography */
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      /* Layout */
+      --max-width: 1280px;
+      --section-pad: clamp(80px, 12vw, 160px);
+      --col-gap: clamp(24px, 4vw, 64px);
+      --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    /* --- Reset & Base --- */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--linen);
+      color: var(--mountain-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+    }
+
+    /* --- Utility: Container & Section Pad --- */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--side-pad);
+    }
+
+    .section-pad {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+    }
+
+    /* --- Skip Link (WCAG 2.4.1) --- */
+    .skip-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 9999;
+      background: var(--fox-auburn);
+      color: var(--studio-white);
+      padding: 12px 20px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 400;
+      transform: translateY(-180%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: 2px solid var(--vyshyvanka-gold);
+      outline-offset: 2px;
+    }
+
+    /* --- Typography Utilities --- */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--hutsul-cobalt);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--fox-auburn);
+      flex-shrink: 0;
+    }
+
+    .section-label--light {
+      color: rgba(251, 247, 242, 0.7);
+    }
+
+    .section-label--light::before {
+      background: var(--vyshyvanka-gold);
+    }
+
+    .section-label--center {
+      justify-content: center;
+    }
+
+    .section-label--center::before {
+      display: none;
+    }
+
+    .section-headline {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--mountain-dark);
+      margin-bottom: 24px;
+    }
+
+    .section-headline--light {
+      color: var(--studio-white);
+    }
+
+    .body-lead {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .body-text {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--bark);
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--bark);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-top: 4px;
+    }
+
+    /* --- Pull Quote --- */
+    .pull-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--fox-auburn);
+      border-left: 3px solid var(--vyshyvanka-gold);
+      padding: 8px 0 8px 24px;
+      margin: 36px 0;
+      max-width: 640px;
+    }
+
+    .pull-quote p {
+      margin: 0;
+    }
+
+    /* --- CTA Button --- */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--fox-auburn);
+      color: var(--studio-white);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      margin-top: 32px;
+      border-radius: 0;
+      min-height: 44px;
+      transition: background-color 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--ember);
+    }
+
+    .cta-btn:focus-visible {
+      outline: 2px solid var(--vyshyvanka-gold);
+      outline-offset: 2px;
+      background: var(--ember);
+    }
+
+    /* ================================================================
+       NAVIGATION
+       ================================================================ */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 22px var(--side-pad);
+      transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .site-nav.scrolled {
+      background: rgba(14, 10, 6, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.15rem;
+      letter-spacing: 0.22em;
+      color: var(--studio-white);
+      text-decoration: none;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      color: rgba(251, 247, 242, 0.82);
+      position: relative;
+      padding-bottom: 2px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--vyshyvanka-gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      width: 100%;
+    }
+
+    .nav-link:focus-visible {
+      outline: none;
+      color: var(--studio-white);
+    }
+
+    /* Hamburger — hidden on desktop */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-toggle-bar {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--studio-white);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* ================================================================
+       HERO — full bleed
+       ================================================================ */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(14, 10, 6, 0.88) 0%,
+          rgba(14, 10, 6, 0.38) 45%,
+          rgba(14, 10, 6, 0.12) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--side-pad) clamp(64px, 10vh, 120px);
+    }
+
+    .hero-content .section-label {
+      color: rgba(251, 247, 242, 0.55);
+    }
+
+    .hero-content .section-label::before {
+      background: var(--vyshyvanka-gold);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(3rem, 6.5vw, 7rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--studio-white);
+      max-width: 16ch;
+      margin-bottom: 0;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: rgba(251, 247, 242, 0.75);
+      margin-top: 20px;
+      line-height: 1.85;
+    }
+
+    /* ================================================================
+       EMBROIDERY DIVIDER — Hutsul geometric cross-stitch motif
+       Used sparingly: between Hero/About and Roots/Atelier only.
+       ================================================================ */
+    .embroidery-divider {
+      height: 32px;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='32' viewBox='0 0 48 32'><polyline points='24,2 46,16 24,30 2,16 24,2' fill='none' stroke='%231A3A8F' stroke-width='1.4'/><polyline points='24,8 38,16 24,24 10,16 24,8' fill='none' stroke='%23C49A1A' stroke-width='0.9'/><polyline points='0,9 5,16 0,23' fill='none' stroke='%237A1818' stroke-width='0.7'/><polyline points='48,9 43,16 48,23' fill='none' stroke='%237A1818' stroke-width='0.7'/></svg>");
+      background-repeat: repeat-x;
+      background-size: 48px 32px;
+      background-position: center;
+      background-color: var(--linen);
+    }
+
+    /* ================================================================
+       ABOUT — 2-column portrait + text
+       ================================================================ */
+    .about {
+      background: var(--linen);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+      align-items: start;
+    }
+
+    .about-portrait {
+      position: relative;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ================================================================
+       MOVEMENT — 3-column discipline cards
+       ================================================================ */
+    .movement {
+      background: var(--studio-white);
+    }
+
+    .movement-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(40px, 5vw, 64px);
+    }
+
+    .discipline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .discipline-card {
+      background: var(--linen);
+      border-top: 3px solid var(--fox-auburn);
+      transition: border-top-color 0.3s ease;
+    }
+
+    .discipline-card:hover {
+      border-top-color: var(--hutsul-cobalt);
+    }
+
+    .discipline-img-wrap {
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    .discipline-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .discipline-card:hover .discipline-img,
+    .discipline-card:focus-within .discipline-img {
+      transform: scale(1.02);
+    }
+
+    .discipline-body {
+      padding: 28px 28px 32px;
+    }
+
+    .discipline-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .discipline-ukrainian {
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--bark);
+    }
+
+    .discipline-body p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--bark);
+      line-height: 1.75;
+    }
+
+    .movement-closing {
+      text-align: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--bark);
+      margin-top: clamp(36px, 4vw, 56px);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ================================================================
+       ROOTS — full-bleed image + dark overlay + text
+       ================================================================ */
+    .roots {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .roots-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .roots-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .roots-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg,
+          rgba(14, 10, 6, 0.92) 0%,
+          rgba(14, 10, 6, 0.72) 50%,
+          rgba(14, 10, 6, 0.18) 100%);
+    }
+
+    .roots-content-wrap {
+      position: relative;
+      z-index: 1;
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+      width: 100%;
+    }
+
+    .roots-content {
+      max-width: 568px;
+    }
+
+    .roots-body p {
+      color: rgba(245, 237, 224, 0.82);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .cultural-notes {
+      margin-top: 40px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .cultural-note dt {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vyshyvanka-gold);
+      margin-bottom: 4px;
+    }
+
+    .cultural-note dd {
+      font-size: 0.88rem;
+      color: rgba(245, 237, 224, 0.7);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-left: 0;
+    }
+
+    .cultural-note dd+dd {
+      margin-top: 2px;
+    }
+
+    /* ================================================================
+       ATELIER — 2-column, intimate
+       ================================================================ */
+    .atelier {
+      background: var(--linen);
+    }
+
+    .atelier-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+      align-items: start;
+    }
+
+    .atelier-img-wrap {
+      overflow: hidden;
+    }
+
+    .atelier-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .atelier-img-wrap:hover .atelier-img {
+      transform: scale(1.02);
+    }
+
+    .atelier-items {
+      margin-top: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .atelier-item dt {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .atelier-item dd {
+      font-size: 0.9rem;
+      color: var(--bark);
+      font-weight: 300;
+      font-style: italic;
+      margin-left: 0;
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       GALLERY — CSS columns masonry
+       ================================================================ */
+    .gallery {
+      background: var(--studio-white);
+    }
+
+    .gallery-header {
+      margin-bottom: clamp(28px, 4vw, 48px);
+    }
+
+    .gallery-grid {
+      columns: 3 280px;
+      column-gap: 16px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-within img {
+      transform: scale(1.02);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(14, 10, 6, 0.83);
+      color: var(--linen);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      padding: 10px 14px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption,
+    .gallery-item:focus-within .gallery-caption,
+    .gallery-item.touched .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* ================================================================
+       CONTACT — 2-column text + form
+       ================================================================ */
+    .contact {
+      background: var(--linen);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+      align-items: start;
+    }
+
+    .contact-intro .body-lead {
+      max-width: 38ch;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--hutsul-cobalt);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--studio-white);
+      border: 1px solid rgba(90, 64, 48, 0.22);
+      border-radius: 0;
+      color: var(--mountain-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      padding: 12px 16px;
+      transition: border-color 0.2s ease;
+      appearance: none;
+      outline: none;
+      min-height: 44px;
+    }
+
+    .form-input:focus {
+      border-color: var(--hutsul-cobalt);
+    }
+
+    .form-input::placeholder {
+      color: rgba(90, 64, 48, 0.45);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-select {
+      cursor: pointer;
+    }
+
+    .form-row--submit {
+      margin-top: 8px;
+    }
+
+    .form-row--submit .cta-btn {
+      margin-top: 0;
+    }
+
+    .form-status {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      font-weight: 300;
+      min-height: 24px;
+      line-height: 1.5;
+    }
+
+    .form-status--success {
+      color: var(--carpathian-forest);
+    }
+
+    .form-status--error {
+      color: var(--carpathian-burgundy);
+    }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .site-footer {
+      background: var(--carpathian-forest);
+      color: var(--linen);
+      padding: clamp(48px, 6vw, 80px) 0 clamp(32px, 4vw, 48px);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.25rem;
+      letter-spacing: 0.22em;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--vyshyvanka-gold);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 237, 224, 0.55);
+      font-weight: 300;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-link:hover {
+      color: var(--linen);
+    }
+
+    .footer-legal {
+      font-size: 0.72rem;
+      color: rgba(245, 237, 224, 0.35);
+      text-align: right;
+      font-weight: 300;
+      align-self: flex-end;
+    }
+
+    /* ================================================================
+       SCROLL REVEAL
+       ================================================================ */
+    [data-reveal].will-reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    [data-reveal].will-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .discipline-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .discipline-grid .discipline-card:last-child {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-portrait {
+        max-width: 520px;
+      }
+
+      .atelier-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .atelier-img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: clamp(40px, 6vw, 60px);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-legal {
+        text-align: center;
+      }
+
+      .footer-nav {
+        justify-content: center;
+      }
+
+      .footer-brand {
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 16px 20px;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(14, 10, 6, 0.97);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+        z-index: 99;
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-link {
+        font-size: 1.25rem;
+        letter-spacing: 0.14em;
+        color: var(--studio-white);
+        min-height: 48px;
+      }
+
+      .discipline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .discipline-grid .discipline-card:last-child {
+        grid-column: auto;
+      }
+
+      .gallery-grid {
+        columns: 2 200px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-headline {
+        font-size: clamp(2.4rem, 8vw, 3.5rem);
+      }
+
+      .gallery-grid {
+        columns: 1;
+      }
+
+      .pull-quote {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* --- Reduced Motion --- */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      [data-reveal].will-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Skip link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =====================================================================
+       NAVIGATION
+       ===================================================================== -->
+  <header class="site-nav" id="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Foxyana — return to homepage">FOXYANA</a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav id="nav-menu" class="nav-links" aria-label="Primary navigation">
+        <a href="#movement" class="nav-link">Movement</a>
+        <a href="#roots" class="nav-link">Roots</a>
+        <a href="#atelier" class="nav-link">Atelier</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================================================================
+         HERO — full bleed
+         =================================================================== -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="assets/images/foxyana_web_hero.png"
+          alt=""
+          class="hero-img"
+          fetchpriority="high"
+          aria-hidden="true">
+        <div class="hero-gradient"></div>
+      </div>
+      <div class="hero-content" data-reveal>
+        <span class="section-label" aria-hidden="true">FOXYANA</span>
+        <h1 class="hero-headline" id="hero-headline">She dances where the mountains meet the sky.</h1>
+        <p class="hero-sub">
+          Kozachok. Kolomyika. Classical form.<br>
+          Rooted in the Carpathians — at home on any stage.
+        </p>
+        <a href="#movement" class="cta-btn">Discover her work</a>
+      </div>
+    </section>
+
+    <!-- Embroidery motif divider — earned through scarcity (1 of 2) -->
+    <div class="embroidery-divider" aria-hidden="true" role="presentation"></div>
+
+    <!-- ===================================================================
+         ABOUT
+         =================================================================== -->
+    <section class="about section-pad" id="about" aria-labelledby="about-headline">
+      <div class="container">
+        <div class="about-inner">
+
+          <div class="about-portrait" data-reveal>
+            <img
+              src="assets/images/foxyana_web_portrait.png"
+              alt="Foxyana portrait — formal Hutsul embroidered attire, warm studio light"
+              class="about-img"
+              loading="lazy">
+          </div>
+
+          <div class="about-text" data-reveal>
+            <span class="section-label">About</span>
+            <h2 class="section-headline" id="about-headline">Precision is a form of devotion.</h2>
+
+            <p class="body-lead">
+              Foxyana is a master of classical and traditional Ukrainian dance —
+              a practitioner of Kozachok and the Hutsul Kolomyika who trained
+              in both Carpathian folk tradition and the European classical form.
+              She is, in equal measure, a student of the mountains and a student of the stage.
+            </p>
+
+            <p class="body-text">
+              Born from the highlands of the Carpathian region, Foxyana's artistry
+              is shaped by the landscape itself: precise, patient, and capable
+              of sudden, breathtaking movement.
+            </p>
+            <p class="body-text">
+              She approaches the body the way a Hutsul craftsperson approaches
+              embroidery — each gesture deliberate, the accumulation of ten thousand
+              repetitions made to look like instinct.
+            </p>
+            <p class="body-text">
+              She cooks with the same attention she brings to choreography.
+              She walks through a forest the way she enters a performance:
+              completely present, already listening.
+            </p>
+            <p class="body-text">
+              She does not perform for applause.<br>
+              She performs because stillness, for her, is only the pause between phrases.
+            </p>
+
+            <blockquote class="pull-quote" data-reveal>
+              <p>"Stillness is only the pause between phrases."</p>
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         MOVEMENT — Three disciplines
+         =================================================================== -->
+    <section class="movement section-pad" id="movement" aria-labelledby="movement-headline">
+      <div class="container">
+
+        <div class="movement-header" data-reveal>
+          <span class="section-label section-label--center">Movement</span>
+          <h2 class="section-headline" id="movement-headline">Three traditions. One body.</h2>
+          <p class="section-intro">
+            Foxyana holds mastery across three distinct dance forms — each with
+            its own demands, its own music, its own history in the body.
+          </p>
+        </div>
+
+        <div class="discipline-grid">
+
+          <article class="discipline-card" data-reveal>
+            <div class="discipline-img-wrap">
+              <img
+                src="assets/images/foxyana_02_kozachok_turn.png"
+                alt="Foxyana mid-turn in Kozachok dance, skirt fanning outward"
+                loading="lazy"
+                class="discipline-img">
+            </div>
+            <div class="discipline-body">
+              <h3 class="discipline-name">
+                Kozachok
+                <span class="discipline-ukrainian" lang="uk">Козачок</span>
+              </h3>
+              <p>
+                The elegant heart of the Ukrainian social dance tradition.
+                Refined, poised, danced with a partner or alone.
+                The Kozachok does not announce itself — it arrives.
+              </p>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-reveal>
+            <div class="discipline-img-wrap">
+              <img
+                src="assets/images/foxyana_05_kolomyika_circle.png"
+                alt="Foxyana in a lively Kolomyika circle dance at an outdoor Carpathian meadow"
+                loading="lazy"
+                class="discipline-img">
+            </div>
+            <div class="discipline-body">
+              <h3 class="discipline-name">
+                Kolomyika
+                <span class="discipline-ukrainian" lang="uk">Коломийка</span>
+              </h3>
+              <p>
+                A circle dance from the Hutsul Carpathian highlands —
+                lively, communal, rooted in the rhythm of mountain life.
+                Where Kozachok is architecture, Kolomyika is weather.
+              </p>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-reveal>
+            <div class="discipline-img-wrap">
+              <img
+                src="assets/images/foxyana_web_stage.png"
+                alt="Foxyana in classical dance form on stage, precise and composed"
+                loading="lazy"
+                class="discipline-img">
+            </div>
+            <div class="discipline-body">
+              <h3 class="discipline-name">Classical Form</h3>
+              <p>
+                European classical technique, earned across years of formal training.
+                Foxyana carries it not as a departure from tradition but as its
+                continuation — all three forms live in the same body, and the body
+                does not forget.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="movement-closing" data-reveal>
+          She also moves in ways that have no name — along a mountain path,
+          through a kitchen, across a room to look out a window.
+          These count too.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Embroidery motif divider — 2 of 2 -->
+    <div class="embroidery-divider" aria-hidden="true" role="presentation"></div>
+
+    <!-- ===================================================================
+         ROOTS — Carpathian heritage
+         =================================================================== -->
+    <section class="roots" id="roots" aria-labelledby="roots-headline">
+      <div class="roots-media" aria-hidden="true">
+        <img
+          src="assets/images/foxyana_03_mountain_overlook.png"
+          alt=""
+          class="roots-img"
+          loading="lazy"
+          aria-hidden="true">
+        <div class="roots-overlay"></div>
+      </div>
+
+      <div class="container roots-content-wrap">
+        <div class="roots-content" data-reveal>
+          <span class="section-label section-label--light">Roots</span>
+          <h2 class="section-headline section-headline--light" id="roots-headline">
+            The mountains do not let you pretend.
+          </h2>
+
+          <div class="roots-body">
+            <p>
+              Foxyana's practice is inseparable from her landscape: the Carpathian
+              highlands of western Ukraine, where the Hutsul people have kept
+              their traditions in the folds of the mountains for centuries.
+            </p>
+            <p>
+              The Hutsul aesthetic runs through everything she does. The geometric
+              cross-stitch embroidery on her collar and cuffs — cobalt, antique gold,
+              deep red — is the same visual language as the mountain textiles,
+              adapted by hand. The music she dances to carries the same intervals
+              as the wind through the Carpathian passes.
+            </p>
+            <p>
+              This is not nostalgia. This is structural. The landscape is still there.
+              The tradition is still breathing. Foxyana is one of the people breathing it.
+            </p>
+          </div>
+
+          <dl class="cultural-notes">
+            <div class="cultural-note">
+              <dt>Embroidery</dt>
+              <dd lang="uk">Вишиванка —</dd>
+              <dd>Hutsul geometric cross-stitch: angular interlocking diamond and chevron forms specific to the Carpathian mountain region.</dd>
+            </div>
+            <div class="cultural-note">
+              <dt>Music</dt>
+              <dd>Kolomyika rhythm is in 2/4 time, with a characteristic lyrical pattern rooted in Hutsul folk melody. The body knows it before the mind names it.</dd>
+            </div>
+            <div class="cultural-note">
+              <dt>Landscape</dt>
+              <dd>The Carpathian Mountains span western Ukraine into Romania and Slovakia. The Hutsul cultural region occupies the Ukrainian Carpathian highlands.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ATELIER — cooking & craft
+         =================================================================== -->
+    <section class="atelier section-pad" id="atelier" aria-labelledby="atelier-headline">
+      <div class="container">
+        <div class="atelier-inner">
+
+          <div class="atelier-img-wrap" data-reveal>
+            <img
+              src="assets/images/foxyana_04_cooking_kitchen.png"
+              alt="Foxyana at a traditional Ukrainian farmhouse kitchen worktable, working dough"
+              loading="lazy"
+              class="atelier-img">
+          </div>
+
+          <div class="atelier-text" data-reveal>
+            <span class="section-label">Atelier</span>
+            <h2 class="section-headline" id="atelier-headline">The same hands.</h2>
+
+            <p class="body-lead">The studio and the kitchen are the same room, organized differently.</p>
+
+            <p class="body-text">
+              Foxyana approaches food the way she approaches choreography:
+              with unhurried attention, specific ingredients, and no shortcuts
+              in the places that matter. Ukrainian farmhouse cooking — braided
+              bread, slow-stewed dishes, things that require the morning — made
+              with the same precision that produces a clean Kozachok turn.
+            </p>
+            <p class="body-text">
+              She would not describe this as a metaphor. It is simply how
+              she works: completely, in whatever she is doing.
+            </p>
+
+            <dl class="atelier-items">
+              <div class="atelier-item">
+                <dt>Pampushky</dt>
+                <dd>Soft garlic rolls. Made first thing, while the light is right.</dd>
+              </div>
+              <div class="atelier-item">
+                <dt>Borscht</dt>
+                <dd>There is a Carpathian version, and she makes that one. It takes the morning.</dd>
+              </div>
+              <div class="atelier-item">
+                <dt>Varenyky</dt>
+                <dd>The fold is important. She will tell you this. She will show you once.</dd>
+              </div>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         GALLERY — masonry
+         =================================================================== -->
+    <section class="gallery section-pad" id="gallery" aria-labelledby="gallery-headline">
+      <div class="container">
+
+        <div class="gallery-header" data-reveal>
+          <span class="section-label">Gallery</span>
+          <h2 class="section-headline" id="gallery-headline">In frame.</h2>
+        </div>
+
+        <div class="gallery-grid" role="list">
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_01_portrait_formal.png"
+              alt="Foxyana in formal Ukrainian dance costume standing in a candlelit interior"
+              loading="lazy">
+            <figcaption class="gallery-caption">Formal attire — Hutsul embroidered bodice, forest-green skirt</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_06_contemplative_still.png"
+              alt="Foxyana seated in quiet contemplation, dappled garden light"
+              loading="lazy">
+            <figcaption class="gallery-caption">Still</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_02_kozachok_turn.png"
+              alt="Foxyana mid-turn in Kozachok dance, skirt fanning outward"
+              loading="lazy">
+            <figcaption class="gallery-caption">Mid-Kozachok — skirt in motion</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_07_duality_moment.png"
+              alt="Foxyana standing composed at a forest edge, one ear turned toward a distant sound"
+              loading="lazy">
+            <figcaption class="gallery-caption">Listening</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_03_mountain_overlook.png"
+              alt="Foxyana standing at a Carpathian mountain overlook at golden hour"
+              loading="lazy">
+            <figcaption class="gallery-caption">Carpathian highlands — golden hour</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_05_kolomyika_circle.png"
+              alt="Foxyana in a lively Kolomyika circle dance at an outdoor Carpathian meadow"
+              loading="lazy">
+            <figcaption class="gallery-caption">Kolomyika — Carpathian meadow, dusk</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
+            <img
+              src="assets/images/foxyana_04_cooking_kitchen.png"
+              alt="Foxyana working at a traditional Ukrainian farmhouse kitchen worktable"
+              loading="lazy">
+            <figcaption class="gallery-caption">In the kitchen — morning</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CONTACT
+         =================================================================== -->
+    <section class="contact section-pad" id="contact" aria-labelledby="contact-headline">
+      <div class="container">
+        <div class="contact-inner">
+
+          <div class="contact-intro" data-reveal>
+            <span class="section-label">Contact</span>
+            <h2 class="section-headline" id="contact-headline">For inquiries.</h2>
+            <p class="body-lead">
+              For performance bookings, cultural programming collaborations,
+              and workshop engagements — reach out directly.
+            </p>
+            <p class="body-text">
+              Foxyana works with organisations whose intentions are clear.
+            </p>
+          </div>
+
+          <!-- TODO Studio: replace Formspree endpoint with foxyana-specific ID -->
+          <form
+            class="contact-form"
+            id="contact-form"
+            action="https://formspree.io/f/xgvgzjbw"
+            method="POST"
+            novalidate
+            data-reveal>
+            <div class="form-row">
+              <label for="contact-name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                class="form-input"
+                required
+                autocomplete="name"
+                placeholder="Your name">
+            </div>
+            <div class="form-row">
+              <label for="contact-email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                class="form-input"
+                required
+                autocomplete="email"
+                placeholder="your@email.com">
+            </div>
+            <div class="form-row">
+              <label for="contact-type" class="form-label">Enquiry type</label>
+              <select id="contact-type" name="enquiry_type" class="form-input form-select">
+                <option value="">Select…</option>
+                <option value="performance">Performance booking</option>
+                <option value="cultural_programming">Cultural programming</option>
+                <option value="workshop">Workshop engagement</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                class="form-input form-textarea"
+                rows="5"
+                required
+                placeholder="Tell us about your enquiry"></textarea>
+            </div>
+            <div class="form-row form-row--submit">
+              <button type="submit" class="cta-btn">Send enquiry</button>
+            </div>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-logo">FOXYANA</span>
+        <p class="footer-tagline">Grace is not given. It is practiced.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#movement" class="footer-link">Movement</a>
+        <a href="#roots" class="footer-link">Roots</a>
+        <a href="#atelier" class="footer-link">Atelier</a>
+        <a href="#gallery" class="footer-link">Gallery</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </nav>
+
+      <p class="footer-legal">© Foxyana. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // -----------------------------------------------------------------------
+      // Page load fade-in (0.6s)
+      // -----------------------------------------------------------------------
+      document.documentElement.style.opacity = '0';
+      window.addEventListener('load', function () {
+        document.documentElement.style.transition = 'opacity 0.6s ease';
+        document.documentElement.style.opacity = '1';
+      });
+
+      // -----------------------------------------------------------------------
+      // Navigation: becomes opaque after 80px scroll
+      // -----------------------------------------------------------------------
+      var nav = document.getElementById('site-nav');
+      function onScroll() {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // -----------------------------------------------------------------------
+      // Hamburger menu
+      // -----------------------------------------------------------------------
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+        document.body.style.overflow = expanded ? '' : 'hidden';
+      });
+
+      menu.querySelectorAll('.nav-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          menu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          menu.classList.remove('is-open');
+          document.body.style.overflow = '';
+          toggle.focus();
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // Scroll reveal (respects prefers-reduced-motion)
+      // -----------------------------------------------------------------------
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var reveals = document.querySelectorAll('[data-reveal]');
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+        reveals.forEach(function (el) {
+          el.classList.add('will-reveal');
+          observer.observe(el);
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // Contact form: async Formspree submit
+      // -----------------------------------------------------------------------
+      var form = document.getElementById('contact-form');
+      var statusEl = document.getElementById('form-status');
+      var emailInput = document.getElementById('contact-email');
+
+      if (form) {
+        // Real-time email validation
+        emailInput.addEventListener('input', function () {
+          var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+          emailInput.style.borderColor = emailInput.value
+            ? (valid ? 'var(--hutsul-cobalt)' : 'var(--fox-auburn)')
+            : '';
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('[type="submit"]');
+          btn.disabled = true;
+          btn.textContent = 'Sending\u2026';
+          statusEl.textContent = '';
+          statusEl.className = 'form-status';
+
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          })
+            .then(function (res) {
+              if (res.ok) {
+                statusEl.textContent = 'Thank you. Your enquiry has been received.';
+                statusEl.className = 'form-status form-status--success';
+                form.reset();
+              } else {
+                statusEl.textContent = 'Something went wrong. Please try again.';
+                statusEl.className = 'form-status form-status--error';
+              }
+            })
+            .catch(function () {
+              statusEl.textContent = 'Something went wrong. Please try again.';
+              statusEl.className = 'form-status form-status--error';
+            })
+            .finally(function () {
+              btn.disabled = false;
+              btn.textContent = 'Send enquiry';
+            });
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // Gallery: touch tap to reveal caption on mobile
+      // -----------------------------------------------------------------------
+      if ('ontouchstart' in window) {
+        document.querySelectorAll('.gallery-item').forEach(function (item) {
+          item.addEventListener('click', function () {
+            item.classList.toggle('touched');
+          });
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>

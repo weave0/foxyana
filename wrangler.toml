@@ -1,0 +1,11 @@
+name = "foxyana"
+compatibility_date = "2025-01-01"
+
+# Cloudflare Pages — serves the static site from the repo root
+pages_build_output_dir = "."
+
+[vars]
+NODE_ENV = "production"
+
+# Secrets (set via: wrangler secret put <NAME> --project-name foxyana)
+# FORMSPREE_FORM_ID — Foxyana-specific Formspree endpoint (replace hardcoded ID in index.html)
