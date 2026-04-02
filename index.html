@@ -2562,10 +2562,13 @@
       if (ambientToggle && ambientAudio) {
         ambientToggle.addEventListener('click', function () {
           if (ambientAudio.paused) {
-            ambientAudio.play();
-            ambientPlayer.classList.add('is-playing');
-            ambientToggle.setAttribute('aria-pressed', 'true');
-            ambientToggle.setAttribute('aria-label', 'Pause ambient music: Three Turns on Wood');
+            ambientAudio.play().then(function () {
+              ambientPlayer.classList.add('is-playing');
+              ambientToggle.setAttribute('aria-pressed', 'true');
+              ambientToggle.setAttribute('aria-label', 'Pause ambient music: Three Turns on Wood');
+            }).catch(function () {
+              // Browser blocked autoplay or audio not ready — silently handle
+            });
           } else {
             ambientAudio.pause();
             ambientPlayer.classList.remove('is-playing');

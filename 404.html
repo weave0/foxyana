@@ -2,122 +2,122 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — This page has left the stage | Foxyana</title>
-  <meta name="robots" content="noindex">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — This page has left the stage | Foxyana</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --fox-auburn: #C44A00;
-      --ember: #9B3800;
-      --linen: #F5EDE0;
-      --mountain-dark: #1E1510;
-      --night-overture: #0E0A06;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Inter', system-ui, sans-serif;
-    }
+    <style>
+        :root {
+            --fox-auburn: #C44A00;
+            --ember: #9B3800;
+            --linen: #F5EDE0;
+            --mountain-dark: #1E1510;
+            --night-overture: #0E0A06;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    html {
-      height: 100%;
-    }
+        html {
+            height: 100%;
+        }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--night-overture);
-      color: var(--linen);
-      font-family: var(--font-body);
-      text-align: center;
-      padding: 32px 24px;
-    }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--night-overture);
+            color: var(--linen);
+            font-family: var(--font-body);
+            text-align: center;
+            padding: 32px 24px;
+        }
 
-    .fox-ear {
-      display: block;
-      margin: 0 auto 32px;
-      opacity: 0.2;
-    }
+        .fox-ear {
+            display: block;
+            margin: 0 auto 32px;
+            opacity: 0.2;
+        }
 
-    .error-code {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 12vw, 8rem);
-      font-weight: 300;
-      color: var(--fox-auburn);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
+        .error-code {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 300;
+            color: var(--fox-auburn);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
 
-    .error-message {
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      font-weight: 300;
-      font-style: italic;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
+        .error-message {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
 
-    .error-sub {
-      font-size: 0.95rem;
-      color: rgba(245, 237, 224, 0.5);
-      max-width: 400px;
-      line-height: 1.6;
-      margin-bottom: 40px;
-    }
+        .error-sub {
+            font-size: 0.95rem;
+            color: rgba(245, 237, 224, 0.5);
+            max-width: 400px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
 
-    .home-link {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--linen);
-      background: var(--fox-auburn);
-      padding: 14px 36px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+        .home-link {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--linen);
+            background: var(--fox-auburn);
+            padding: 14px 36px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-    .home-link:hover,
-    .home-link:focus-visible {
-      background: var(--ember);
-      transform: translateY(-2px);
-    }
+        .home-link:hover,
+        .home-link:focus-visible {
+            background: var(--ember);
+            transform: translateY(-2px);
+        }
 
-    .home-link:focus-visible {
-      outline: 2px solid var(--fox-auburn);
-      outline-offset: 4px;
-    }
-  </style>
+        .home-link:focus-visible {
+            outline: 2px solid var(--fox-auburn);
+            outline-offset: 4px;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Fox ear silhouette — brand motif -->
-  <svg class="fox-ear" width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <polygon points="16,2 8,28 24,28" fill="#C44A00" />
-  </svg>
+    <!-- Fox ear silhouette — brand motif -->
+    <svg class="fox-ear" width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="16,2 8,28 24,28" fill="#C44A00" />
+    </svg>
 
-  <h1 class="error-code">404</h1>
-  <p class="error-message">This page has left the stage.</p>
-  <p class="error-sub">
-    The curtain has fallen on whatever was here.
-    Perhaps the music moved on — perhaps it was never here to begin with.
-  </p>
-  <a href="/" class="home-link">Return to the stage &rarr;</a>
+    <h1 class="error-code">404</h1>
+    <p class="error-message">This page has left the stage.</p>
+    <p class="error-sub">
+        The curtain has fallen on whatever was here.
+        Perhaps the music moved on — perhaps it was never here to begin with.
+    </p>
+    <a href="/" class="home-link">Return to the stage &rarr;</a>
 </body>
 
 </html>
