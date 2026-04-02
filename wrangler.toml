@@ -4,6 +4,7 @@ compatibility_date = "2025-01-01"
 # Static assets — served from repo root via wrangler deploy
 [assets]
 directory = "."
+not_found_handling = "404-page"
 
 [vars]
 NODE_ENV = "production"
