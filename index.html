@@ -9,13 +9,13 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Foxyana">
   <meta property="og:description" content="Grace is not given. It is practiced.">
-  <meta property="og:image" content="https://foxyana.com/assets/images/foxyana_web_hero.png">
+  <meta property="og:image" content="https://foxyana.com/assets/images/foxyana_web_hero.webp">
   <meta property="og:url" content="https://foxyana.com">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Foxyana">
   <meta name="twitter:description" content="Grace is not given. It is practiced.">
-  <meta name="twitter:image" content="https://foxyana.com/assets/images/foxyana_web_hero.png">
+  <meta name="twitter:image" content="https://foxyana.com/assets/images/foxyana_web_hero.webp">
   <link rel="canonical" href="https://foxyana.com">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -759,7 +759,7 @@
     }
 
     /* ================================================================
-       GALLERY — CSS columns masonry
+       GALLERY — spotlight + CSS columns masonry
        ================================================================ */
     .gallery {
       background: var(--studio-white);
@@ -769,6 +769,63 @@
       margin-bottom: clamp(28px, 4vw, 48px);
     }
 
+    /* --- Featured Spotlight: 2-up hero row --- */
+    .gallery-spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: clamp(32px, 4vw, 56px);
+    }
+
+    .spotlight-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotlight-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .spotlight-item:hover img,
+    .spotlight-item:focus-within img {
+      transform: scale(1.03);
+    }
+
+    .spotlight-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(14, 10, 6, 0.88));
+      color: var(--linen);
+      padding: 40px 20px 18px;
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      font-style: italic;
+      line-height: 1.4;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .spotlight-caption .spotlight-title {
+      display: block;
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+      font-weight: 600;
+      font-style: normal;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-spotlight {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Masonry Grid --- */
     .gallery-grid {
       columns: 3 280px;
       column-gap: 16px;
@@ -813,6 +870,76 @@
     .gallery-item:focus-within .gallery-caption,
     .gallery-item.touched .gallery-caption {
       transform: translateY(0);
+    }
+
+    /* ================================================================
+       DANCE TEASER — CTA between storyboard and presence
+       ================================================================ */
+    .dance-teaser {
+      background: var(--night-overture);
+      color: var(--linen);
+      text-align: center;
+      padding: clamp(56px, 8vw, 100px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dance-teaser-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .dance-teaser-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+
+    .dance-teaser .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dance-teaser .section-label {
+      color: var(--fox-auburn);
+    }
+
+    .dance-teaser-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .dance-teaser-sub {
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      color: rgba(245, 237, 224, 0.6);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .dance-teaser-cta {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--linen);
+      background: var(--fox-auburn);
+      padding: 14px 36px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .dance-teaser-cta:hover,
+    .dance-teaser-cta:focus-visible {
+      background: var(--ember);
+      transform: translateY(-2px);
     }
 
     /* ================================================================
@@ -1863,6 +1990,41 @@
           <h2 class="section-headline" id="gallery-headline">In frame.</h2>
         </div>
 
+        <!-- Spotlight: two signature images -->
+        <div class="gallery-spotlight" data-reveal>
+
+          <figure class="spotlight-item" tabindex="0">
+            <picture>
+              <source srcset="assets/images/foxyana_ballroom_portrait_gown.webp" type="image/webp">
+              <img
+                src="assets/images/foxyana_ballroom_portrait_gown.png"
+                alt="Foxyana in a sweeping ballroom gown, midnight navy with Hutsul gold beadwork"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="spotlight-caption">
+              <span class="spotlight-title">Midnight Gown</span>
+              The night before Lviv — standing in the wings, not yet on stage, already in character.
+            </figcaption>
+          </figure>
+
+          <figure class="spotlight-item" tabindex="0">
+            <picture>
+              <source srcset="assets/images/foxyana_stage_bow.webp" type="image/webp">
+              <img
+                src="assets/images/foxyana_stage_bow.png"
+                alt="Foxyana taking a stage bow at the Lviv National Opera House"
+                loading="lazy"
+                width="1024" height="1024">
+            </picture>
+            <figcaption class="spotlight-caption">
+              <span class="spotlight-title">Final Bow — Lviv</span>
+              The last phrase belongs to the audience. She gives it back.
+            </figcaption>
+          </figure>
+
+        </div>
+
         <div class="gallery-grid" role="list">
 
           <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
@@ -1951,18 +2113,6 @@
 
           <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
             <picture>
-              <source srcset="assets/images/foxyana_ballroom_portrait_gown.webp" type="image/webp">
-              <img
-                src="assets/images/foxyana_ballroom_portrait_gown.png"
-                alt="Foxyana in a sweeping ballroom gown, midnight navy with Hutsul gold beadwork"
-                loading="lazy"
-                width="1024" height="1024">
-            </picture>
-            <figcaption class="gallery-caption">Midnight Gown — pre-performance</figcaption>
-          </figure>
-
-          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
-            <picture>
               <source srcset="assets/images/foxyana_tango_pause.webp" type="image/webp">
               <img
                 src="assets/images/foxyana_tango_pause.png"
@@ -1983,18 +2133,6 @@
                 width="1024" height="1024">
             </picture>
             <figcaption class="gallery-caption">Genre bridge — editorial</figcaption>
-          </figure>
-
-          <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
-            <picture>
-              <source srcset="assets/images/foxyana_stage_bow.webp" type="image/webp">
-              <img
-                src="assets/images/foxyana_stage_bow.png"
-                alt="Foxyana taking a stage bow at the Lviv National Opera House"
-                loading="lazy"
-                width="1024" height="1024">
-            </picture>
-            <figcaption class="gallery-caption">Lviv National Opera — final bow</figcaption>
           </figure>
 
           <figure class="gallery-item" role="listitem" data-reveal tabindex="0">
@@ -2194,6 +2332,31 @@
 
       </div>
     </div>
+
+    <!-- ===================================================================
+         DANCE TEASER — interactive engine CTA
+         =================================================================== -->
+    <section class="dance-teaser section-pad" aria-labelledby="dance-teaser-headline">
+      <div class="dance-teaser-bg" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/foxyana_tango_wide_stage.webp" type="image/webp">
+          <img
+            src="assets/images/foxyana_tango_wide_stage.png"
+            alt=""
+            loading="lazy"
+            width="1792" height="1024">
+        </picture>
+      </div>
+      <div class="container" data-reveal>
+        <span class="section-label">Interactive</span>
+        <h2 class="dance-teaser-headline" id="dance-teaser-headline">Enter the Dance Engine</h2>
+        <p class="dance-teaser-sub">
+          A beat-driven choreography system. Choose the tempo. Feel the phrase.
+          Foxyana moves when the music tells her to.
+        </p>
+        <a href="/dance" class="dance-teaser-cta" aria-label="Launch the interactive Dance Engine">Launch &rarr;</a>
+      </div>
+    </section>
 
     <!-- ===================================================================
          PRESENCE — duality panel
