@@ -1352,6 +1352,78 @@
       }
     }
 
+    /* ================================================================
+       CINEMA APERTURE — ambient crossfade performance moment
+       ================================================================ */
+    .cinema-aperture {
+      position: relative;
+      height: 88vh;
+      min-height: 420px;
+      overflow: hidden;
+      background: var(--night-overture);
+    }
+
+    .cinema-clip {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    .cinema-clip.is-visible {
+      opacity: 1;
+    }
+
+    .cinema-clip video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+
+    .cinema-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(14, 10, 6, 0.22) 0%,
+        transparent 28%,
+        transparent 54%,
+        rgba(14, 10, 6, 0.78) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cinema-line {
+      position: absolute;
+      bottom: clamp(36px, 6vw, 72px);
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem, 2vw, 1.45rem);
+      color: var(--linen);
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+      pointer-events: none;
+    }
+
+    .cinema-clip.is-visible .cinema-line {
+      opacity: 0.72;
+    }
+
+    @media (max-width: 600px) {
+      .cinema-aperture {
+        height: 75vh;
+      }
+    }
+
     .presence {
       position: relative;
       min-height: 85vh;
@@ -2334,6 +2406,42 @@
     </div>
 
     <!-- ===================================================================
+         CINEMA APERTURE — ambient crossfade performance moment
+         =================================================================== -->
+    <section class="cinema-aperture" id="live" aria-label="Foxyana in performance">
+
+      <div class="cinema-clip is-visible" id="ca-0">
+        <video muted playsinline preload="none"
+          poster="assets/videos/poster_show.jpg"
+          aria-hidden="true">
+          <source src="assets/videos/foyana%20dance%20show.mp4" type="video/mp4">
+        </video>
+        <p class="cinema-line">She arrives before the music does.</p>
+      </div>
+
+      <div class="cinema-clip" id="ca-1">
+        <video muted playsinline preload="none"
+          poster="assets/videos/poster_aria.jpg"
+          aria-hidden="true">
+          <source src="assets/videos/foxyana%20many%20tails.mp4" type="video/mp4">
+        </video>
+        <p class="cinema-line">Each tail, a memory of flight.</p>
+      </div>
+
+      <div class="cinema-clip" id="ca-2">
+        <video muted playsinline preload="none"
+          poster="assets/videos/poster_recognition.jpg"
+          aria-hidden="true">
+          <source src="assets/videos/Courtsy%20applause.mp4" type="video/mp4">
+        </video>
+        <p class="cinema-line">The bow is not an ending.</p>
+      </div>
+
+      <div class="cinema-veil" aria-hidden="true"></div>
+
+    </section>
+
+    <!-- ===================================================================
          DANCE TEASER — interactive engine CTA
          =================================================================== -->
     <section class="dance-teaser section-pad" aria-labelledby="dance-teaser-headline">
@@ -2576,6 +2684,63 @@
             ambientToggle.setAttribute('aria-label', 'Play ambient music: Three Turns on Wood');
           }
         });
+      }
+
+      // -----------------------------------------------------------------------
+      // Cinema aperture — ambient crossfade rotation
+      // -----------------------------------------------------------------------
+      var caClips = [
+        document.getElementById('ca-0'),
+        document.getElementById('ca-1'),
+        document.getElementById('ca-2')
+      ];
+      var caVideos = caClips.map(function (el) { return el ? el.querySelector('video') : null; });
+      var caCurrent = 0;
+      var caStarted = false;
+      var caReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function caAdvance(nextIdx) {
+        var prev = caCurrent;
+        caCurrent = nextIdx;
+        caClips[caCurrent].classList.add('is-visible');
+        caVideos[caCurrent].currentTime = 0;
+        caVideos[caCurrent].play().catch(function () {});
+        caVideos[caCurrent]._crossing = false;
+        setTimeout(function () {
+          caClips[prev].classList.remove('is-visible');
+          caVideos[prev].pause();
+          caVideos[prev].currentTime = 0;
+          caVideos[prev]._crossing = false;
+        }, 1600);
+      }
+
+      caVideos.forEach(function (v, i) {
+        if (!v) { return; }
+        v._crossing = false;
+        v.addEventListener('timeupdate', function () {
+          if (!v._crossing && v.duration > 0 && v.currentTime >= v.duration - 1.6) {
+            v._crossing = true;
+            caAdvance((i + 1) % caClips.length);
+          }
+        });
+      });
+
+      if (caClips[0]) {
+        var caSection = document.getElementById('live');
+        if (caSection) {
+          var caObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting && !caStarted) {
+                caStarted = true;
+                if (!caReducedMotion) {
+                  caVideos[0].play().catch(function () {});
+                }
+                caObserver.disconnect();
+              }
+            });
+          }, { threshold: 0.15 });
+          caObserver.observe(caSection);
+        }
       }
 
     })();

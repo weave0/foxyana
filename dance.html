@@ -902,10 +902,53 @@
             InputState.prototype.consume = function (name) { if (this.queue[name]) { this.queue[name] = false; return true; } return false; };
 
             // -------------------------------------------------------------------
+            // Particle system — footwork sparks
+            // -------------------------------------------------------------------
+            function ParticleSystem() { this.pool = []; }
+            ParticleSystem.prototype.emit = function (x, y, count, color, spread) {
+                spread = spread || 90;
+                for (var i = 0; i < count; i++) {
+                    var a = -Math.PI / 2 + (Math.random() - 0.5) * spread * (Math.PI / 180);
+                    var spd = 120 + Math.random() * 200;
+                    this.pool.push({
+                        x: x, y: y,
+                        vx: Math.cos(a) * spd * (Math.random() < 0.5 ? -1 : 1) * 0.6,
+                        vy: Math.sin(a) * spd,
+                        life: 1.0, decay: 1.4 + Math.random() * 1.2,
+                        r: 1.5 + Math.random() * 2.5,
+                        color: color || '#c49a1a'
+                    });
+                }
+            };
+            ParticleSystem.prototype.update = function (dt) {
+                for (var i = this.pool.length - 1; i >= 0; i--) {
+                    var p = this.pool[i];
+                    p.x += p.vx * dt; p.y += p.vy * dt;
+                    p.vy += 700 * dt; p.life -= p.decay * dt;
+                    if (p.life <= 0) this.pool.splice(i, 1);
+                }
+            };
+            ParticleSystem.prototype.draw = function (renderCtx) {
+                this.pool.forEach(function (p) {
+                    renderCtx.save();
+                    renderCtx.globalAlpha = Math.max(0, p.life) * 0.9;
+                    renderCtx.fillStyle = p.color;
+                    renderCtx.beginPath();
+                    renderCtx.arc(p.x, p.y, Math.max(0.2, p.r * p.life), 0, Math.PI * 2);
+                    renderCtx.fill();
+                    renderCtx.restore();
+                });
+            };
+
+            // -------------------------------------------------------------------
             // Canvas + DOM refs
             // -------------------------------------------------------------------
             var canvas = document.getElementById('stageCanvas');
             var ctx = canvas.getContext('2d');
+            var offCanvas = document.createElement('canvas');
+            offCanvas.width = canvas.width; offCanvas.height = canvas.height;
+            var offCtx = offCanvas.getContext('2d');
+            var mainCtx = ctx;
             var bpmSlider = document.getElementById('bpmSlider');
             var bpmValue = document.getElementById('bpmValue');
             var modeSelect = document.getElementById('modeSelect');
@@ -922,6 +965,11 @@
             var dancer = new DanceEngine();
             var input = new InputState();
             var prevMs = performance.now();
+            var sparks = new ParticleSystem();
+            var shimmerPhase = 0;
+            var prevJumpAirborne = false;
+            var prevAction = '';
+            var prevBeatPhase = 0;
 
             function nowSec() { return performance.now() / 1000; }
 
@@ -1310,6 +1358,52 @@
             }
 
             // -------------------------------------------------------------------
+            // Floor reflection — polished wood mirror
+            // -------------------------------------------------------------------
+            function drawFloorReflection() {
+                var h = canvas.height;
+                var stageY = h * 0.76;
+                var reflAlpha = Math.max(0, 0.10 + dancer.jumpLift * 0.0002);
+                if (reflAlpha < 0.01) return;
+                mainCtx.save();
+                mainCtx.beginPath();
+                mainCtx.rect(0, stageY, canvas.width, h - stageY);
+                mainCtx.clip();
+                mainCtx.translate(0, 2 * stageY);
+                mainCtx.scale(1, -1);
+                mainCtx.globalAlpha = reflAlpha;
+                mainCtx.globalCompositeOperation = 'screen';
+                mainCtx.drawImage(offCanvas, 0, 0);
+                mainCtx.restore();
+            }
+
+            // -------------------------------------------------------------------
+            // Gown shimmer — fabric light catch sweeping across midnight navy
+            // -------------------------------------------------------------------
+            function drawGownShimmer(beatPhase) {
+                var h = canvas.height;
+                var stageY = h * 0.76;
+                var SC = 1.32;
+                var baseX = canvas.width * 0.5 + dancer.x;
+                var hemHalf = (64 + dancer.armsOpen * 18) * SC;
+                var sweepX = baseX + Math.sin(shimmerPhase * Math.PI * 2) * hemHalf * 0.55;
+                var sweepY = stageY + 110 + dancer.armsOpen * 50;
+                var pulse = 0.5 + 0.5 * Math.sin(beatPhase * Math.PI * 2);
+                var shimA = 0.07 + 0.04 * pulse;
+                mainCtx.save();
+                mainCtx.globalCompositeOperation = 'screen';
+                var sg = mainCtx.createRadialGradient(sweepX, sweepY, 0, sweepX, sweepY, 68);
+                sg.addColorStop(0, 'rgba(196,154,26,' + shimA.toFixed(3) + ')');
+                sg.addColorStop(0.45, 'rgba(26,58,143,' + (shimA * 0.4).toFixed(3) + ')');
+                sg.addColorStop(1, 'rgba(0,0,0,0)');
+                mainCtx.fillStyle = sg;
+                var gownTop = stageY + 30;
+                var gownH = Math.min(h - gownTop - 20, 260);
+                mainCtx.fillRect(baseX - hemHalf - 20, gownTop, hemHalf * 2 + 40, gownH);
+                mainCtx.restore();
+            }
+
+            // -------------------------------------------------------------------
             // Animate loop
             // -------------------------------------------------------------------
             function animate(timeMs) {
@@ -1322,8 +1416,54 @@
                 var beatIdx = clock.beatIdx(nowSec());
                 var beatPhase = clock.phase(nowSec());
                 dancer.update(dt, section, beatPhase, input);
-                drawBackground(section, beatPhase);
+
+                // Advance shimmer sweep
+                shimmerPhase += dt * 0.35;
+
+                // Particle emission — footwork actions
+                var stageY = canvas.height * 0.76;
+                var baseX = canvas.width * 0.5 + dancer.x;
+                var footY = stageY + 2;
+                var curAction = dancer.action;
+                if (curAction !== prevAction) {
+                    if (curAction === 'Left Heel') sparks.emit(baseX - 22, footY, 7, '#c49a1a', 80);
+                    else if (curAction === 'Right Heel') sparks.emit(baseX + 22, footY, 7, '#c49a1a', 80);
+                    else if (curAction === 'Cross Step') sparks.emit(baseX, footY, 6, '#c44a00', 100);
+                    else if (curAction === 'Spin') sparks.emit(baseX, footY, 10, '#c49a1a', 180);
+                    else if (curAction === 'Kick') sparks.emit(baseX + 34, footY - 55, 8, '#f5ede0', 110);
+                    else if (curAction === 'Leap' || curAction === 'Grand Jeté') sparks.emit(baseX, footY, 14, '#c49a1a', 160);
+                    prevAction = curAction;
+                }
+
+                // Landing burst — detect jumpLift returning to 0
+                var isAirborne = dancer.jumpLift < -8;
+                if (prevJumpAirborne && !isAirborne) {
+                    sparks.emit(baseX - 14, footY, 8, '#c44a00', 80);
+                    sparks.emit(baseX + 14, footY, 8, '#c44a00', 80);
+                }
+                prevJumpAirborne = isAirborne;
+
+                // Beat-pulse sparks in Power / Finale (detect phase wrap)
+                if (clock.running && (section.name === 'Power' || section.name === 'Finale') &&
+                    prevBeatPhase > 0.85 && beatPhase < 0.15) {
+                    sparks.emit(baseX, footY, 4, '#c49a1a', 65);
+                }
+                prevBeatPhase = beatPhase;
+                sparks.update(dt);
+
+                // Draw dancer to offscreen canvas for compositing + reflection
+                offCtx.clearRect(0, 0, offCanvas.width, offCanvas.height);
+                ctx = offCtx;
                 drawDancer(section, beatPhase);
+                ctx = mainCtx;
+
+                // Compose full frame
+                drawBackground(section, beatPhase);
+                mainCtx.drawImage(offCanvas, 0, 0);   // dancer
+                drawFloorReflection();                  // polished floor mirror
+                drawGownShimmer(beatPhase);             // fabric light catch
+                sparks.draw(mainCtx);                  // footwork sparks
+
                 bpmValue.textContent = activeBpm + ' BPM';
                 sectionText.textContent = section.name;
                 beatText.textContent = String((beatIdx % 2) + 1);
