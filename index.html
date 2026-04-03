@@ -280,19 +280,21 @@
     .nav-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      position: relative;
     }
 
     @keyframes ukraine-glow {
-      0%, 100% {
+
+      0%,
+      100% {
         box-shadow:
           0 0 10px rgba(26, 58, 143, 0.55),
           0 0 3px rgba(26, 58, 143, 0.3),
           inset 0 0 8px rgba(26, 58, 143, 0.15);
       }
+
       50% {
         box-shadow:
           0 0 26px rgba(26, 58, 143, 0.9),
@@ -302,9 +304,7 @@
     }
 
     .nav-ukraine {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      justify-self: center;
       display: inline-flex;
       align-items: center;
       gap: 9px;
@@ -332,7 +332,7 @@
     .nav-ukraine:focus-visible {
       background: rgba(26, 58, 143, 0.65);
       border-color: var(--vyshyvanka-gold);
-      transform: translateX(-50%) translateY(-2px);
+      transform: translateY(-2px);
       outline: none;
     }
 
@@ -341,11 +341,9 @@
       width: 16px;
       height: 11px;
       border-radius: 1px;
-      background: linear-gradient(
-        to bottom,
-        #1A3A8F 55%,
-        #C49A1A 45%
-      );
+      background: linear-gradient(to bottom,
+          #1A3A8F 55%,
+          #C49A1A 45%);
       flex-shrink: 0;
     }
 
@@ -365,6 +363,7 @@
       display: flex;
       gap: 36px;
       align-items: center;
+      justify-self: end;
     }
 
     .nav-link {
@@ -1234,6 +1233,12 @@
     @media (max-width: 768px) {
       .site-nav {
         padding: 16px 20px;
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .nav-ukraine {
