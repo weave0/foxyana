@@ -1385,13 +1385,11 @@
     .cinema-veil {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(14, 10, 6, 0.22) 0%,
-        transparent 28%,
-        transparent 54%,
-        rgba(14, 10, 6, 0.78) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(14, 10, 6, 0.22) 0%,
+          transparent 28%,
+          transparent 54%,
+          rgba(14, 10, 6, 0.78) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -1687,10 +1685,10 @@
           muted
           playsinline
           preload="none"
-          poster="assets/images/foxyana_web_hero.webp"
+          poster="assets/images/foxyana_hero_feature.webp"
           aria-hidden="true">
-          <source src="assets/videos/foxyana_hero.webm" type="video/webm">
-          <source src="assets/videos/foxyana_hero.mp4" type="video/mp4">
+          <source src="assets/videos/foxyana_hero_v2.mp4" type="video/mp4">
+          <source src="assets/videos/foxyana_hero_v2.webm" type="video/webm">
         </video>
         <div class="hero-gradient"></div>
       </div>
@@ -2704,7 +2702,7 @@
         caCurrent = nextIdx;
         caClips[caCurrent].classList.add('is-visible');
         caVideos[caCurrent].currentTime = 0;
-        caVideos[caCurrent].play().catch(function () {});
+        caVideos[caCurrent].play().catch(function () { });
         caVideos[caCurrent]._crossing = false;
         setTimeout(function () {
           caClips[prev].classList.remove('is-visible');
@@ -2733,7 +2731,7 @@
               if (entry.isIntersecting && !caStarted) {
                 caStarted = true;
                 if (!caReducedMotion) {
-                  caVideos[0].play().catch(function () {});
+                  caVideos[0].play().catch(function () { });
                 }
                 caObserver.disconnect();
               }
