@@ -283,6 +283,70 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    @keyframes ukraine-glow {
+      0%, 100% {
+        box-shadow:
+          0 0 10px rgba(26, 58, 143, 0.55),
+          0 0 3px rgba(26, 58, 143, 0.3),
+          inset 0 0 8px rgba(26, 58, 143, 0.15);
+      }
+      50% {
+        box-shadow:
+          0 0 26px rgba(26, 58, 143, 0.9),
+          0 0 10px rgba(196, 154, 26, 0.4),
+          inset 0 0 14px rgba(26, 58, 143, 0.25);
+      }
+    }
+
+    .nav-ukraine {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--linen);
+      background: rgba(26, 58, 143, 0.32);
+      border: 1px solid rgba(26, 58, 143, 0.72);
+      padding: 9px 22px;
+      min-height: 38px;
+      white-space: nowrap;
+      z-index: 2;
+      animation: ukraine-glow 3s ease-in-out infinite;
+      transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .nav-ukraine:hover,
+    .nav-ukraine:focus-visible {
+      background: rgba(26, 58, 143, 0.65);
+      border-color: var(--vyshyvanka-gold);
+      transform: translateX(-50%) translateY(-2px);
+      outline: none;
+    }
+
+    .nav-ukraine-flag {
+      display: inline-block;
+      width: 16px;
+      height: 11px;
+      border-radius: 1px;
+      background: linear-gradient(
+        to bottom,
+        #1A3A8F 55%,
+        #C49A1A 45%
+      );
+      flex-shrink: 0;
     }
 
     .nav-logo {
@@ -1016,11 +1080,9 @@
       position: relative;
       padding: clamp(72px, 10vw, 128px) 0;
       text-align: center;
-      background: linear-gradient(
-        to bottom,
-        rgba(26, 58, 143, 0.12) 0%,
-        rgba(14, 10, 6, 0) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(26, 58, 143, 0.12) 0%,
+          rgba(14, 10, 6, 0) 100%);
       border-top: 1px solid rgba(26, 58, 143, 0.5);
     }
 
@@ -1031,11 +1093,9 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(
-        90deg,
-        rgba(26, 58, 143, 0.92) 50%,
-        rgba(196, 154, 26, 0.92) 50%
-      );
+      background: linear-gradient(90deg,
+          rgba(26, 58, 143, 0.92) 50%,
+          rgba(196, 154, 26, 0.92) 50%);
     }
 
     .ukraine-inner {
@@ -1176,8 +1236,16 @@
         padding: 16px 20px;
       }
 
-      .nav-toggle {
-        display: flex;
+      .nav-ukraine {
+        font-size: 0.55rem;
+        letter-spacing: 0.14em;
+        padding: 7px 14px;
+        gap: 7px;
+      }
+
+      .nav-ukraine-flag {
+        width: 13px;
+        height: 9px;
       }
 
       .nav-links {
@@ -1221,6 +1289,12 @@
 
       .stage-frame:last-child {
         grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-ukraine {
+        display: none;
       }
     }
 
@@ -1750,6 +1824,16 @@
   <header class="site-nav" id="site-nav" role="banner">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Foxyana — return to homepage">FOXYANA</a>
+
+      <a
+        href="https://u24.gov.ua"
+        class="nav-ukraine"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Support Ukraine via United24 — opens in a new tab">
+        <span class="nav-ukraine-flag" aria-hidden="true"></span>
+        Support Ukraine
+      </a>
 
       <button
         class="nav-toggle"
