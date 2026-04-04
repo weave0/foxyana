@@ -480,6 +480,314 @@
         }
 
         /* ---------------------------------------------------------------
+       STAGE — IMMERSIVE FULLSCREEN
+    --------------------------------------------------------------- */
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .stage-fullscreen {
+            position: relative;
+            flex: 1;
+            min-height: calc(100vh - 60px);
+            overflow: hidden;
+            background: #08050f;
+        }
+
+        .stage-backdrop {
+            position: absolute;
+            inset: 0;
+            background: url('assets/images/foxyana_web_stage.webp') center / cover no-repeat;
+            filter: blur(28px) brightness(0.12) saturate(0.5);
+            transform: scale(1.15);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .stage-fullscreen canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Cinematic intro — fades on start */
+        .stage-intro {
+            position: absolute;
+            inset: 0;
+            z-index: 6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(8,5,15,0.3), rgba(8,5,15,0.75));
+            transition: opacity 1.2s ease;
+            pointer-events: none;
+        }
+
+        .stage-intro.hidden { opacity: 0; }
+
+        .stage-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+            color: var(--linen);
+            margin: 0;
+        }
+
+        .stage-prompt {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.35);
+            margin-top: 20px;
+            animation: promptPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes promptPulse {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.7; }
+        }
+
+        /* HUD — top pills */
+        .hud-top {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 60px;
+            display: flex;
+            gap: 10px;
+            pointer-events: none;
+            z-index: 2;
+            transition: opacity 0.6s ease;
+        }
+
+        .hud-pill {
+            background: rgba(16, 10, 24, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--eng-ink);
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-size: 0.78rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* HUD — bottom transport */
+        .hud-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 16px 28px 20px;
+            background: linear-gradient(transparent 0%, rgba(8, 5, 15, 0.78) 40%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: opacity 0.6s ease;
+        }
+
+        .hud-hidden { opacity: 0; pointer-events: none; }
+
+        .hud-btn {
+            appearance: none;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 999px;
+            padding: 10px 22px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            min-height: 44px;
+            background: transparent;
+            color: var(--eng-ink);
+            transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .hud-btn:hover { transform: translateY(-1px); }
+        .hud-btn:focus-visible { outline: 2px solid var(--fox-auburn); outline-offset: 2px; }
+
+        .hud-btn--start {
+            background: linear-gradient(135deg, rgba(240, 195, 110, 0.20), rgba(240, 195, 110, 0.06));
+            color: var(--eng-gold);
+            border-color: rgba(240, 195, 110, 0.25);
+        }
+
+        .hud-btn--start:hover {
+            background: linear-gradient(135deg, rgba(240, 195, 110, 0.35), rgba(240, 195, 110, 0.12));
+            border-color: rgba(240, 195, 110, 0.42);
+        }
+
+        .hud-btn--secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(245, 237, 224, 0.55);
+        }
+
+        .hud-btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.09);
+            color: var(--eng-ink);
+        }
+
+        .hud-range {
+            width: 90px;
+            accent-color: var(--fox-auburn);
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .hud-range:hover, .hud-range:focus { opacity: 1; }
+
+        .hud-select {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(245, 237, 224, 0.55);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .hud-bpm-label {
+            font-size: 0.72rem;
+            color: rgba(245, 237, 224, 0.35);
+            letter-spacing: 0.06em;
+        }
+
+        .hud-status {
+            font-size: 0.78rem;
+            color: var(--eng-ok);
+            font-weight: 400;
+            min-width: 52px;
+            text-align: center;
+        }
+
+        .hud-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.03);
+            z-index: 3;
+        }
+
+        .hud-progress > div {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--eng-accent), var(--eng-ok));
+            transition: width 0.1s linear;
+        }
+
+        /* Help button */
+        .hud-help-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 4;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(16, 10, 24, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: rgba(245, 237, 224, 0.4);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, border-color 0.2s, opacity 0.6s ease;
+        }
+
+        .hud-help-btn:hover { color: var(--eng-ink); border-color: rgba(255, 255, 255, 0.18); }
+        .hud-help-btn:focus-visible { outline: 2px solid var(--fox-auburn); outline-offset: 2px; }
+
+        /* Keyboard overlay */
+        .kbd-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 7;
+            background: rgba(14, 10, 22, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px 36px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: none;
+            max-width: 420px;
+            width: 88%;
+        }
+
+        .kbd-overlay.visible { display: block; }
+
+        .kbd-overlay-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--eng-ink);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .kbd-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .kbd-key {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 0.76rem;
+            line-height: 1.35;
+            color: rgba(245, 237, 224, 0.45);
+        }
+
+        .kbd-key b {
+            display: inline-block;
+            min-width: 1.8em;
+            padding: 2px 5px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--eng-ink);
+            margin-bottom: 3px;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 600px) {
+            .hud-bottom {
+                gap: 8px;
+                padding: 12px 16px 16px;
+                flex-wrap: wrap;
+            }
+
+            .hud-range { width: 70px; }
+            .hud-bpm-label { display: none; }
+        }
+
+        /* ---------------------------------------------------------------
        FOOTER
     --------------------------------------------------------------- */
         .site-footer {
@@ -534,111 +842,53 @@
 
     <main id="main-content">
 
-        <div class="page-intro">
-            <span class="intro-label">Interactive prototype</span>
-            <h1 class="intro-headline">She moves on a beat you can feel.</h1>
-            <p class="intro-body">
-                A real-time performance prototype — <strong>beat-driven choreography</strong>,
-                procedural folk-orchestral music via Web Audio,
-                and Foxyana rendered live on the Lviv National Opera stage.
-                Hit <strong>Start</strong> to run the composed score,
-                or switch to <strong>Freestyle</strong> and drive her yourself from the keyboard.
-            </p>
+        <div class="stage-fullscreen" id="engine" role="region" aria-label="Foxyana Dance Engine">
+            <div class="stage-backdrop" aria-hidden="true"></div>
+
+            <canvas id="stageCanvas" width="1400" height="900" role="img" aria-label="Animated performance stage — Foxyana dancing at the Lviv National Opera House"></canvas>
+
+            <div class="stage-intro" id="stageIntro">
+                <h1 class="stage-title">She moves on a beat<br>you can feel.</h1>
+                <p class="stage-prompt">Press Start or any key</p>
+            </div>
+
+            <div class="hud-top" id="hudTop" aria-live="polite" aria-atomic="false">
+                <div class="hud-pill">Beat <span id="beatText">1</span> &middot; Bar <span id="barText">1</span></div>
+                <div class="hud-pill"><span id="sectionText">Intro</span></div>
+                <div class="hud-pill"><span id="actionText">Idle</span></div>
+            </div>
+
+            <button class="hud-help-btn" id="helpBtn" aria-label="Keyboard shortcuts" title="Keyboard shortcuts">?</button>
+
+            <div class="kbd-overlay" id="kbdOverlay" role="dialog" aria-label="Keyboard shortcuts">
+                <div class="kbd-overlay-title">Controls</div>
+                <div class="kbd-grid">
+                    <div class="kbd-key"><b>Q</b><br>Left heel</div>
+                    <div class="kbd-key"><b>W</b><br>Right heel</div>
+                    <div class="kbd-key"><b>A</b><br>Cross step</div>
+                    <div class="kbd-key"><b>S</b><br>Spin</div>
+                    <div class="kbd-key"><b>D</b><br>Jump</div>
+                    <div class="kbd-key"><b>F</b><br>Kick</div>
+                    <div class="kbd-key"><b>Space</b><br>Leap</div>
+                    <div class="kbd-key"><b>Shift</b><br>Expressive</div>
+                </div>
+            </div>
+
+            <div class="hud-bottom" id="hudBottom">
+                <button id="startBtn" class="hud-btn hud-btn--start">Start</button>
+                <select id="modeSelect" class="hud-select" aria-label="Mode">
+                    <option value="score">Score</option>
+                    <option value="freestyle">Freestyle</option>
+                </select>
+                <input id="bpmSlider" type="range" min="72" max="180" step="1" value="140" class="hud-range" aria-label="Tempo" />
+                <span id="bpmValue" class="hud-bpm-label">140 BPM</span>
+                <span id="statusText" class="hud-status">Ready</span>
+                <button id="pauseBtn" class="hud-btn hud-btn--secondary">Pause</button>
+                <button id="resetBtn" class="hud-btn hud-btn--secondary">Reset</button>
+            </div>
+
+            <div class="hud-progress"><div id="progressBar"></div></div>
         </div>
-
-        <div class="engine-wrap" id="engine">
-            <div class="engine-shell" role="region" aria-label="Foxyana Dance Engine interactive stage">
-
-                <div class="engine-inner">
-
-                    <!-- Sidebar / controls -->
-                    <aside class="eng-panel">
-                        <div class="eng-sidebar">
-
-                            <div>
-                                <h2 class="eng-h2">Dance Engine</h2>
-                                <p class="eng-sub" style="margin-top:6px">Beat sync · Procedural folk music · Keyboard choreography · Secondary motion</p>
-                            </div>
-
-                            <div class="eng-card">
-                                <div class="eng-row between">
-                                    <div>
-                                        <div class="eng-label">Playback</div>
-                                        <div class="eng-status" id="statusText">Ready</div>
-                                    </div>
-                                    <div style="text-align:right">
-                                        <div class="eng-label">Section</div>
-                                        <div id="sectionText" style="font-size:0.9rem">Intro</div>
-                                    </div>
-                                </div>
-                                <div class="eng-meter">
-                                    <div id="progressBar"></div>
-                                </div>
-                            </div>
-
-                            <div class="eng-card">
-                                <div class="eng-label">Tempo</div>
-                                <input id="bpmSlider" type="range" min="72" max="180" step="1" value="140" aria-label="Tempo in BPM" />
-                                <div class="eng-row between eng-tiny" style="margin-top:4px">
-                                    <span>72</span><span id="bpmValue">140 BPM</span><span>180</span>
-                                </div>
-                                <div class="eng-label" style="margin-top:12px">Mode</div>
-                                <select id="modeSelect" aria-label="Playback mode">
-                                    <option value="score">Score Timeline</option>
-                                    <option value="freestyle">Freestyle</option>
-                                </select>
-                            </div>
-
-                            <div class="eng-card">
-                                <div class="eng-row wrap" style="gap:8px">
-                                    <button id="startBtn" class="eng-btn eng-btn--primary">Start Music + Dance</button>
-                                    <button id="pauseBtn" class="eng-btn eng-btn--secondary">Pause</button>
-                                    <button id="resetBtn" class="eng-btn eng-btn--ghost">Reset</button>
-                                </div>
-                                <p class="eng-tiny" style="margin-top:10px">
-                                    Score mode follows the composed structure: intro → build → spins → power → emotion → finale.
-                                </p>
-                            </div>
-
-                            <div class="eng-card">
-                                <div class="eng-label">Live keyboard controls</div>
-                                <div class="eng-kbd-grid" aria-label="Keyboard shortcuts">
-                                    <div class="eng-kbd"><b>Q</b><br>Left heel</div>
-                                    <div class="eng-kbd"><b>W</b><br>Right heel</div>
-                                    <div class="eng-kbd"><b>A</b><br>Cross step</div>
-                                    <div class="eng-kbd"><b>S</b><br>Spin</div>
-                                    <div class="eng-kbd"><b>D</b><br>Jump</div>
-                                    <div class="eng-kbd"><b>F</b><br>Kick</div>
-                                    <div class="eng-kbd"><b>Space</b><br>Leap</div>
-                                    <div class="eng-kbd"><b>Shift</b><br>Expressive</div>
-                                </div>
-                            </div>
-
-                            <div class="eng-card eng-tiny">
-                                <div style="color:var(--eng-ink);margin-bottom:6px;font-weight:400">What this engine renders</div>
-                                <div>· Beat-driven choreography clock</div>
-                                <div>· Procedural folk-orchestral pulse (Web Audio)</div>
-                                <div>· Physics-inspired tail and dress lag</div>
-                                <div>· Stage motion, posture, spotting, landing arcs</div>
-                                <div>· Proscenium arch, chandelier, velvet curtains</div>
-                            </div>
-
-                        </div>
-                    </aside>
-
-                    <!-- Stage canvas -->
-                    <div class="eng-stage-wrap">
-                        <div class="eng-hud" aria-live="polite" aria-atomic="false">
-                            <div class="eng-pill">Beat <span id="beatText">1</span> &middot; Bar <span id="barText">1</span></div>
-                            <div class="eng-pill">Action: <span id="actionText">Idle</span></div>
-                        </div>
-                        <canvas id="stageCanvas" width="1400" height="900" role="img" aria-label="Animated performance stage — Foxyana dancing at the Lviv National Opera House"></canvas>
-                    </div>
-
-                </div><!-- .engine-inner -->
-
-            </div><!-- .engine-shell -->
-        </div><!-- .engine-wrap -->
 
     </main>
 
@@ -715,7 +965,30 @@
                     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
                     this.master = this.ctx.createGain();
                     this.master.gain.value = 0.18;
-                    this.master.connect(this.ctx.destination);
+
+                    // Concert hall reverb — synthetic Schroeder impulse
+                    var sr = this.ctx.sampleRate;
+                    var len = Math.floor(sr * 2.2);
+                    var impulse = this.ctx.createBuffer(2, len, sr);
+                    for (var ch = 0; ch < 2; ch++) {
+                        var data = impulse.getChannelData(ch);
+                        for (var i = 0; i < len; i++) {
+                            data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.4);
+                        }
+                    }
+                    this.reverb = this.ctx.createConvolver();
+                    this.reverb.buffer = impulse;
+
+                    // Dry / wet mix
+                    var dryGain = this.ctx.createGain();
+                    var wetGain = this.ctx.createGain();
+                    dryGain.gain.value = 0.62;
+                    wetGain.gain.value = 0.38;
+                    this.master.connect(dryGain);
+                    this.master.connect(this.reverb);
+                    this.reverb.connect(wetGain);
+                    dryGain.connect(this.ctx.destination);
+                    wetGain.connect(this.ctx.destination);
                 }
             };
             AudioEngine.prototype.start = function (timeline) {
@@ -1170,15 +1443,15 @@
 
                 // ── Geometry constants ─────────────────────────────────────────
                 // All Y values: negative = UP from floor (0)
-                var ao        = dancer.armsOpen;
-                var ab        = dancer.arabesqueBack;
-                var driftX    = dancer.dressLag * 24;
-                var hemWidth  = 62 + ao * 14 + dancer.spinFlare * 68; // half-width at hem
-                var hemY      = -5;    // gown hem: just above floor
-                var waistY    = -132;  // gown top / hip joint
-                var shouldY   = -202;  // shoulder / arm root
-                var neckY     = -218;  // neck midpoint
-                var headCY    = -244;  // head centre
+                var ao = dancer.armsOpen;
+                var ab = dancer.arabesqueBack;
+                var driftX = dancer.dressLag * 24;
+                var hemWidth = 62 + ao * 14 + dancer.spinFlare * 68; // half-width at hem
+                var hemY = -5;    // gown hem: just above floor
+                var waistY = -132;  // gown top / hip joint
+                var shouldY = -202;  // shoulder / arm root
+                var neckY = -218;  // neck midpoint
+                var headCY = -244;  // head centre
 
                 // ── FOX TAIL — bushy, swings with physics, drawn first (behind) ─
                 ctx.save();
@@ -1187,9 +1460,9 @@
                 // Natural lean 34 units right + physics swing
                 var lean = 34 + ts * 0.6;
                 var tbX = -8, tbY = waistY + 4;     // tail root at hip
-                var tc1x = lean * 0.35,  tc1y = tbY + 30;
+                var tc1x = lean * 0.35, tc1y = tbY + 30;
                 var tc2x = lean * 0.80 + tt * 0.3, tc2y = tbY + 68;
-                var tipX  = lean + tt,   tipY  = tbY + 38;
+                var tipX = lean + tt, tipY = tbY + 38;
                 ctx.lineCap = 'round'; ctx.lineJoin = 'round';
                 // Layer 1 — dark auburn base (wide, gives mass)
                 ctx.strokeStyle = '#6a1800'; ctx.lineWidth = 32; ctx.globalAlpha = 0.90;
@@ -1229,8 +1502,8 @@
                     // Arabesque: working leg (side=1) lifts back & up; support (side=-1) plumb
                     var kneeX_a, kneeY_a, footX_a, footY_a;
                     if (side === 1) {
-                        kneeX_a = 20;  kneeY_a = waistY - 16;  // rises above hip
-                        footX_a = 56;  footY_a = waistY - 50;  // foot extends high + back
+                        kneeX_a = 20; kneeY_a = waistY - 16;  // rises above hip
+                        footX_a = 56; footY_a = waistY - 50;  // foot extends high + back
                     } else {
                         kneeX_a = hipX; kneeY_a = hipY - 68;
                         footX_a = hipX - 2; footY_a = hipY - 140;
@@ -1316,9 +1589,9 @@
                 }
 
                 // ── ARMS — over bodice ─────────────────────────────────────────
-                var armSway    = Math.sin(dancer.actionTime * 2.2) * (0.08 + ao * 0.10);
-                var exLift     = dancer.expressive * 0.36;
-                var pb         = dancer.portDeBras;
+                var armSway = Math.sin(dancer.actionTime * 2.2) * (0.08 + ao * 0.10);
+                var exLift = dancer.expressive * 0.36;
+                var pb = dancer.portDeBras;
 
                 function drawArm(side) {
                     var sx = side * 18, sy = shouldY + 5;
@@ -1327,7 +1600,7 @@
                     var hx = ex + out * 30 + armSway * side * 10, hy = ey - 18 - exLift * 18;
                     if (pb > 0.01) {
                         ex = ex + (sx + side * 14 - ex) * pb; ey = ey + (sy - 68 - ey) * pb;
-                        hx = hx + (side * 8 - hx) * pb;       hy = hy + (sy - 134 - hy) * pb;
+                        hx = hx + (side * 8 - hx) * pb; hy = hy + (sy - 134 - hy) * pb;
                     }
                     pill(sx, sy, ex, ey, 7);
                     var aG = ctx.createLinearGradient(sx, sy, ex, ey);
@@ -1453,20 +1726,20 @@
                 var SC = 1.22; // must match drawDancer
                 var baseX = canvas.width * 0.5 + dancer.x;
                 // Gown geometry matches drawDancer: waistY=-132, hemY=-5, hemWidth coefficients
-                var hemHalf   = (62 + dancer.armsOpen * 14 + dancer.spinFlare * 68) * SC;
+                var hemHalf = (62 + dancer.armsOpen * 14 + dancer.spinFlare * 68) * SC;
                 var gownTopPx = stageY + dancer.jumpLift - 132 * SC;  // waistY in canvas-space
                 var gownBotPx = stageY + dancer.jumpLift - 5 * SC;    // hemY in canvas-space
-                var gownH     = Math.max(0, gownBotPx - gownTopPx);
-                var sweepX    = baseX + Math.sin(shimmerPhase * Math.PI * 2) * hemHalf * 0.55;
-                var sweepY    = gownTopPx + gownH * 0.5;
-                var pulse     = 0.5 + 0.5 * Math.sin(beatPhase * Math.PI * 2);
-                var shimA     = 0.07 + 0.04 * pulse;
+                var gownH = Math.max(0, gownBotPx - gownTopPx);
+                var sweepX = baseX + Math.sin(shimmerPhase * Math.PI * 2) * hemHalf * 0.55;
+                var sweepY = gownTopPx + gownH * 0.5;
+                var pulse = 0.5 + 0.5 * Math.sin(beatPhase * Math.PI * 2);
+                var shimA = 0.07 + 0.04 * pulse;
                 mainCtx.save();
                 mainCtx.globalCompositeOperation = 'screen';
                 var sg = mainCtx.createRadialGradient(sweepX, sweepY, 0, sweepX, sweepY, 72);
-                sg.addColorStop(0,    'rgba(196,154,26,' + shimA.toFixed(3) + ')');
-                sg.addColorStop(0.45, 'rgba(26,58,143,'  + (shimA * 0.4).toFixed(3) + ')');
-                sg.addColorStop(1,    'rgba(0,0,0,0)');
+                sg.addColorStop(0, 'rgba(196,154,26,' + shimA.toFixed(3) + ')');
+                sg.addColorStop(0.45, 'rgba(26,58,143,' + (shimA * 0.4).toFixed(3) + ')');
+                sg.addColorStop(1, 'rgba(0,0,0,0)');
                 mainCtx.fillStyle = sg;
                 mainCtx.fillRect(baseX - hemHalf - 20, gownTopPx, hemHalf * 2 + 40, gownH + 20);
                 mainCtx.restore();
@@ -1652,6 +1925,65 @@
             window.addEventListener('keyup', function (e) {
                 if (e.key === 'Shift') input.expressiveHeld = false;
             });
+
+            // ---------------------------------------------------------------
+            // HUD auto-hide — fade controls after 4s of inactivity
+            // ---------------------------------------------------------------
+            var hudBottom = document.getElementById('hudBottom');
+            var hudTop = document.getElementById('hudTop');
+            var helpBtn = document.getElementById('helpBtn');
+            var kbdOverlay = document.getElementById('kbdOverlay');
+            var stageIntro = document.getElementById('stageIntro');
+            var hudTimer = null;
+            var introHidden = false;
+
+            function showHud() {
+                hudBottom.classList.remove('hud-hidden');
+                hudTop.classList.remove('hud-hidden');
+                helpBtn.style.opacity = '';
+                clearTimeout(hudTimer);
+                hudTimer = setTimeout(hideHud, 4000);
+            }
+
+            function hideHud() {
+                if (!clock.running) return;
+                hudBottom.classList.add('hud-hidden');
+                hudTop.classList.add('hud-hidden');
+                helpBtn.style.opacity = '0';
+            }
+
+            function fadeIntro() {
+                if (!introHidden && stageIntro) {
+                    stageIntro.classList.add('hidden');
+                    introHidden = true;
+                }
+            }
+
+            document.addEventListener('mousemove', showHud);
+            document.addEventListener('touchstart', showHud);
+
+            // Help toggle
+            helpBtn.addEventListener('click', function () {
+                kbdOverlay.classList.toggle('visible');
+            });
+
+            // Close help on Escape
+            window.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') kbdOverlay.classList.remove('visible');
+            });
+
+            // Fade intro on any key or when music starts
+            var origStart = document.getElementById('startBtn').onclick;
+            document.getElementById('startBtn').addEventListener('click', function () {
+                fadeIntro();
+                showHud();
+            });
+
+            // Also fade intro on first keypress action
+            window.addEventListener('keydown', function (e) {
+                if (!introHidden && 'qwasdf'.indexOf(e.key.toLowerCase()) >= 0) fadeIntro();
+                if (e.code === 'Space' && !introHidden) fadeIntro();
+            }, { once: false });
 
             requestAnimationFrame(animate);
 
