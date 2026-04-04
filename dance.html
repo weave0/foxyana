@@ -1128,15 +1128,20 @@
 
             // -------------------------------------------------------------------
             // Draw dancer
+            // Coordinate space: origin = dancer's feet on stage floor.
+            // Y is negative going UP (ballet convention — 0 is floor).
+            // SC applied at translate level; all local coords are in SC units.
+            // Draw order: shadow → legs → gown → tail-train → torso → arms → neck → head
             // -------------------------------------------------------------------
             function drawDancer(section, beatPhase) {
                 var w = canvas.width, h = canvas.height;
                 var stageY = h * 0.76;
-                var SC = 1.32;
+                var SC = 1.22; // slightly reduced to stop cropping at canvas top
                 var baseX = w * 0.5 + dancer.x;
                 var beat2 = Math.sin(beatPhase * Math.PI * 2);
-                var bodyBounce = (section.name === 'Build' || section.name === 'Power') ? beat2 * 5 : 0;
+                var bodyBounce = (section.name === 'Build' || section.name === 'Power') ? beat2 * 4 : 0;
 
+                // Convenience — draw a limb-pill shape
                 function pill(ax, ay, bx, by, r) {
                     var dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy) || 1;
                     var nx = -dy / len * r, ny = dx / len * r;
@@ -1148,254 +1153,311 @@
                     ctx.closePath();
                 }
 
-                // Shadow
-                ctx.save(); ctx.translate(baseX, stageY); ctx.scale(1, 0.22);
-                ctx.globalAlpha = Math.max(0.05, 0.20 + dancer.jumpLift * 0.0004);
-                ctx.fillStyle = 'rgba(0,0,0,0.6)';
-                ctx.beginPath(); ctx.ellipse(0, 0, 44, 44, 0, 0, Math.PI * 2); ctx.fill();
+                // ── Ground shadow ──────────────────────────────────────────────
+                ctx.save();
+                ctx.translate(baseX, stageY);
+                ctx.scale(1, 0.18);
+                ctx.globalAlpha = Math.max(0.04, 0.18 - dancer.jumpLift * 0.0006);
+                ctx.fillStyle = 'rgba(0,0,0,0.7)';
+                ctx.beginPath(); ctx.ellipse(0, 0, 52 + dancer.spinFlare * 20, 52, 0, 0, Math.PI * 2); ctx.fill();
                 ctx.restore();
 
+                // ── Main character transform ───────────────────────────────────
+                // Origin is dancer feet; everything is drawn with Y negative = up
                 ctx.save();
-                ctx.translate(baseX, stageY - 16 + dancer.jumpLift + bodyBounce);
-                ctx.rotate(dancer.rotation * 0.15);
+                ctx.translate(baseX, stageY + dancer.jumpLift + bodyBounce);
+                ctx.rotate(dancer.rotation * 0.12);
                 ctx.scale(SC, SC);
 
-                // === MIDNIGHT GOWN (skirt) ===
-                var hemWidth = 64 + dancer.armsOpen * 18 + dancer.spinFlare * 68;
-                var gownLength = 270 + dancer.armsOpen * 12 + dancer.spinFlare * 30;
-                var driftX = dancer.dressLag * 28;
-                var hemY = 300;
-
-                // Gown base coat — deep midnight navy
-                var gownGrad = ctx.createLinearGradient(0, 0, 0, hemY);
-                gownGrad.addColorStop(0, '#0e1830');
-                gownGrad.addColorStop(0.35, '#0a1228');
-                gownGrad.addColorStop(1, '#060c1a');
-                ctx.fillStyle = gownGrad;
-                ctx.beginPath();
-                ctx.moveTo(-18, 40);
-                ctx.bezierCurveTo(-24 + driftX * 0.3, 110, -hemWidth * 0.7 + driftX, hemY - 30, -hemWidth + driftX * 1.1, hemY);
-                ctx.lineTo(hemWidth + driftX * 0.9, hemY);
-                ctx.bezierCurveTo(hemWidth * 0.7 + driftX * 0.8, hemY - 30, 24 + driftX * 0.4, 110, 18, 40);
-                ctx.closePath(); ctx.fill();
-
-                // Gown depth shadow on wearer's right
-                var gownShadow = ctx.createLinearGradient(-hemWidth, 0, 0, 0);
-                gownShadow.addColorStop(0, 'rgba(14,24,48,0)');
-                gownShadow.addColorStop(0.55, 'rgba(6,10,22,0.42)');
-                gownShadow.addColorStop(1, 'rgba(6,10,22,0)');
-                ctx.fillStyle = gownShadow;
-                ctx.beginPath();
-                ctx.moveTo(-18, 40);
-                ctx.bezierCurveTo(-24 + driftX * 0.3, 110, -hemWidth * 0.7 + driftX, hemY - 30, -hemWidth + driftX * 1.1, hemY);
-                ctx.lineTo(hemWidth + driftX * 0.9, hemY);
-                ctx.bezierCurveTo(hemWidth * 0.7 + driftX * 0.8, hemY - 30, 24 + driftX * 0.4, 110, 18, 40);
-                ctx.closePath(); ctx.fill();
-
-                // Antique-gold embroidery band — waist
-                ctx.strokeStyle = 'rgba(196,154,26,0.55)'; ctx.lineWidth = 2.8;
-                ctx.beginPath(); ctx.moveTo(-17, 65); ctx.bezierCurveTo(-8, 72, 8, 72, 17, 65); ctx.stroke();
-                // Cobalt-blue woven accent line
-                ctx.strokeStyle = 'rgba(26,58,143,0.42)'; ctx.lineWidth = 1.5;
-                ctx.beginPath(); ctx.moveTo(-15, 70); ctx.bezierCurveTo(-7, 76, 7, 76, 15, 70); ctx.stroke();
-
-                // Hem highlight — fabric edge catch
-                ctx.strokeStyle = 'rgba(26,58,143,0.25)'; ctx.lineWidth = 1.4;
-                ctx.beginPath();
-                ctx.moveTo(-hemWidth + driftX * 1.1 + 6, hemY);
-                ctx.bezierCurveTo(-hemWidth * 0.4 + driftX, hemY + 4, hemWidth * 0.4 + driftX, hemY + 4, hemWidth + driftX * 0.9 - 6, hemY);
-                ctx.stroke();
-
-                // === GLIDING TAIL on dominant foot (trailing silk) ===
-                ctx.save();
-                var tailSwing = dancer.tailA * 48;
-                ctx.strokeStyle = 'rgba(14,24,48,0.7)'; ctx.lineWidth = 18;
-                ctx.lineCap = 'round';
-                ctx.beginPath();
-                ctx.moveTo(8 + tailSwing * 0.2, hemY - 20);
-                ctx.bezierCurveTo(18 + tailSwing * 0.6, hemY + 30, 28 + tailSwing, hemY + 90, 12 + dancer.tailB * 52, hemY + 160);
-                ctx.stroke();
-                ctx.strokeStyle = 'rgba(26,58,143,0.18)'; ctx.lineWidth = 8;
-                ctx.beginPath();
-                ctx.moveTo(8 + tailSwing * 0.2, hemY - 20);
-                ctx.bezierCurveTo(18 + tailSwing * 0.6, hemY + 30, 28 + tailSwing, hemY + 90, 12 + dancer.tailB * 52, hemY + 160);
-                ctx.stroke();
-                ctx.restore();
-
-                // === BODY (torso) ===
-                pill(0, -30, 0, 40, 18);
-                var torsoGrad = ctx.createLinearGradient(-18, -30, 18, 40);
-                torsoGrad.addColorStop(0, '#c44a00'); torsoGrad.addColorStop(0.45, '#9b3800'); torsoGrad.addColorStop(1, '#7a2c00');
-                ctx.fillStyle = torsoGrad; ctx.fill();
-
-                // Chest-plaque (ivory embroidered front)
-                ctx.fillStyle = '#f5ede0';
-                ctx.beginPath();
-                ctx.moveTo(-13, 8); ctx.bezierCurveTo(-15, 12, -14, 28, -7, 32);
-                ctx.bezierCurveTo(-3, 36, 3, 36, 7, 32); ctx.bezierCurveTo(14, 28, 15, 12, 13, 8);
-                ctx.bezierCurveTo(8, 4, -8, 4, -13, 8); ctx.fill();
-                ctx.strokeStyle = 'rgba(160,100,70,0.22)'; ctx.lineWidth = 0.9;
-                ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(0, 20); ctx.stroke();
-                // Gold vyshyvanka stitch hints on collar
-                ctx.strokeStyle = 'rgba(196,154,26,0.5)'; ctx.lineWidth = 1.1;
-                for (var si = -10; si <= 10; si += 5) {
-                    ctx.beginPath(); ctx.moveTo(si, 8); ctx.lineTo(si, 16); ctx.stroke();
-                }
-
-                // === ARMS ===
+                // ─────────────────────────────────────────────────────────────
+                // GOWN GEOMETRY (compute once, used for legs clip + tail + hem)
+                // ─────────────────────────────────────────────────────────────
                 var ao = dancer.armsOpen;
-                var armSway = Math.sin(dancer.actionTime * 2.2) * (0.1 + ao * 0.15);
-                var expressiveLift = dancer.expressive * 0.35;
-                function drawArm(side) {
-                    var shoulderX = side * 18, shoulderY = -18;
-                    var outReach = (0.55 + ao * 0.45) * side;
-                    var pb = dancer.portDeBras;
-                    // Normal positions
-                    var elbowX = shoulderX + outReach * 42;
-                    var elbowY = shoulderY + 28 + armSway * side * 18 - expressiveLift * 22;
-                    var handX = elbowX + outReach * 30 + armSway * side * 12;
-                    var handY = elbowY + 20 - expressiveLift * 18;
-                    // Port de bras en haut — lerp arms to overhead 5th position
-                    if (pb > 0.01) {
-                        elbowX = elbowX + (shoulderX + side * 14 - elbowX) * pb;
-                        elbowY = elbowY + (shoulderY - 52 - elbowY) * pb;
-                        handX = handX + (side * 9 - handX) * pb;
-                        handY = handY + (shoulderY - 108 - handY) * pb;
-                    }
-                    pill(shoulderX, shoulderY, elbowX, elbowY, 8);
-                    var armGrad = ctx.createLinearGradient(shoulderX, shoulderY, elbowX, elbowY);
-                    armGrad.addColorStop(0, '#c44a00'); armGrad.addColorStop(1, '#9b3800');
-                    ctx.fillStyle = armGrad; ctx.fill();
-                    pill(elbowX, elbowY, handX, handY, 7);
-                    ctx.fillStyle = '#b34200'; ctx.fill();
-                    // Paw tips (near-black)
-                    ctx.fillStyle = '#1a1005';
-                    ctx.beginPath(); ctx.ellipse(handX, handY + 5, 7, 5, 0, 0, Math.PI * 2); ctx.fill();
-                    ctx.fillStyle = '#2a1808';
-                    for (var fp = 0; fp < 4; fp++) {
-                        ctx.beginPath(); ctx.ellipse(handX + (fp - 1.5) * 4.2, handY + 8, 2.6, 3.8, 0.18, 0, Math.PI * 2); ctx.fill();
-                    }
-                }
-                drawArm(-1); drawArm(1);
+                var ab = dancer.arabesqueBack;
+                var driftX = dancer.dressLag * 22;
+                var hemWidth = 52 + ao * 16 + dancer.spinFlare * 56;
+                var waistY = -90;   // top of skirt (hip)
+                var hemY = -4;    // skirt hem — just above floor line (0)
 
-                // === LEGS ===
-                var legSway = Math.sin(dancer.actionTime * 3.4) * 0.18;
+                // ─────────────────────────────────────────────────────────────
+                // LEGS — drawn BEFORE gown so gown covers them naturally
+                // ─────────────────────────────────────────────────────────────
+                var legSway = Math.sin(dancer.actionTime * 3.4) * 0.14;
                 var kickAmt = dancer.kick;
+
                 function drawLeg(side) {
-                    var hipX = side * 12, hipY = 40;
-                    var ab = dancer.arabesqueBack;
+                    // Hip joint at waist level, centred
+                    var hipX = side * 8, hipY = waistY;
                     var kickDir = side === 1 ? kickAmt : 0;
-                    // Normal leg positions
-                    var kneeX_n = hipX + side * (14 + kickDir * 20), kneeY_n = hipY + 70 - kickDir * 22;
-                    var footX_n = kneeX_n + side * (8 + kickDir * 28) + legSway * side * 16, footY_n = kneeY_n + 68 + kickDir * 10;
-                    // Arabesque positions — side===1 is working leg (back+high), side===-1 is supporting (straight)
-                    var kneeX_a = side === 1 ? -46 : hipX;
-                    var kneeY_a = side === 1 ? 22 : hipY + 72;
-                    var footX_a = side === 1 ? -82 : hipX - 2;
-                    var footY_a = side === 1 ? -72 : hipY + 140;
-                    // Lerp between normal and arabesque
+
+                    // Normal resting positions (relative to hip, downward)
+                    var kneeX_n = hipX + side * (10 + kickDir * 16);
+                    var kneeY_n = hipY - 52 + kickDir * 18;   // knee up when kicking
+                    var footX_n = kneeX_n + side * (6 + kickDir * 22) + legSway * side * 14;
+                    var footY_n = kneeY_n - 56 + kickDir * 8;  // extended down
+
+                    // Arabesque positions
+                    var kneeX_a, kneeY_a, footX_a, footY_a;
+                    if (side === 1) {
+                        // Working leg — extends backward and high
+                        kneeX_a = -32; kneeY_a = waistY + 18;
+                        footX_a = -72; footY_a = waistY + 82;
+                    } else {
+                        // Supporting leg — plumb straight
+                        kneeX_a = hipX; kneeY_a = hipY - 54;
+                        footX_a = hipX - 2; footY_a = hipY - 112;
+                    }
+
                     var kneeX = kneeX_n + (kneeX_a - kneeX_n) * ab;
                     var kneeY = kneeY_n + (kneeY_a - kneeY_n) * ab;
                     var footX = footX_n + (footX_a - footX_n) * ab;
                     var footY = footY_n + (footY_a - footY_n) * ab;
-                    pill(hipX, hipY, kneeX, kneeY, 13);
-                    var legGrad = ctx.createLinearGradient(hipX, hipY, kneeX, kneeY);
-                    legGrad.addColorStop(0, '#0e1830'); legGrad.addColorStop(1, '#070f22');
-                    ctx.fillStyle = legGrad; ctx.fill();
-                    pill(kneeX, kneeY, footX, footY, 11);
-                    ctx.fillStyle = '#0a1428'; ctx.fill();
-                    // Foot & ankle — working leg tilts en arabesque
-                    var footTilt = (side === 1) ? 0.1 - ab * 0.55 : 0.1;
-                    ctx.fillStyle = '#060d1c';
-                    ctx.beginPath(); ctx.ellipse(footX, footY + 10 * (1 - ab * (side === 1 ? 0.7 : 0)), 14, 8, footTilt, 0, Math.PI * 2); ctx.fill();
-                    ctx.fillStyle = '#1a1005';
-                    var tipX = side === 1 ? footX - 11 * ab + side * 10 * (1 - ab) : footX + side * 10;
-                    var tipY = side === 1 ? footY + 14 - ab * 20 : footY + 14;
-                    ctx.beginPath(); ctx.ellipse(tipX, tipY, 9, 5, footTilt + 0.2, 0, Math.PI * 2); ctx.fill();
+
+                    // Thigh
+                    pill(hipX, hipY, kneeX, kneeY, 10);
+                    var lgA = ctx.createLinearGradient(hipX, hipY, kneeX, kneeY);
+                    lgA.addColorStop(0, '#0d1628'); lgA.addColorStop(1, '#060e1e');
+                    ctx.fillStyle = lgA; ctx.fill();
+                    // Shin
+                    pill(kneeX, kneeY, footX, footY, 8);
+                    ctx.fillStyle = '#090d1e'; ctx.fill();
+                    // Slipper / pointe
+                    ctx.fillStyle = '#060a16';
+                    var footTilt = (side === 1 && ab > 0.1) ? -0.4 - ab * 0.3 : 0.08;
+                    ctx.beginPath(); ctx.ellipse(footX, footY, 11, 6, footTilt, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = '#0e0906';
+                    ctx.beginPath(); ctx.ellipse(footX + side * 8 * (1 - ab * (side === 1 ? 0.8 : 0)), footY + 3, 7, 4, footTilt + 0.18, 0, Math.PI * 2); ctx.fill();
                 }
                 drawLeg(-1); drawLeg(1);
 
-                // === EARS ===
+                // ─────────────────────────────────────────────────────────────
+                // GOWN — drawn over legs
+                // ─────────────────────────────────────────────────────────────
+                var gownGrad = ctx.createLinearGradient(0, waistY, 0, hemY);
+                gownGrad.addColorStop(0, '#10192e');
+                gownGrad.addColorStop(0.4, '#0c1428');
+                gownGrad.addColorStop(1, '#080e1c');
+                ctx.fillStyle = gownGrad;
+                ctx.beginPath();
+                ctx.moveTo(-16, waistY);
+                ctx.bezierCurveTo(
+                    -22 + driftX * 0.25, waistY - 40,
+                    -hemWidth * 0.65 + driftX, hemY + 28,
+                    -hemWidth + driftX, hemY
+                );
+                ctx.lineTo(hemWidth + driftX * 0.8, hemY);
+                ctx.bezierCurveTo(
+                    hemWidth * 0.65 + driftX * 0.7, hemY + 28,
+                    22 + driftX * 0.3, waistY - 40,
+                    16, waistY
+                );
+                ctx.closePath(); ctx.fill();
+
+                // Gown volume shadow (darkens right side for depth)
+                var gownShadow = ctx.createLinearGradient(-hemWidth + driftX, 0, hemWidth * 0.3 + driftX, 0);
+                gownShadow.addColorStop(0, 'rgba(4,6,18,0.5)');
+                gownShadow.addColorStop(0.6, 'rgba(4,6,18,0)');
+                ctx.fillStyle = gownShadow;
+                ctx.beginPath();
+                ctx.moveTo(-16, waistY);
+                ctx.bezierCurveTo(-22 + driftX * 0.25, waistY - 40, -hemWidth * 0.65 + driftX, hemY + 28, -hemWidth + driftX, hemY);
+                ctx.lineTo(hemWidth + driftX * 0.8, hemY);
+                ctx.bezierCurveTo(hemWidth * 0.65 + driftX * 0.7, hemY + 28, 22 + driftX * 0.3, waistY - 40, 16, waistY);
+                ctx.closePath(); ctx.fill();
+
+                // Embroidery waist band
+                ctx.strokeStyle = 'rgba(196,154,26,0.60)'; ctx.lineWidth = 2.5;
+                ctx.beginPath(); ctx.moveTo(-15, waistY + 8); ctx.bezierCurveTo(-6, waistY + 14, 6, waistY + 14, 15, waistY + 8); ctx.stroke();
+                ctx.strokeStyle = 'rgba(26,58,143,0.40)'; ctx.lineWidth = 1.4;
+                ctx.beginPath(); ctx.moveTo(-13, waistY + 14); ctx.bezierCurveTo(-5, waistY + 19, 5, waistY + 19, 13, waistY + 14); ctx.stroke();
+
+                // Hem highlight — cobalt sheen
+                ctx.strokeStyle = 'rgba(40,72,180,0.22)'; ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(-hemWidth + driftX + 5, hemY);
+                ctx.bezierCurveTo(-hemWidth * 0.3 + driftX, hemY + 5, hemWidth * 0.3 + driftX, hemY + 5, hemWidth + driftX * 0.8 - 5, hemY);
+                ctx.stroke();
+
+                // ─────────────────────────────────────────────────────────────
+                // TAIL-TRAIN — trailing silk at hem, swept by physics
+                // Stays at hem level; exits behind the dancer laterally
+                // ─────────────────────────────────────────────────────────────
+                ctx.save();
+                var tailSwing = dancer.tailA * 36;
+                var tailTip = dancer.tailB * 28;
+                ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+                // Main dark train body
+                ctx.strokeStyle = 'rgba(10,18,40,0.72)'; ctx.lineWidth = 14;
+                ctx.beginPath();
+                ctx.moveTo(driftX * 0.4, hemY - 5);
+                ctx.bezierCurveTo(
+                    driftX + tailSwing * 0.5, hemY + 12,
+                    driftX + tailSwing * 0.9 + 18, hemY + 22,
+                    driftX + tailSwing + tailTip + 28, hemY + 14
+                );
+                ctx.stroke();
+                // Cobalt sheen overlay
+                ctx.strokeStyle = 'rgba(26,58,143,0.20)'; ctx.lineWidth = 6;
+                ctx.beginPath();
+                ctx.moveTo(driftX * 0.4, hemY - 5);
+                ctx.bezierCurveTo(
+                    driftX + tailSwing * 0.5, hemY + 12,
+                    driftX + tailSwing * 0.9 + 18, hemY + 22,
+                    driftX + tailSwing + tailTip + 28, hemY + 14
+                );
+                ctx.stroke();
+                ctx.restore();
+
+                // ─────────────────────────────────────────────────────────────
+                // TORSO — corset bodice
+                // ─────────────────────────────────────────────────────────────
+                var torsoTop = waistY + 4;   // just above waist band
+                var torsoBot = waistY + 56;  // meets waist
+                pill(0, torsoBot, 0, torsoTop, 16);
+                var torsoGrad = ctx.createLinearGradient(-16, torsoTop, 16, torsoBot);
+                torsoGrad.addColorStop(0, '#cc5210');
+                torsoGrad.addColorStop(0.5, '#a33a00');
+                torsoGrad.addColorStop(1, '#7e2c00');
+                ctx.fillStyle = torsoGrad; ctx.fill();
+
+                // Ivory embroidered chest panel
+                var py = torsoTop + 6;
+                ctx.fillStyle = '#f5ede0';
+                ctx.beginPath();
+                ctx.moveTo(-10, py);
+                ctx.bezierCurveTo(-12, py + 4, -11, py + 18, -6, py + 22);
+                ctx.bezierCurveTo(-2, py + 26, 2, py + 26, 6, py + 22);
+                ctx.bezierCurveTo(11, py + 18, 12, py + 4, 10, py);
+                ctx.bezierCurveTo(6, py - 3, -6, py - 3, -10, py);
+                ctx.fill();
+                // Vyshyvanka stitch lines
+                ctx.strokeStyle = 'rgba(196,154,26,0.55)'; ctx.lineWidth = 1.0;
+                for (var si = -7; si <= 7; si += 3.5) {
+                    ctx.beginPath(); ctx.moveTo(si, py + 2); ctx.lineTo(si, py + 12); ctx.stroke();
+                }
+
+                // ─────────────────────────────────────────────────────────────
+                // ARMS — drawn over torso
+                // ─────────────────────────────────────────────────────────────
+                var armSway = Math.sin(dancer.actionTime * 2.2) * (0.08 + ao * 0.12);
+                var expressiveLift = dancer.expressive * 0.3;
+                var pb = dancer.portDeBras;
+
+                function drawArm(side) {
+                    var shoulderX = side * 16, shoulderY = torsoTop + 6;
+                    var outReach = (0.5 + ao * 0.5) * side;
+                    // Normal positions
+                    var elbowX = shoulderX + outReach * 36;
+                    var elbowY = shoulderY - 22 + armSway * side * 14 - expressiveLift * 18;
+                    var handX = elbowX + outReach * 26 + armSway * side * 10;
+                    var handY = elbowY - 16 - expressiveLift * 14;
+                    // Port de bras en haut — 5th position overhead
+                    if (pb > 0.01) {
+                        elbowX = elbowX + (shoulderX + side * 12 - elbowX) * pb;
+                        elbowY = elbowY + (shoulderY - 60 - elbowY) * pb;
+                        handX = handX + (side * 7 - handX) * pb;
+                        handY = handY + (shoulderY - 120 - handY) * pb;
+                    }
+                    // Upper arm
+                    pill(shoulderX, shoulderY, elbowX, elbowY, 7);
+                    var armGrad = ctx.createLinearGradient(shoulderX, shoulderY, elbowX, elbowY);
+                    armGrad.addColorStop(0, '#cc5210'); armGrad.addColorStop(1, '#a03600');
+                    ctx.fillStyle = armGrad; ctx.fill();
+                    // Forearm
+                    pill(elbowX, elbowY, handX, handY, 6);
+                    ctx.fillStyle = '#b03e00'; ctx.fill();
+                    // Paw — dark fur tip
+                    ctx.fillStyle = '#18100a';
+                    ctx.beginPath(); ctx.ellipse(handX, handY - 3, 6, 4.5, 0, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = '#22160c';
+                    for (var fp = 0; fp < 4; fp++) {
+                        ctx.beginPath(); ctx.ellipse(handX + (fp - 1.5) * 3.8, handY - 7, 2.2, 3.2, 0.15, 0, Math.PI * 2); ctx.fill();
+                    }
+                }
+                drawArm(-1); drawArm(1);
+
+                // ─────────────────────────────────────────────────────────────
+                // NECK
+                // ─────────────────────────────────────────────────────────────
+                ctx.fillStyle = '#b84800';
+                ctx.beginPath(); ctx.ellipse(0, torsoTop - 4, 6, 10, 0, 0, Math.PI * 2); ctx.fill();
+
+                // ─────────────────────────────────────────────────────────────
+                // HEAD — centred above neck
+                // ─────────────────────────────────────────────────────────────
+                var headCY = torsoTop - 30; // head centre Y
+
+                ctx.save(); ctx.translate(0, headCY);
+
+                // Ears (behind head)
                 function drawEar(side) {
-                    var ex = side * 20, ey = -95;
-                    pill(ex, ey, ex + side * 10, ey - 30, 7);
+                    var ex = side * 17, ey = -20;
+                    pill(ex, ey, ex + side * 9, ey - 26, 6.5);
                     ctx.fillStyle = '#c44a00'; ctx.fill();
-                    ctx.fillStyle = '#d4856e';
-                    ctx.beginPath(); ctx.ellipse(ex + side * 5, ey - 15, 4, 8, side * 0.3, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = '#d48060';
+                    ctx.beginPath(); ctx.ellipse(ex + side * 4, ey - 12, 3.5, 7, side * 0.28, 0, Math.PI * 2); ctx.fill();
                 }
                 drawEar(-1); drawEar(1);
 
-                // === HEAD ===
-                ctx.save(); ctx.translate(0, -66);
-                // Neck
-                ctx.fillStyle = '#b04200';
-                ctx.fillRect(-6, 18, 12, 22);
-                // Head base — auburn
-                var headGrad = ctx.createRadialGradient(-8, -14, 4, 0, 0, 36);
-                headGrad.addColorStop(0, '#d4621a'); headGrad.addColorStop(0.5, '#c44a00'); headGrad.addColorStop(1, '#8a3200');
+                // Head base
+                var headGrad = ctx.createRadialGradient(-7, -10, 3, 0, 0, 28);
+                headGrad.addColorStop(0, '#d46020');
+                headGrad.addColorStop(0.5, '#c44a00');
+                headGrad.addColorStop(1, '#883000');
                 ctx.fillStyle = headGrad;
-                ctx.beginPath(); ctx.ellipse(0, 0, 30, 36, 0, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.ellipse(0, 0, 26, 30, 0, 0, Math.PI * 2); ctx.fill();
 
-                // Muzzle (lighter)
+                // Muzzle — lighter patch
                 ctx.fillStyle = '#d46830';
-                ctx.beginPath(); ctx.ellipse(0, 10, 18, 20, 0, 0, Math.PI * 2); ctx.fill();
-
-                // Chest plaque upper
-                ctx.fillStyle = '#f5ede0';
-                ctx.beginPath();
-                ctx.moveTo(-13, 8); ctx.bezierCurveTo(-15, 12, -14, 28, -7, 32);
-                ctx.bezierCurveTo(-3, 36, 3, 36, 7, 32); ctx.bezierCurveTo(14, 28, 15, 12, 13, 8);
-                ctx.bezierCurveTo(8, 4, -8, 4, -13, 8); ctx.fill();
-                ctx.strokeStyle = 'rgba(160,100,70,0.22)'; ctx.lineWidth = 0.9;
-                ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(0, 20); ctx.stroke();
+                ctx.beginPath(); ctx.ellipse(0, 10, 16, 17, 0, 0, Math.PI * 2); ctx.fill();
 
                 // Hair
                 ctx.fillStyle = '#1a0c2e';
-                ctx.beginPath(); ctx.moveTo(-30, 4);
-                ctx.bezierCurveTo(-36, -20, -20, -50, 0, -52);
-                ctx.bezierCurveTo(20, -50, 36, -20, 30, 4);
-                ctx.bezierCurveTo(16, -7, -16, -7, -30, 4); ctx.fill();
-                ctx.fillStyle = '#210e40';
-                ctx.beginPath(); ctx.ellipse(15, -3, 11, 8, 0.45, 0, Math.PI * 2); ctx.fill();
-                ctx.strokeStyle = '#1a3a8f'; ctx.lineWidth = 2.8;
-                ctx.beginPath(); ctx.moveTo(5, -10); ctx.bezierCurveTo(15, -6, 24, -1, 22, 4); ctx.stroke();
-                ctx.strokeStyle = 'rgba(26,58,143,0.38)'; ctx.lineWidth = 1;
-                ctx.beginPath(); ctx.moveTo(5, -8); ctx.bezierCurveTo(15, -4, 24, 1, 22, 6); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(-26, 4);
+                ctx.bezierCurveTo(-32, -18, -18, -46, 0, -47);
+                ctx.bezierCurveTo(18, -46, 32, -18, 26, 4);
+                ctx.bezierCurveTo(14, -5, -14, -5, -26, 4); ctx.fill();
+                ctx.fillStyle = '#1e0c38';
+                ctx.beginPath(); ctx.ellipse(13, -2, 10, 7, 0.42, 0, Math.PI * 2); ctx.fill();
+                // Cobalt hair streak
+                ctx.strokeStyle = '#1a3a8f'; ctx.lineWidth = 2.5;
+                ctx.beginPath(); ctx.moveTo(4, -8); ctx.bezierCurveTo(13, -4, 21, 0, 19, 5); ctx.stroke();
+                // Gold ear ornament
                 ctx.fillStyle = '#c49a1a';
-                ctx.beginPath(); ctx.ellipse(-17, -28, 5.5, 2.8, 0.44, 0, Math.PI * 2); ctx.fill();
-                ctx.fillStyle = 'rgba(255,250,215,0.86)';
-                ctx.beginPath(); ctx.arc(-17, -28, 1.9, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.ellipse(-14, -24, 5, 2.5, 0.42, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = 'rgba(255,252,218,0.88)';
+                ctx.beginPath(); ctx.arc(-14, -24, 1.7, 0, Math.PI * 2); ctx.fill();
 
                 // Eyes
                 function drawEye(side) {
-                    var ex = side * 11, ey = -3;
-                    var es = Math.sin(dancer.rotation * 0.12) * 1.4;
-                    ctx.save(); ctx.translate(ex + es, ey); ctx.rotate(side * 0.2);
+                    var ex = side * 9, ey = -2;
+                    var es = Math.sin(dancer.rotation * 0.10) * 1.2;
+                    ctx.save(); ctx.translate(ex + es, ey); ctx.rotate(side * 0.18);
                     ctx.fillStyle = '#fef8ed';
-                    ctx.beginPath(); ctx.ellipse(0, 0, 10, 6.5, 0, 0, Math.PI * 2); ctx.fill();
+                    ctx.beginPath(); ctx.ellipse(0, 0, 9, 6, 0, 0, Math.PI * 2); ctx.fill();
                     ctx.fillStyle = '#c47a1a';
-                    ctx.beginPath(); ctx.arc(0, 0, 5.2, 0, Math.PI * 2); ctx.fill();
+                    ctx.beginPath(); ctx.arc(0, 0, 4.8, 0, Math.PI * 2); ctx.fill();
                     ctx.fillStyle = '#d49020';
-                    ctx.beginPath(); ctx.arc(0, 0, 3.2, 0, Math.PI * 2); ctx.fill();
-                    ctx.fillStyle = '#180c06';
-                    ctx.beginPath(); ctx.arc(0, 0, 2.1, 0, Math.PI * 2); ctx.fill();
-                    ctx.fillStyle = 'rgba(255,255,255,0.9)';
-                    ctx.beginPath(); ctx.arc(1.6, -1.6, 1.2, 0, Math.PI * 2); ctx.fill();
-                    ctx.strokeStyle = '#160a04'; ctx.lineWidth = 1.3;
-                    ctx.beginPath(); ctx.ellipse(0, 0, 10, 6.5, 0, -Math.PI * 0.88, 0); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(0, 0, 3.0, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = '#140a04';
+                    ctx.beginPath(); ctx.arc(0, 0, 1.9, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = 'rgba(255,255,255,0.90)';
+                    ctx.beginPath(); ctx.arc(1.4, -1.4, 1.1, 0, Math.PI * 2); ctx.fill();
+                    ctx.strokeStyle = '#120804'; ctx.lineWidth = 1.2;
+                    ctx.beginPath(); ctx.ellipse(0, 0, 9, 6, 0, -Math.PI * 0.86, 0); ctx.stroke();
                     ctx.restore();
                 }
                 drawEye(-1); drawEye(1);
 
                 // Nose
-                ctx.fillStyle = '#180c08';
-                ctx.beginPath(); ctx.ellipse(0, 14, 3.4, 2.6, 0, 0, Math.PI * 2); ctx.fill();
-                // Composed smile
-                ctx.strokeStyle = '#3a1410'; ctx.lineWidth = 1.2;
-                ctx.beginPath(); ctx.moveTo(-4, 20); ctx.quadraticCurveTo(0, 26, 4, 20); ctx.stroke();
+                ctx.fillStyle = '#160a06';
+                ctx.beginPath(); ctx.ellipse(0, 12, 3, 2.2, 0, 0, Math.PI * 2); ctx.fill();
+                // Smile
+                ctx.strokeStyle = '#341210'; ctx.lineWidth = 1.1;
+                ctx.beginPath(); ctx.moveTo(-3.5, 17); ctx.quadraticCurveTo(0, 23, 3.5, 17); ctx.stroke();
 
-                ctx.restore(); // head
-                ctx.restore(); // SC + translate
+                ctx.restore(); // head translate
+                ctx.restore(); // SC + main transform
             }
 
             // -------------------------------------------------------------------
@@ -1426,7 +1488,7 @@
                 var stageY = h * 0.76;
                 var SC = 1.32;
                 var baseX = canvas.width * 0.5 + dancer.x;
-                var hemHalf = (64 + dancer.armsOpen * 18) * SC;
+                var hemHalf = (52 + dancer.armsOpen * 16 + dancer.spinFlare * 56) * SC;
                 var sweepX = baseX + Math.sin(shimmerPhase * Math.PI * 2) * hemHalf * 0.55;
                 var sweepY = stageY + 110 + dancer.armsOpen * 50;
                 var pulse = 0.5 + 0.5 * Math.sin(beatPhase * Math.PI * 2);
@@ -1448,25 +1510,26 @@
             // Audience silhouettes — faint gallery depth
             // -------------------------------------------------------------------
             function drawAudience() {
+                // Must use mainCtx — this runs AFTER offCtx swap in the animate loop
                 var w = canvas.width, h = canvas.height;
                 var rowY = h - 4;
-                ctx.save();
-                ctx.globalAlpha = 0.06;
-                ctx.fillStyle = '#060208';
+                mainCtx.save();
+                mainCtx.globalAlpha = 0.065;
+                mainCtx.fillStyle = '#060208';
                 var gap = 50;
                 var count = Math.ceil(w / gap) + 1;
                 for (var i = 0; i < count; i++) {
                     var hx = i * gap + 18;
-                    ctx.beginPath();
-                    ctx.ellipse(hx, rowY - 52, 18, 26, 0, Math.PI, 0);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.moveTo(hx - 30, rowY);
-                    ctx.bezierCurveTo(hx - 22, rowY - 22, hx - 10, rowY - 28, hx, rowY - 20);
-                    ctx.bezierCurveTo(hx + 10, rowY - 28, hx + 22, rowY - 22, hx + 30, rowY);
-                    ctx.fill();
+                    mainCtx.beginPath();
+                    mainCtx.ellipse(hx, rowY - 52, 18, 26, 0, Math.PI, 0);
+                    mainCtx.fill();
+                    mainCtx.beginPath();
+                    mainCtx.moveTo(hx - 30, rowY);
+                    mainCtx.bezierCurveTo(hx - 22, rowY - 22, hx - 10, rowY - 28, hx, rowY - 20);
+                    mainCtx.bezierCurveTo(hx + 10, rowY - 28, hx + 22, rowY - 22, hx + 30, rowY);
+                    mainCtx.fill();
                 }
-                ctx.restore();
+                mainCtx.restore();
             }
 
             // -------------------------------------------------------------------
