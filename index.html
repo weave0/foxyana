@@ -318,7 +318,7 @@
       background: rgba(26, 58, 143, 0.32);
       border: 1px solid rgba(26, 58, 143, 0.72);
       padding: 9px 22px;
-      min-height: 38px;
+      min-height: 44px;
       white-space: nowrap;
       z-index: 2;
       animation: ukraine-glow 3s ease-in-out infinite;
@@ -858,6 +858,11 @@
       transform: scale(1.03);
     }
 
+    .spotlight-item:focus-within {
+      outline: 2px solid var(--fox-auburn);
+      outline-offset: 2px;
+    }
+
     .spotlight-caption {
       position: absolute;
       bottom: 0;
@@ -911,6 +916,11 @@
     .gallery-item:hover img,
     .gallery-item:focus-within img {
       transform: scale(1.02);
+    }
+
+    .gallery-item:focus-within {
+      outline: 2px solid var(--fox-auburn);
+      outline-offset: 2px;
     }
 
     .gallery-caption {
@@ -1079,10 +1089,18 @@
       position: relative;
       padding: clamp(72px, 10vw, 128px) 0;
       text-align: center;
-      background: linear-gradient(to bottom,
-          rgba(26, 58, 143, 0.12) 0%,
-          rgba(14, 10, 6, 0) 100%);
+      background: var(--night-overture);
       border-top: 1px solid rgba(26, 58, 143, 0.5);
+    }
+
+    .ukraine-solidarity::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%,
+          rgba(26, 58, 143, 0.18) 0%,
+          transparent 70%);
+      pointer-events: none;
     }
 
     .ukraine-solidarity::before {
@@ -1101,6 +1119,8 @@
       max-width: 680px;
       margin: 0 auto;
       padding: 0 clamp(20px, 5vw, 40px);
+      position: relative;
+      z-index: 1;
     }
 
     .ukraine-eyebrow {
@@ -1251,6 +1271,11 @@
       .nav-ukraine-flag {
         width: 13px;
         height: 9px;
+      }
+
+      .nav-toggle {
+        display: flex;
+        z-index: 100;
       }
 
       .nav-links {
@@ -1431,6 +1456,12 @@
       transform: scale(1.04);
     }
 
+    .stage-frame:focus-visible,
+    .stage-frame:focus-within {
+      outline: 2px solid var(--fox-auburn);
+      outline-offset: 2px;
+    }
+
     .stage-frame figcaption {
       position: absolute;
       bottom: 0;
@@ -1499,6 +1530,12 @@
     .lviv-frame:hover picture img,
     .lviv-frame:focus-within picture img {
       transform: scale(1.04);
+    }
+
+    .lviv-frame:focus-visible,
+    .lviv-frame:focus-within {
+      outline: 2px solid var(--fox-auburn);
+      outline-offset: 2px;
     }
 
     .lviv-frame figcaption {
@@ -1806,6 +1843,14 @@
     "@type": "Person",
     "name": "Foxyana",
     "alternateName": "Лисичка",
+    "nationality": {
+      "@type": "Country",
+      "name": "Ukraine"
+    },
+    "birthPlace": {
+      "@type": "Place",
+      "name": "Carpathian Highlands, Ukraine"
+    },
     "description": "Master of Kozachok, Kolomyika, classical form, and ballroom. Rooted in the Carpathian highlands of Ukraine. Devoted to movement, craft, and the art of presence.",
     "url": "https://foxyana.com",
     "image": "https://foxyana.com/assets/images/foxyana_web_portrait.webp",
@@ -2601,7 +2646,7 @@
          =================================================================== -->
     <section class="cinema-aperture" id="live" aria-label="Foxyana in performance">
 
-      <div class="cinema-clip is-visible" id="ca-0">
+      <div class="cinema-clip is-visible" id="ca-0" role="group" aria-label="Performance clip: Dance show opening">
         <video muted playsinline preload="none"
           poster="assets/videos/poster_show.jpg"
           aria-hidden="true">
@@ -2610,7 +2655,7 @@
         <p class="cinema-line">She arrives before the music does.</p>
       </div>
 
-      <div class="cinema-clip" id="ca-1">
+      <div class="cinema-clip" id="ca-1" role="group" aria-label="Performance clip: Many tails">
         <video muted playsinline preload="none"
           poster="assets/videos/poster_aria.jpg"
           aria-hidden="true">
@@ -2619,7 +2664,7 @@
         <p class="cinema-line">Each tail, a memory of flight.</p>
       </div>
 
-      <div class="cinema-clip" id="ca-2">
+      <div class="cinema-clip" id="ca-2" role="group" aria-label="Performance clip: Curtsy and applause">
         <video muted playsinline preload="none"
           poster="assets/videos/poster_recognition.jpg"
           aria-hidden="true">
@@ -2832,6 +2877,19 @@
           document.body.style.overflow = '';
           toggle.focus();
         }
+        // Focus trap: Tab within open mobile menu
+        if (e.key === 'Tab' && menu.classList.contains('is-open')) {
+          var focusable = [toggle].concat(Array.from(menu.querySelectorAll('a, button')));
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       });
 
       // -----------------------------------------------------------------------
@@ -2965,6 +3023,7 @@
   <div class="ambient-player" id="ambient-player" role="region" aria-label="Ambient music player">
     <audio id="ambient-audio" loop preload="none">
       <source src="assets/audio/Three_Turns_on_Wood.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
     <button
       class="ambient-btn"
