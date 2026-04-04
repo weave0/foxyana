@@ -820,6 +820,9 @@
                 this.tailA = 0; this.tailB = 0;
                 this.dressLag = 0;
                 this.facing = 1;
+                this.spinFlare = 0;
+                this.portDeBras = 0;
+                this.arabesqueBack = 0;
             }
             DanceEngine.prototype.trigger = function (action) {
                 this.action = action;
@@ -888,6 +891,13 @@
                 this.tailA += (desiredTail - this.tailA) * Math.min(1, dt * 7);
                 this.tailB += ((desiredTail * 1.22) - this.tailB) * Math.min(1, dt * 5.2);
                 this.dressLag += (((this.vx * 0.0025) + this.rotation * 0.2) - this.dressLag) * Math.min(1, dt * 4.5);
+                // Gown spin-flare — rises and falls with angular momentum
+                var targetFlare = Math.min(1, Math.abs(this.spinVelocity) / (Math.PI * 3.5));
+                this.spinFlare += (targetFlare - this.spinFlare) * Math.min(1, dt * 5.5);
+                // Expressive section blends
+                var inEmotion = (section.name === 'Emotion');
+                this.portDeBras += ((inEmotion ? 1 : 0) - this.portDeBras) * Math.min(1, dt * 1.8);
+                this.arabesqueBack += ((inEmotion ? 1 : 0) - this.arabesqueBack) * Math.min(1, dt * 1.5);
             };
 
             // -------------------------------------------------------------------
@@ -970,6 +980,15 @@
             var prevJumpAirborne = false;
             var prevAction = '';
             var prevBeatPhase = 0;
+            var bgTintR = 28, bgTintG = 14, bgTintB = 46;
+            var tintTargets = {
+                Intro: { r: 28, g: 14, b: 46 },
+                Build: { r: 30, g: 16, b: 52 },
+                Spins: { r: 26, g: 16, b: 64 },
+                Power: { r: 32, g: 12, b: 34 },
+                Emotion: { r: 22, g: 14, b: 54 },
+                Finale: { r: 36, g: 14, b: 52 },
+            };
 
             function nowSec() { return performance.now() / 1000; }
 
@@ -982,9 +1001,8 @@
                 var pulse = 0.5 + 0.5 * Math.sin(beatPhase * Math.PI * 2);
                 ctx.clearRect(0, 0, w, h);
 
-                var tints = { Intro: '#1c0e2e', Build: '#1e1034', Spins: '#1a1040', Power: '#200c22', Emotion: '#160e36', Finale: '#240e34' };
                 var bgGrad = ctx.createLinearGradient(0, 0, 0, h);
-                bgGrad.addColorStop(0, tints[section.name] || '#1c0e2e');
+                bgGrad.addColorStop(0, 'rgb(' + Math.round(bgTintR) + ',' + Math.round(bgTintG) + ',' + Math.round(bgTintB) + ')');
                 bgGrad.addColorStop(0.6, '#0e0a18');
                 bgGrad.addColorStop(1, '#09060f');
                 ctx.fillStyle = bgGrad;
@@ -1143,8 +1161,8 @@
                 ctx.scale(SC, SC);
 
                 // === MIDNIGHT GOWN (skirt) ===
-                var hemWidth = 64 + dancer.armsOpen * 18;
-                var gownLength = 270 + dancer.armsOpen * 12;
+                var hemWidth = 64 + dancer.armsOpen * 18 + dancer.spinFlare * 68;
+                var gownLength = 270 + dancer.armsOpen * 12 + dancer.spinFlare * 30;
                 var driftX = dancer.dressLag * 28;
                 var hemY = 300;
 
@@ -1231,10 +1249,19 @@
                 function drawArm(side) {
                     var shoulderX = side * 18, shoulderY = -18;
                     var outReach = (0.55 + ao * 0.45) * side;
+                    var pb = dancer.portDeBras;
+                    // Normal positions
                     var elbowX = shoulderX + outReach * 42;
                     var elbowY = shoulderY + 28 + armSway * side * 18 - expressiveLift * 22;
                     var handX = elbowX + outReach * 30 + armSway * side * 12;
                     var handY = elbowY + 20 - expressiveLift * 18;
+                    // Port de bras en haut — lerp arms to overhead 5th position
+                    if (pb > 0.01) {
+                        elbowX = elbowX + (shoulderX + side * 14 - elbowX) * pb;
+                        elbowY = elbowY + (shoulderY - 52 - elbowY) * pb;
+                        handX = handX + (side * 9 - handX) * pb;
+                        handY = handY + (shoulderY - 108 - handY) * pb;
+                    }
                     pill(shoulderX, shoulderY, elbowX, elbowY, 8);
                     var armGrad = ctx.createLinearGradient(shoulderX, shoulderY, elbowX, elbowY);
                     armGrad.addColorStop(0, '#c44a00'); armGrad.addColorStop(1, '#9b3800');
@@ -1256,21 +1283,35 @@
                 var kickAmt = dancer.kick;
                 function drawLeg(side) {
                     var hipX = side * 12, hipY = 40;
+                    var ab = dancer.arabesqueBack;
                     var kickDir = side === 1 ? kickAmt : 0;
-                    var kneeX = hipX + side * (14 + kickDir * 20), kneeY = hipY + 70 - kickDir * 22;
-                    var footX = kneeX + side * (8 + kickDir * 28) + legSway * side * 16, footY = kneeY + 68 + kickDir * 10;
+                    // Normal leg positions
+                    var kneeX_n = hipX + side * (14 + kickDir * 20), kneeY_n = hipY + 70 - kickDir * 22;
+                    var footX_n = kneeX_n + side * (8 + kickDir * 28) + legSway * side * 16, footY_n = kneeY_n + 68 + kickDir * 10;
+                    // Arabesque positions — side===1 is working leg (back+high), side===-1 is supporting (straight)
+                    var kneeX_a = side === 1 ? -46 : hipX;
+                    var kneeY_a = side === 1 ? 22 : hipY + 72;
+                    var footX_a = side === 1 ? -82 : hipX - 2;
+                    var footY_a = side === 1 ? -72 : hipY + 140;
+                    // Lerp between normal and arabesque
+                    var kneeX = kneeX_n + (kneeX_a - kneeX_n) * ab;
+                    var kneeY = kneeY_n + (kneeY_a - kneeY_n) * ab;
+                    var footX = footX_n + (footX_a - footX_n) * ab;
+                    var footY = footY_n + (footY_a - footY_n) * ab;
                     pill(hipX, hipY, kneeX, kneeY, 13);
                     var legGrad = ctx.createLinearGradient(hipX, hipY, kneeX, kneeY);
                     legGrad.addColorStop(0, '#0e1830'); legGrad.addColorStop(1, '#070f22');
                     ctx.fillStyle = legGrad; ctx.fill();
                     pill(kneeX, kneeY, footX, footY, 11);
                     ctx.fillStyle = '#0a1428'; ctx.fill();
-                    // Foot & ankle detail
+                    // Foot & ankle — working leg tilts en arabesque
+                    var footTilt = (side === 1) ? 0.1 - ab * 0.55 : 0.1;
                     ctx.fillStyle = '#060d1c';
-                    ctx.beginPath(); ctx.ellipse(footX, footY + 10, 14, 8, 0.1, 0, Math.PI * 2); ctx.fill();
-                    // Pointe / heel toe (dark near-black paw tips)
+                    ctx.beginPath(); ctx.ellipse(footX, footY + 10 * (1 - ab * (side === 1 ? 0.7 : 0)), 14, 8, footTilt, 0, Math.PI * 2); ctx.fill();
                     ctx.fillStyle = '#1a1005';
-                    ctx.beginPath(); ctx.ellipse(footX + side * 10, footY + 14, 9, 5, 0.25, 0, Math.PI * 2); ctx.fill();
+                    var tipX = side === 1 ? footX - 11 * ab + side * 10 * (1 - ab) : footX + side * 10;
+                    var tipY = side === 1 ? footY + 14 - ab * 20 : footY + 14;
+                    ctx.beginPath(); ctx.ellipse(tipX, tipY, 9, 5, footTilt + 0.2, 0, Math.PI * 2); ctx.fill();
                 }
                 drawLeg(-1); drawLeg(1);
 
@@ -1404,6 +1445,46 @@
             }
 
             // -------------------------------------------------------------------
+            // Audience silhouettes — faint gallery depth
+            // -------------------------------------------------------------------
+            function drawAudience() {
+                var w = canvas.width, h = canvas.height;
+                var rowY = h - 4;
+                ctx.save();
+                ctx.globalAlpha = 0.06;
+                ctx.fillStyle = '#060208';
+                var gap = 50;
+                var count = Math.ceil(w / gap) + 1;
+                for (var i = 0; i < count; i++) {
+                    var hx = i * gap + 18;
+                    ctx.beginPath();
+                    ctx.ellipse(hx, rowY - 52, 18, 26, 0, Math.PI, 0);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.moveTo(hx - 30, rowY);
+                    ctx.bezierCurveTo(hx - 22, rowY - 22, hx - 10, rowY - 28, hx, rowY - 20);
+                    ctx.bezierCurveTo(hx + 10, rowY - 28, hx + 22, rowY - 22, hx + 30, rowY);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            // -------------------------------------------------------------------
+            // Vignette — cinematic edge darkening
+            // -------------------------------------------------------------------
+            function drawVignette() {
+                var w = canvas.width, h = canvas.height;
+                mainCtx.save();
+                var vg = mainCtx.createRadialGradient(w * 0.5, h * 0.44, h * 0.2, w * 0.5, h * 0.44, h * 0.78);
+                vg.addColorStop(0, 'rgba(0,0,0,0)');
+                vg.addColorStop(0.58, 'rgba(0,0,0,0)');
+                vg.addColorStop(1, 'rgba(0,0,0,0.68)');
+                mainCtx.fillStyle = vg;
+                mainCtx.fillRect(0, 0, w, h);
+                mainCtx.restore();
+            }
+
+            // -------------------------------------------------------------------
             // Animate loop
             // -------------------------------------------------------------------
             function animate(timeMs) {
@@ -1416,6 +1497,13 @@
                 var beatIdx = clock.beatIdx(nowSec());
                 var beatPhase = clock.phase(nowSec());
                 dancer.update(dt, section, beatPhase, input);
+
+                // Smooth background tint interpolation
+                var tgt = tintTargets[section.name] || tintTargets.Intro;
+                var lf = Math.min(1, dt * 1.8);
+                bgTintR += (tgt.r - bgTintR) * lf;
+                bgTintG += (tgt.g - bgTintG) * lf;
+                bgTintB += (tgt.b - bgTintB) * lf;
 
                 // Advance shimmer sweep
                 shimmerPhase += dt * 0.35;
@@ -1459,10 +1547,12 @@
 
                 // Compose full frame
                 drawBackground(section, beatPhase);
+                drawAudience();                         // gallery depth
                 mainCtx.drawImage(offCanvas, 0, 0);   // dancer
                 drawFloorReflection();                  // polished floor mirror
                 drawGownShimmer(beatPhase);             // fabric light catch
                 sparks.draw(mainCtx);                  // footwork sparks
+                drawVignette();                         // cinematic edge
 
                 bpmValue.textContent = activeBpm + ' BPM';
                 sectionText.textContent = section.name;
