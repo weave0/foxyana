@@ -524,12 +524,14 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(ellipse at center, rgba(8,5,15,0.3), rgba(8,5,15,0.75));
+            background: radial-gradient(ellipse at center, rgba(8, 5, 15, 0.3), rgba(8, 5, 15, 0.75));
             transition: opacity 1.2s ease;
             pointer-events: none;
         }
 
-        .stage-intro.hidden { opacity: 0; }
+        .stage-intro.hidden {
+            opacity: 0;
+        }
 
         .stage-title {
             font-family: var(--font-display);
@@ -554,8 +556,15 @@
         }
 
         @keyframes promptPulse {
-            0%, 100% { opacity: 0.35; }
-            50% { opacity: 0.7; }
+
+            0%,
+            100% {
+                opacity: 0.35;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         /* HUD — top pills */
@@ -600,7 +609,10 @@
             transition: opacity 0.6s ease;
         }
 
-        .hud-hidden { opacity: 0; pointer-events: none; }
+        .hud-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
 
         .hud-btn {
             appearance: none;
@@ -618,8 +630,14 @@
             transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
         }
 
-        .hud-btn:hover { transform: translateY(-1px); }
-        .hud-btn:focus-visible { outline: 2px solid var(--fox-auburn); outline-offset: 2px; }
+        .hud-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .hud-btn:focus-visible {
+            outline: 2px solid var(--fox-auburn);
+            outline-offset: 2px;
+        }
 
         .hud-btn--start {
             background: linear-gradient(135deg, rgba(240, 195, 110, 0.20), rgba(240, 195, 110, 0.06));
@@ -649,7 +667,10 @@
             transition: opacity 0.2s;
         }
 
-        .hud-range:hover, .hud-range:focus { opacity: 1; }
+        .hud-range:hover,
+        .hud-range:focus {
+            opacity: 1;
+        }
 
         .hud-select {
             background: rgba(255, 255, 255, 0.04);
@@ -687,7 +708,7 @@
             z-index: 3;
         }
 
-        .hud-progress > div {
+        .hud-progress>div {
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, var(--eng-accent), var(--eng-ok));
@@ -717,8 +738,15 @@
             transition: color 0.2s, border-color 0.2s, opacity 0.6s ease;
         }
 
-        .hud-help-btn:hover { color: var(--eng-ink); border-color: rgba(255, 255, 255, 0.18); }
-        .hud-help-btn:focus-visible { outline: 2px solid var(--fox-auburn); outline-offset: 2px; }
+        .hud-help-btn:hover {
+            color: var(--eng-ink);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .hud-help-btn:focus-visible {
+            outline: 2px solid var(--fox-auburn);
+            outline-offset: 2px;
+        }
 
         /* Keyboard overlay */
         .kbd-overlay {
@@ -738,7 +766,9 @@
             width: 88%;
         }
 
-        .kbd-overlay.visible { display: block; }
+        .kbd-overlay.visible {
+            display: block;
+        }
 
         .kbd-overlay-title {
             font-family: var(--font-display);
@@ -783,8 +813,13 @@
                 flex-wrap: wrap;
             }
 
-            .hud-range { width: 70px; }
-            .hud-bpm-label { display: none; }
+            .hud-range {
+                width: 70px;
+            }
+
+            .hud-bpm-label {
+                display: none;
+            }
         }
 
         /* ---------------------------------------------------------------
@@ -825,6 +860,26 @@
             color: rgba(245, 237, 224, 0.25);
             letter-spacing: 0.06em;
         }
+
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin: 8px 0 4px;
+            padding: 0;
+        }
+
+        .footer-nav a {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover { color: rgba(196, 154, 26, 0.85); }
     </style>
 </head>
 
@@ -887,13 +942,22 @@
                 <button id="resetBtn" class="hud-btn hud-btn--secondary">Reset</button>
             </div>
 
-            <div class="hud-progress"><div id="progressBar"></div></div>
+            <div class="hud-progress">
+                <div id="progressBar"></div>
+            </div>
         </div>
 
     </main>
 
     <footer class="site-footer" role="contentinfo">
         <a href="/" class="footer-logo" aria-label="Back to Foxyana homepage">FOXYANA</a>
+        <nav aria-label="Site links">
+            <ul class="footer-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="music.html">Music</a></li>
+            </ul>
+        </nav>
         <p class="footer-legal">© Foxyana. All rights reserved.</p>
     </footer>
 

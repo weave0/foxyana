@@ -1,0 +1,13 @@
+# Files excluded from Cloudflare Workers Static Assets deployment
+# (Cloudflare 25 MB per-asset limit)
+assets/videos/Foxyana Dances.mp4
+
+# Music videos — now streamed via YouTube embeds
+assets/audio/Bone_Into_Current.mp4
+assets/audio/Gravity_Yields.mp4
+assets/audio/New_Breath_Same_Blood.mp4
+assets/audio/Red_Gold_Ghost.mp4
+assets/audio/The_Steppe_Is_Alive.mp4
+assets/audio/Under_the_Silver_Dome.mp4
+assets/audio/White_Fire_Drift.mp4
+assets/audio/Душа_вже_знала.mp4

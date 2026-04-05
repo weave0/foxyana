@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Foxyana — The Steppe Is Alive</title>
+    <meta name="description"
+        content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths. DJ Foxyana's debut album — electronic music rooted in Ukrainian cultural heritage.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DJ Foxyana — The Steppe Is Alive">
+    <meta property="og:description"
+        content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths. DJ Foxyana's debut album.">
+    <meta property="og:url" content="https://foxyana.com/music">
+    <meta property="og:type" content="music.album">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DJ Foxyana — The Steppe Is Alive">
+    <meta name="twitter:description"
+        content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths.">
+    <link rel="canonical" href="https://foxyana.com/music">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =============================================================
+       DJ FOXYANA — ALBUM PAGE
+       Design system: foxyana.com tokens
+       ============================================================= */
+
+        :root {
+            --fox-auburn: #C44A00;
+            --ember: #9B3800;
+            --hutsul-cobalt: #1A3A8F;
+            --vyshyvanka-gold: #C49A1A;
+            --carpathian-burgundy: #7A1818;
+            --linen: #F5EDE0;
+            --studio-white: #FBF7F2;
+            --mountain-dark: #1E1510;
+            --bark: #5A4030;
+            --carpathian-forest: #1A4A2A;
+            --night-overture: #0E0A06;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --side-pad: clamp(20px, 5vw, 80px);
+            --content-max: 1200px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--linen);
+            background: var(--night-overture);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--vyshyvanka-gold);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: -100%;
+            left: var(--side-pad);
+            z-index: 9999;
+            background: var(--vyshyvanka-gold);
+            color: var(--night-overture);
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            font-weight: 400;
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            transform: translateY(0);
+            outline: 2px solid var(--linen);
+            outline-offset: 2px;
+        }
+
+        /* --- Nav --- */
+        .album-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(14, 10, 6, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(196, 154, 26, 0.12);
+            padding: 0 var(--side-pad);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .album-nav-home {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--linen);
+            letter-spacing: 0.04em;
+        }
+
+        .album-nav-home:hover {
+            color: var(--vyshyvanka-gold);
+            text-decoration: none;
+        }
+
+        .album-nav-links {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .album-nav-links a {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.5);
+            padding: 6px 10px;
+            white-space: nowrap;
+            border-radius: 4px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .album-nav-links a:hover {
+            color: var(--vyshyvanka-gold);
+            background: rgba(196, 154, 26, 0.08);
+            text-decoration: none;
+        }
+
+        .album-nav-links a.is-active,
+        .album-nav-links a[aria-current="page"] {
+            color: var(--vyshyvanka-gold);
+        }
+
+        /* --- Hero --- */
+        .album-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px var(--side-pad) 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 30%, rgba(196, 74, 0, 0.08), transparent),
+                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26, 58, 143, 0.06), transparent),
+                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(196, 154, 26, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        .album-hero-label {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin-bottom: 24px;
+            opacity: 0.85;
+        }
+
+        .album-hero h1 {
+            font-family: var(--font-display);
+            font-weight: 300;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            color: var(--linen);
+            margin-bottom: 24px;
+        }
+
+        .album-hero h1 em {
+            font-style: italic;
+            color: var(--vyshyvanka-gold);
+        }
+
+        .album-hero-sub {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+            color: rgba(245, 237, 224, 0.6);
+            max-width: 540px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .album-hero-meta {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.35);
+        }
+
+        .yt-playlist-btn {
+            display: inline-block;
+            margin-top: 32px;
+            border: 1px solid var(--vyshyvanka-gold);
+            color: var(--vyshyvanka-gold);
+            padding: 12px 32px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .yt-playlist-btn:hover {
+            background: var(--vyshyvanka-gold);
+            color: var(--night-overture);
+            text-decoration: none;
+        }
+
+        /* --- Waveform / Now-Playing bar --- */
+        .now-playing {
+            position: sticky;
+            top: 56px;
+            z-index: 90;
+            background: rgba(14, 10, 6, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(196, 154, 26, 0.08);
+            padding: 12px var(--side-pad);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-height: 52px;
+            transition: opacity 0.3s ease;
+        }
+
+        .now-playing.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .now-playing-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--linen);
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .now-playing-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .np-btn {
+            background: none;
+            border: none;
+            color: var(--linen);
+            cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .np-btn:hover {
+            background: rgba(196, 154, 26, 0.12);
+            color: var(--vyshyvanka-gold);
+        }
+
+        .np-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .np-progress {
+            flex: 0 0 120px;
+            height: 3px;
+            background: rgba(245, 237, 224, 0.12);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .np-progress-fill {
+            height: 100%;
+            background: var(--vyshyvanka-gold);
+            width: 0%;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+
+        .np-time {
+            font-size: 0.68rem;
+            color: rgba(245, 237, 224, 0.4);
+            letter-spacing: 0.05em;
+            min-width: 36px;
+            text-align: right;
+        }
+
+        /* --- Tracklist Section --- */
+        .tracklist-section {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 80px var(--side-pad) 40px;
+        }
+
+        .tracklist-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin-bottom: 40px;
+            opacity: 0.7;
+        }
+
+        .track {
+            display: grid;
+            grid-template-columns: 44px 1fr auto auto;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(245, 237, 224, 0.06);
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border-radius: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .track:hover {
+            background: rgba(196, 154, 26, 0.04);
+        }
+
+        .track.is-playing {
+            background: rgba(196, 74, 0, 0.06);
+        }
+
+        .track-num {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(245, 237, 224, 0.3);
+            text-align: center;
+            line-height: 1;
+        }
+
+        .track.is-playing .track-num {
+            color: var(--fox-auburn);
+        }
+
+        .track-play-icon {
+            display: none;
+            width: 18px;
+            height: 18px;
+            fill: var(--vyshyvanka-gold);
+        }
+
+        .track:hover .track-num-text {
+            display: none;
+        }
+
+        .track:hover .track-play-icon {
+            display: block;
+        }
+
+        .track.is-playing .track-num-text {
+            display: none;
+        }
+
+        .track.is-playing .track-play-icon {
+            display: block;
+            fill: var(--fox-auburn);
+        }
+
+        .track-info {
+            min-width: 0;
+        }
+
+        .track-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 400;
+            color: var(--linen);
+            line-height: 1.3;
+        }
+
+        .track.is-playing .track-title {
+            color: var(--fox-auburn);
+        }
+
+        .track-title-ukr {
+            font-size: 0.85em;
+            color: rgba(245, 237, 224, 0.4);
+            margin-left: 8px;
+            font-weight: 300;
+        }
+
+        .track-dur {
+            font-size: 0.78rem;
+            color: rgba(245, 237, 224, 0.35);
+            letter-spacing: 0.05em;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .track-video-btn {
+            background: none;
+            border: 1px solid rgba(196, 154, 26, 0.2);
+            color: rgba(245, 237, 224, 0.4);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            white-space: nowrap;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .track-video-btn:hover {
+            border-color: var(--vyshyvanka-gold);
+            color: var(--vyshyvanka-gold);
+        }
+
+        /* --- Video Viewer --- */
+        .video-viewer {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(14, 10, 6, 0.96);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 60px 20px 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-viewer.is-open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .video-viewer-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--linen);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 12px;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-viewer-close:hover {
+            color: var(--vyshyvanka-gold);
+        }
+
+        .video-viewer-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--linen);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-viewer iframe {
+            width: min(100%, 960px);
+            aspect-ratio: 16 / 9;
+            max-height: calc(100vh - 160px);
+            border-radius: 4px;
+            border: none;
+        }
+
+        /* --- Album Notes Section --- */
+        .album-notes {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 60px var(--side-pad) 80px;
+        }
+
+        .album-notes-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin-bottom: 32px;
+            opacity: 0.7;
+        }
+
+        .album-notes-text {
+            max-width: 680px;
+            font-family: var(--font-display);
+            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: rgba(245, 237, 224, 0.7);
+        }
+
+        .album-notes-text p+p {
+            margin-top: 1.4em;
+        }
+
+        /* --- Stand With Ukraine + Footer --- */
+        .stand-section {
+            text-align: center;
+            padding: 80px var(--side-pad);
+            border-top: 1px solid rgba(196, 154, 26, 0.08);
+        }
+
+        .stand-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 300;
+            color: var(--linen);
+            margin-bottom: 16px;
+        }
+
+        .stand-section p {
+            max-width: 520px;
+            margin: 0 auto 28px;
+            font-size: 0.92rem;
+            color: rgba(245, 237, 224, 0.55);
+        }
+
+        .stand-section a {
+            display: inline-block;
+            border: 1px solid var(--vyshyvanka-gold);
+            color: var(--vyshyvanka-gold);
+            padding: 12px 32px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .stand-section a:hover {
+            background: var(--vyshyvanka-gold);
+            color: var(--night-overture);
+            text-decoration: none;
+        }
+
+        .album-footer {
+            text-align: center;
+            padding: 40px var(--side-pad) 60px;
+            border-top: 1px solid rgba(245, 237, 224, 0.04);
+        }
+
+        .album-footer-brand {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            color: rgba(245, 237, 224, 0.3);
+            margin-bottom: 6px;
+        }
+
+        .album-footer p {
+            font-size: 0.78rem;
+            color: rgba(245, 237, 224, 0.2);
+            font-style: italic;
+        }
+
+        .album-footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .album-footer-links a {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3);
+        }
+
+        .album-footer-links a:hover {
+            color: var(--vyshyvanka-gold);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .track {
+                grid-template-columns: 36px 1fr auto;
+                gap: 10px;
+            }
+
+            .track-video-btn {
+                display: none;
+            }
+
+            .album-nav-links {
+                display: none;
+            }
+
+            .np-progress {
+                flex: 0 0 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- NAV -->
+    <header class="album-nav" role="banner">
+        <a href="/" class="album-nav-home" aria-label="Foxyana — return to homepage">Foxyana</a>
+        <nav aria-label="Album navigation">
+            <ul class="album-nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="dance.html">Dance</a></li>
+                <li><a href="music.html" aria-current="page" class="is-active">Music</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="album-hero" aria-labelledby="album-title">
+        <p class="album-hero-label">DJ Foxyana — Debut Album</p>
+        <h1 id="album-title">The Steppe <em>Is Alive</em></h1>
+        <p class="album-hero-sub">
+            Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths.<br>
+            Electronic music rooted in Ukrainian soil.
+        </p>
+        <p class="album-hero-meta">8 tracks &middot; 2026</p>
+        <a href="https://www.youtube.com/playlist?list=PLveg0fPWx8QGTT63eGrriP2nFpV6g9QU1" target="_blank" rel="noopener" class="yt-playlist-btn" aria-label="Listen on YouTube">▶ Listen on YouTube</a>
+    </section>
+
+    <!-- NOW PLAYING BAR -->
+    <div class="now-playing is-hidden" role="region" aria-label="Now playing" id="now-playing">
+        <span class="now-playing-title" id="np-title">—</span>
+        <div class="now-playing-controls">
+            <button class="np-btn" id="np-prev" aria-label="Previous track" type="button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                </svg>
+            </button>
+            <button class="np-btn" id="np-toggle" aria-label="Play / Pause" type="button">
+                <svg viewBox="0 0 24 24" id="np-toggle-icon">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </button>
+            <button class="np-btn" id="np-next" aria-label="Next track" type="button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                </svg>
+            </button>
+        </div>
+        <div class="np-progress" id="np-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="np-progress-fill" id="np-fill"></div>
+        </div>
+        <span class="np-time" id="np-time">0:00</span>
+    </div>
+
+    <!-- MAIN -->
+    <main id="main-content">
+
+        <!-- TRACKLIST -->
+        <section class="tracklist-section" aria-label="Album tracklist">
+            <p class="tracklist-label">Tracklist</p>
+
+            <div class="track" data-src="assets/audio/Душа_вже_знала.mp3" data-youtube="OxBO3o-AMPM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
+                <div class="track-num">
+                    <span class="track-num-text">1</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">Душа вже знала<span class="track-title-ukr">The Soul Already Knew</span></span>
+                </div>
+                <span class="track-dur">2:59</span>
+                <button class="track-video-btn" data-youtube="OxBO3o-AMPM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" role="button" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
+                <div class="track-num">
+                    <span class="track-num-text">2</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">The Steppe Is Alive<span class="track-title-ukr">Степ живий</span></span>
+                </div>
+                <span class="track-dur">2:59</span>
+                <button class="track-video-btn" data-youtube="p0esyMlH5IE" type="button" aria-label="Watch on YouTube: The Steppe Is Alive">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/Under_the_Silver_Dome.mp3" data-youtube="kn8VDsYbRJ0" data-title="Under the Silver Dome" role="button" tabindex="0" aria-label="Play track 3: Under the Silver Dome">
+                <div class="track-num">
+                    <span class="track-num-text">3</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">Under the Silver Dome<span class="track-title-ukr">Під срібним куполом</span></span>
+                </div>
+                <span class="track-dur">3:01</span>
+                <button class="track-video-btn" data-youtube="kn8VDsYbRJ0" type="button" aria-label="Watch on YouTube: Under the Silver Dome">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/White_Fire_Drift.mp3" data-youtube="v6QFqEGnsD4" data-title="White Fire Drift" role="button" tabindex="0" aria-label="Play track 4: White Fire Drift">
+                <div class="track-num">
+                    <span class="track-num-text">4</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">White Fire Drift<span class="track-title-ukr">Білий вогонь</span></span>
+                </div>
+                <span class="track-dur">3:01</span>
+                <button class="track-video-btn" data-youtube="v6QFqEGnsD4" type="button" aria-label="Watch on YouTube: White Fire Drift">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/Bone_Into_Current.mp3" data-youtube="yEcQi9MIfrA" data-title="Bone into Current" role="button" tabindex="0" aria-label="Play track 5: Bone into Current">
+                <div class="track-num">
+                    <span class="track-num-text">5</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">Bone into Current<span class="track-title-ukr">Кістка в течію</span></span>
+                </div>
+                <span class="track-dur">2:37</span>
+                <button class="track-video-btn" data-youtube="yEcQi9MIfrA" type="button" aria-label="Watch on YouTube: Bone into Current">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/Gravity_Yields.mp3" data-youtube="5DrJbQ0Rr94" data-title="Gravity Yields" role="button" tabindex="0" aria-label="Play track 6: Gravity Yields">
+                <div class="track-num">
+                    <span class="track-num-text">6</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">Gravity Yields<span class="track-title-ukr">Тяжіння поступається</span></span>
+                </div>
+                <span class="track-dur">2:36</span>
+                <button class="track-video-btn" data-youtube="5DrJbQ0Rr94" type="button" aria-label="Watch on YouTube: Gravity Yields">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/New_Breath_Same_Blood.mp3" data-youtube="IMXr5-hwgJc" data-title="New Breath, Same Blood" role="button" tabindex="0" aria-label="Play track 7: New Breath, Same Blood">
+                <div class="track-num">
+                    <span class="track-num-text">7</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">New Breath, Same Blood<span class="track-title-ukr">Новий подих, та ж кров</span></span>
+                </div>
+                <span class="track-dur">2:28</span>
+                <button class="track-video-btn" data-youtube="IMXr5-hwgJc" type="button" aria-label="Watch on YouTube: New Breath, Same Blood">YouTube</button>
+            </div>
+
+            <div class="track" data-src="assets/audio/Red_Gold_Ghost.mp3" data-youtube="GHBV5APRwP0" data-title="Red Gold Ghost" role="button" tabindex="0" aria-label="Play track 8: Red Gold Ghost">
+                <div class="track-num">
+                    <span class="track-num-text">8</span>
+                    <svg class="track-play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="track-info">
+                    <span class="track-title">Red Gold Ghost<span class="track-title-ukr">Червоно-золотий привид</span></span>
+                </div>
+                <span class="track-dur">3:02</span>
+                <button class="track-video-btn" data-youtube="GHBV5APRwP0" type="button" aria-label="Watch on YouTube: Red Gold Ghost">YouTube</button>
+            </div>
+
+        </section>
+
+        <!-- ALBUM NOTES -->
+        <section class="album-notes" aria-label="Album notes">
+            <p class="album-notes-label">Album Notes</p>
+            <div class="album-notes-text">
+                <p>
+                    She learned rhythm from two sources: the Kolomyika meter in 2/4 time, and the way autumn wind
+                    moves through a Carpathian pass — unpredictable but never random. The tracks on this album live
+                    in the space between those two teachers.
+                </p>
+                <p>
+                    Electronic music built from the same soil as the folk forms. The bass carries the weight of the steppe.
+                    The high frequencies remember the bandura. The silence between beats is the same silence between
+                    dance phrases — held, deliberate, earned.
+                </p>
+                <p>
+                    Eight tracks. One album. A fox who learned to DJ because stillness, for her, is only the pause
+                    between frequencies.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- STAND WITH UKRAINE -->
+    <section class="stand-section" aria-label="Support Ukraine">
+        <h2>This art belongs to a country still standing.</h2>
+        <p>Ukraine continues to defend its culture, its people, and its future. United24 is the official
+            fundraising platform of the Ukrainian government — transparent, publicly reported, and direct.</p>
+        <a href="https://u24.gov.ua/" target="_blank" rel="noopener">Donate to Ukraine via United24</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="album-footer">
+        <p class="album-footer-brand">FOXYANA</p>
+        <p>Grace is not given. It is practiced.</p>
+        <ul class="album-footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="guide.html">Heritage Guide</a></li>
+            <li><a href="/#stage">Stage</a></li>
+            <li><a href="dance.html">Dance Engine</a></li>
+            <li><a href="https://u24.gov.ua/" target="_blank" rel="noopener">Support Ukraine</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLveg0fPWx8QGTT63eGrriP2nFpV6g9QU1" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+    </footer>
+
+    <!-- VIDEO VIEWER OVERLAY -->
+    <div class="video-viewer" id="video-viewer" role="dialog" aria-label="Video player" aria-hidden="true">
+        <button class="video-viewer-close" id="video-close" type="button" aria-label="Close video">&times;</button>
+        <p class="video-viewer-title" id="video-title"></p>
+        <iframe id="video-player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var audio = new Audio();
+            var tracks = document.querySelectorAll('.track');
+            var currentIndex = -1;
+            var isPlaying = false;
+
+            // Now-playing elements
+            var npBar = document.getElementById('now-playing');
+            var npTitle = document.getElementById('np-title');
+            var npToggle = document.getElementById('np-toggle');
+            var npToggleIcon = document.getElementById('np-toggle-icon');
+            var npPrev = document.getElementById('np-prev');
+            var npNext = document.getElementById('np-next');
+            var npFill = document.getElementById('np-fill');
+            var npProgress = document.getElementById('np-progress');
+            var npTime = document.getElementById('np-time');
+
+            // Video viewer elements
+            var videoViewer = document.getElementById('video-viewer');
+            var videoPlayer = document.getElementById('video-player');
+            var videoTitle = document.getElementById('video-title');
+            var videoClose = document.getElementById('video-close');
+
+            function formatTime(sec) {
+                if (isNaN(sec)) return '0:00';
+                var m = Math.floor(sec / 60);
+                var s = Math.floor(sec % 60);
+                return m + ':' + (s < 10 ? '0' : '') + s;
+            }
+
+            function setPlaying(idx) {
+                tracks.forEach(function (t) { t.classList.remove('is-playing'); });
+                if (idx >= 0 && idx < tracks.length) {
+                    tracks[idx].classList.add('is-playing');
+                }
+            }
+
+            function playTrack(idx) {
+                if (idx < 0 || idx >= tracks.length) return;
+                var t = tracks[idx];
+                var src = t.getAttribute('data-src');
+                if (!src) return;
+
+                currentIndex = idx;
+                audio.src = src;
+                audio.play();
+                isPlaying = true;
+
+                npTitle.textContent = t.getAttribute('data-title') || '';
+                npBar.classList.remove('is-hidden');
+                setPlaying(idx);
+                updateToggleIcon();
+            }
+
+            function togglePlay() {
+                if (!audio.src) return;
+                if (audio.paused) {
+                    audio.play();
+                    isPlaying = true;
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                }
+                updateToggleIcon();
+            }
+
+            function updateToggleIcon() {
+                var path = isPlaying
+                    ? 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'   // pause
+                    : 'M8 5v14l11-7z';                       // play
+                npToggleIcon.innerHTML = '<path d="' + path + '"/>';
+            }
+
+            // Progress
+            audio.addEventListener('timeupdate', function () {
+                if (audio.duration) {
+                    var pct = (audio.currentTime / audio.duration) * 100;
+                    npFill.style.width = pct + '%';
+                    npProgress.setAttribute('aria-valuenow', Math.round(pct));
+                }
+                npTime.textContent = formatTime(audio.currentTime);
+            });
+
+            audio.addEventListener('ended', function () {
+                if (currentIndex < tracks.length - 1) {
+                    playTrack(currentIndex + 1);
+                } else {
+                    isPlaying = false;
+                    updateToggleIcon();
+                }
+            });
+
+            // Seek
+            npProgress.addEventListener('click', function (e) {
+                if (!audio.duration) return;
+                var rect = npProgress.getBoundingClientRect();
+                var pct = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = pct * audio.duration;
+            });
+
+            // Controls
+            npToggle.addEventListener('click', togglePlay);
+            npPrev.addEventListener('click', function () { playTrack(Math.max(0, currentIndex - 1)); });
+            npNext.addEventListener('click', function () { playTrack(Math.min(tracks.length - 1, currentIndex + 1)); });
+
+            // Track click → play
+            tracks.forEach(function (t, i) {
+                t.addEventListener('click', function (e) {
+                    if (e.target.closest('.track-video-btn')) return;
+                    playTrack(i);
+                });
+                t.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        playTrack(i);
+                    }
+                });
+            });
+
+            // Video buttons — YouTube embeds
+            document.querySelectorAll('.track-video-btn').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var ytId = btn.getAttribute('data-youtube');
+                    if (!ytId) return;
+
+                    // Pause audio
+                    audio.pause();
+                    isPlaying = false;
+                    updateToggleIcon();
+
+                    // Open YouTube viewer
+                    var trackEl = btn.closest('.track');
+                    videoTitle.textContent = trackEl ? trackEl.getAttribute('data-title') : '';
+                    videoPlayer.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
+                    videoViewer.classList.add('is-open');
+                    videoViewer.setAttribute('aria-hidden', 'false');
+                });
+            });
+
+            function closeVideo() {
+                videoPlayer.src = '';
+                videoViewer.classList.remove('is-open');
+                videoViewer.setAttribute('aria-hidden', 'true');
+            }
+
+            videoClose.addEventListener('click', closeVideo);
+            videoViewer.addEventListener('click', function (e) {
+                if (e.target === videoViewer) closeVideo();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && videoViewer.classList.contains('is-open')) closeVideo();
+            });
+
+        })();
+    </script>
+</body>
+
+</html>

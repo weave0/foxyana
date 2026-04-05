@@ -1836,6 +1836,149 @@
         transform: none !important;
       }
     }
+
+    /* ================================================================
+       UKRAINE GUIDE — Through Foxyana's Eyes
+       ================================================================ */
+    .ukraine-guide {
+      background: var(--night-overture);
+      position: relative;
+    }
+
+    .ukraine-guide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+          rgba(26, 58, 143, 0.0) 0%,
+          rgba(26, 58, 143, 0.9) 30%,
+          rgba(196, 154, 26, 0.9) 70%,
+          rgba(196, 154, 26, 0.0) 100%);
+    }
+
+    .guide-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(48px, 6vw, 80px);
+    }
+
+    .guide-header .section-label {
+      color: var(--vyshyvanka-gold);
+      opacity: 0.9;
+    }
+
+    .guide-header .section-label::before {
+      background: var(--vyshyvanka-gold);
+    }
+
+    .guide-headline {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--linen);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .guide-sub {
+      font-size: 0.9rem;
+      color: rgba(245, 237, 224, 0.5);
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: clamp(10px, 1.5vw, 20px);
+    }
+
+    .guide-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: rgba(30, 21, 16, 0.7);
+      border: 1px solid rgba(26, 58, 143, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(196, 154, 26, 0.5);
+    }
+
+    .guide-card-img {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .guide-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .guide-card:hover .guide-card-img img {
+      transform: scale(1.04);
+    }
+
+    .guide-card-body {
+      padding: 14px 16px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .guide-ep-num {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(196, 154, 26, 0.65);
+    }
+
+    .guide-word {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--vyshyvanka-gold);
+      line-height: 1.2;
+      margin: 3px 0;
+    }
+
+    .guide-title {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--linen);
+      line-height: 1.4;
+    }
+
+    .guide-setting {
+      font-size: 0.7rem;
+      color: rgba(245, 237, 224, 0.32);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1024px) {
+      .guide-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .guide-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -1904,6 +2047,8 @@
         <a href="#stage" class="nav-link">Stage</a>
         <a href="#presence" class="nav-link">Presence</a>
         <a href="#contact" class="nav-link">Contact</a>
+        <a href="guide.html" class="nav-link nav-ukraine">Guide</a>
+        <a href="music.html" class="nav-link">Music</a>
         <a href="dance.html" class="nav-link">Dance</a>
       </nav>
     </div>
@@ -2765,6 +2910,202 @@
             Foxyana works with organisations whose intentions are clear.
           </p>
           <a href="mailto:getsome@goodflippinvibes.com" class="contact-cta">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         UKRAINE GUIDE — Through Foxyana's Eyes
+         Series: foxyana_ukraine_guide S1 (10 episodes)
+         Images: assets/images/ukraine-guide/ (copy via copy-assets.ps1)
+         =================================================================== -->
+    <section class="ukraine-guide section-pad" id="guide" aria-labelledby="guide-headline">
+      <div class="container">
+
+        <header class="guide-header" data-reveal>
+          <span class="section-label">Through Foxyana's Eyes</span>
+          <h2 class="guide-headline" id="guide-headline">A guide to Ukraine.</h2>
+          <p class="guide-sub">
+            Ten episodes. Mountains, kitchens, poetry, rivers.<br>
+            One word per episode. A country's story, told through movement.
+          </p>
+          <p style="margin-top: 20px;">
+            <a href="guide.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: rgba(196,154,26,0.1); border: 1px solid rgba(196,154,26,0.25); border-radius: 6px; color: var(--vyshyvanka-gold); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: transform 0.2s ease, border-color 0.2s ease;">Explore the full guide &rarr;</a>
+          </p>
+        </header>
+
+        <div class="guide-grid" role="list">
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/01_mountains-remember_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/01_mountains-remember_wide.png"
+                  alt="Foxyana on a Carpathian mountain path surrounded by embroidered ritual trees"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 01</span>
+              <p class="guide-word">Vyshyvanka</p>
+              <p class="guide-title">The Mountains Remember</p>
+              <p class="guide-setting">Hutsul village, Carpathian highlands</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/02_egg-that-holds-the-world_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/02_egg-that-holds-the-world_wide.png"
+                  alt="Foxyana at a Pysanka workshop table surrounded by intricately decorated eggs"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 02</span>
+              <p class="guide-word">Pysanka</p>
+              <p class="guide-title">The Egg That Holds the World</p>
+              <p class="guide-setting">Pysanka workshop, Carpathian foothills</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/03_what-the-bandura-knows_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/03_what-the-bandura-knows_wide.png"
+                  alt="Foxyana at an outdoor evening gathering in the Poltava region as a bandura player performs"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 03</span>
+              <p class="guide-word">Duma</p>
+              <p class="guide-title">What the Bandura Knows</p>
+              <p class="guide-setting">Poltava region, outdoor evening gathering</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/04_the-fold_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/04_the-fold_wide.png"
+                  alt="Foxyana folding varenyky in a traditional Ukrainian farmhouse kitchen"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 04</span>
+              <p class="guide-word">Varenyky</p>
+              <p class="guide-title">The Fold</p>
+              <p class="guide-setting">Traditional farmhouse kitchen, winter</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/05_the-golden-city_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/05_the-golden-city_wide.png"
+                  alt="Foxyana walking Lviv's old city cobblestones in early morning golden light"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 05</span>
+              <p class="guide-word">Vichne Misto</p>
+              <p class="guide-title">The Golden City</p>
+              <p class="guide-setting">Lviv old city, early morning</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/06_the-wide-open_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/06_the-wide-open_wide.png"
+                  alt="Foxyana standing in the vast Poltava steppe under a golden-hour sky"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 06</span>
+              <p class="guide-word">Volia</p>
+              <p class="guide-title">The Wide Open</p>
+              <p class="guide-setting">Poltava steppe, golden hour</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/07_the-word_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/07_the-word_wide.png"
+                  alt="Foxyana reading Ukrainian poetry in a library in afternoon light"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 07</span>
+              <p class="guide-word">Nenyia</p>
+              <p class="guide-title">The Word</p>
+              <p class="guide-setting">Library, afternoon light</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/08_the-forest-path_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/08_the-forest-path_wide.png"
+                  alt="Foxyana on a misty Polissia forest path in autumn"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 08</span>
+              <p class="guide-word">Lisovik</p>
+              <p class="guide-title">The Forest Path</p>
+              <p class="guide-setting">Polissia forest, autumn</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/09_the-river_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/09_the-river_wide.png"
+                  alt="Foxyana on the Dnipro embankment in Kyiv at dusk"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 09</span>
+              <p class="guide-word">Porih</p>
+              <p class="guide-title">The River</p>
+              <p class="guide-setting">Dnipro embankment, Kyiv, dusk</p>
+            </div>
+          </article>
+
+          <article class="guide-card" role="listitem" data-reveal>
+            <div class="guide-card-img">
+              <picture>
+                <source srcset="assets/images/ukraine-guide/10_the-childs-step_wide.webp" type="image/webp">
+                <img src="assets/images/ukraine-guide/10_the-childs-step_wide.png"
+                  alt="Foxyana in a wildflower meadow in late spring watching a child take first steps"
+                  loading="lazy" width="1792" height="1024">
+              </picture>
+            </div>
+            <div class="guide-card-body">
+              <span class="guide-ep-num">Episode 10</span>
+              <p class="guide-word">Pruzhynka</p>
+              <p class="guide-title">The Child's Step</p>
+              <p class="guide-setting">Wildflower meadow, late spring</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>

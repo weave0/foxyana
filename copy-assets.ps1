@@ -36,3 +36,48 @@ foreach ($img in $images) {
 }
 
 Write-Host "`nDone. $($images.Count) images processed -> $dest"
+
+# -----------------------------------------------------------------------
+# Ukraine Guide S1 — 10 episodes × wide cover (1792×1024)
+# Source: SummitView/assets/generated/foxyana/ukraine-guide/s01/<slug>/images/
+# Destination: assets/images/ukraine-guide/
+# -----------------------------------------------------------------------
+$guideDestDir = Join-Path $PSScriptRoot "assets\images\ukraine-guide"
+if (-not (Test-Path $guideDestDir)) {
+    New-Item -ItemType Directory -Path $guideDestDir | Out-Null
+    Write-Host "Created $guideDestDir"
+}
+
+$guideSrc = "z:\GFD\GFD Dev Projects\SummitView\assets\generated\foxyana\ukraine-guide\s01"
+
+$guideEpisodes = @(
+    @{ slug = "mountains-remember";        ep = "01" },
+    @{ slug = "egg-that-holds-the-world";  ep = "02" },
+    @{ slug = "what-the-bandura-knows";    ep = "03" },
+    @{ slug = "the-fold";                  ep = "04" },
+    @{ slug = "the-golden-city";           ep = "05" },
+    @{ slug = "the-wide-open";             ep = "06" },
+    @{ slug = "the-word";                  ep = "07" },
+    @{ slug = "the-forest-path";           ep = "08" },
+    @{ slug = "the-river";                 ep = "09" },
+    @{ slug = "the-childs-step";           ep = "10" }
+)
+
+$copiedGuide = 0
+foreach ($ep in $guideEpisodes) {
+    $slug     = $ep.slug
+    $epNum    = $ep.ep
+    $srcFile  = Join-Path $guideSrc "$slug\images\${epNum}_${slug}_wide.png"
+    $destFile = Join-Path $guideDestDir "${epNum}_${slug}_wide.png"
+    if (Test-Path $srcFile) {
+        Copy-Item -Path $srcFile -Destination $destFile -Force
+        Write-Host "Copied  ${epNum}_${slug}_wide.png"
+        $copiedGuide++
+    }
+    else {
+        Write-Warning "Missing $srcFile — skipped"
+    }
+}
+
+Write-Host "`nUkraine Guide: $copiedGuide/10 cover images copied -> $guideDestDir"
+
