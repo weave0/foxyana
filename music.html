@@ -175,14 +175,31 @@
             overflow: hidden;
         }
 
+        .album-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.22;
+            z-index: 0;
+        }
+
+        .album-hero > *:not(.album-hero-bg) {
+            position: relative;
+            z-index: 1;
+        }
+
         .album-hero::before {
             content: '';
             position: absolute;
             inset: 0;
+            z-index: 1;
             background:
-                radial-gradient(ellipse 80% 60% at 50% 30%, rgba(196, 74, 0, 0.08), transparent),
-                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26, 58, 143, 0.06), transparent),
-                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(196, 154, 26, 0.05), transparent);
+                linear-gradient(to bottom, rgba(14,10,6,0.55) 0%, transparent 30%, transparent 70%, rgba(14,10,6,0.75) 100%),
+                radial-gradient(ellipse 80% 60% at 50% 30%, rgba(196, 74, 0, 0.1), transparent),
+                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(196, 154, 26, 0.07), transparent);
             pointer-events: none;
         }
 
@@ -782,10 +799,12 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        .mv-perf-video video {
+        .mv-perf-video video,
+        .mv-perf-video iframe {
             width: 100%;
             height: 100%;
             display: block;
+            border: 0;
         }
 
         /* --- DJ Gallery --- */
@@ -973,6 +992,10 @@
 
     <!-- HERO -->
     <section class="album-hero" aria-labelledby="album-title">
+        <video class="album-hero-bg" autoplay loop muted playsinline preload="none"
+            aria-hidden="true">
+            <source src="assets/videos/foxyana_reel.mp4" type="video/mp4">
+        </video>
         <p class="album-hero-label">DJ Foxyana — Debut Album</p>
         <h1 id="album-title">The Steppe <em>Is Alive</em></h1>
         <p class="album-hero-sub">
@@ -1053,13 +1076,12 @@
                     </p>
                 </div>
                 <div class="mv-perf-video">
-                    <video
-                        controls
-                        preload="metadata"
-                        aria-label="DJ Foxyana — Душа вже знала, original performance recording">
-                        <source src="assets/videos/Foxyana%20-%20%D0%94%D1%83%D1%88%D0%B0%20%D0%B2%D0%B6%D0%B5%20%D0%B7%D0%BD%D0%B0%D0%BB%D0%B0480.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/OxBO3o-AMPM?rel=0&modestbranding=1"
+                        title="DJ Foxyana — Душа вже знала, original performance recording"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"></iframe>
                 </div>
             </div>
         </section>
