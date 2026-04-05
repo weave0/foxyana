@@ -1,5 +1,9 @@
 # Files excluded from Cloudflare Workers Static Assets deployment
 # (Cloudflare 25 MB per-asset limit)
+
+# Git internals — must be explicit; wrangler scans .git/objects where large blobs live
+.git/
+
 assets/videos/Foxyana Dances.mp4
 assets/videos/Foxyana - Душа вже знала.mp4
 assets/videos/Foxyana - Душа вже знала480.mp4
