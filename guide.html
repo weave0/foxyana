@@ -1077,6 +1077,67 @@
     .ep-gallery-item {
       cursor: zoom-in;
     }
+
+    /* --- Original Performance --- */
+    .mv-roots {
+      padding: clamp(50px, 7vh, 90px) var(--side-pad);
+      border-top: 1px solid rgba(196, 154, 26, 0.08);
+      background: linear-gradient(to bottom,
+          rgba(14, 10, 6, 0.4),
+          transparent 30%,
+          transparent 70%,
+          rgba(14, 10, 6, 0.4));
+    }
+
+    .mv-roots-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .mv-roots-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--vyshyvanka-gold);
+      opacity: 0.7;
+    }
+
+    .mv-roots-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      font-weight: 300;
+      color: var(--linen);
+      opacity: 0.85;
+      margin: 0 0 4px;
+    }
+
+    .mv-roots-desc {
+      font-size: 0.82rem;
+      color: rgba(245, 237, 224, 0.45);
+      line-height: 1.8;
+      margin: 0 0 clamp(24px, 3vw, 40px);
+    }
+
+    .mv-roots-video {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #0a0704;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .mv-roots-video video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
   </style>
 </head>
 
@@ -2258,6 +2319,28 @@
           title="DJ Foxyana — Душа вже знала (Official Music Video)"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- ORIGINAL PERFORMANCE — Душа вже знала -->
+    <section class="mv-roots reveal" aria-label="Original performance: Душа вже знала">
+      <div class="mv-roots-inner">
+        <p class="mv-roots-label">Original Performance</p>
+        <h3 class="mv-roots-title">As it began — before the frequencies</h3>
+        <p class="mv-roots-desc">
+          Ten episodes of heritage, held in the body.<br>
+          This is the dance that preceded the track —
+          the original recording, before the electronic frequencies found their shape.
+        </p>
+        <div class="mv-roots-video">
+          <video
+            controls
+            preload="metadata"
+            aria-label="DJ Foxyana — Душа вже знала, original performance recording">
+            <source src="assets/videos/Foxyana%20-%20%D0%94%D1%83%D1%88%D0%B0%20%D0%B2%D0%B6%D0%B5%20%D0%B7%D0%BD%D0%B0%D0%BB%D0%B0.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
       </div>
     </section>
 
