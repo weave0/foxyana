@@ -11,7 +11,7 @@
   <meta property="og:title" content="Through Foxyana's Eyes — A Guide to Ukraine">
   <meta property="og:description"
     content="Ten episodes exploring Ukrainian cultural heritage — embroidery, pysanka, bandura, varenyky, Lviv, the steppe, poetry, forests, the Dnipro, and dance.">
-  <meta property="og:image" content="https://foxyana.com/assets/images/ukraine-guide/01_mountains-remember_wide.webp">
+  <meta property="og:image" content="https://foxyana.com/assets/images/Intro/Golden%20sunset%20over%20Ukrainian%20countryside.png">
   <meta property="og:url" content="https://foxyana.com/guide">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -19,11 +19,13 @@
   <meta name="twitter:description"
     content="Ten episodes exploring Ukrainian cultural heritage through movement, memory, and one word at a time.">
   <meta name="twitter:image"
-    content="https://foxyana.com/assets/images/ukraine-guide/01_mountains-remember_wide.webp">
+    content="https://foxyana.com/assets/images/Intro/Golden%20sunset%20over%20Ukrainian%20countryside.png">
   <link rel="canonical" href="https://foxyana.com/guide">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
     rel="stylesheet">
@@ -716,6 +718,187 @@
       color: var(--vyshyvanka-gold);
     }
 
+    /* --- Music Video Interlude --- */
+    .mv-interlude {
+      padding: clamp(80px, 12vh, 140px) var(--side-pad);
+      text-align: center;
+      background: linear-gradient(to bottom,
+          transparent,
+          rgba(196, 74, 0, 0.05) 30%,
+          rgba(26, 58, 143, 0.06) 60%,
+          transparent);
+      border-top: 1px solid rgba(196, 154, 26, 0.08);
+    }
+
+    .mv-interlude-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--vyshyvanka-gold);
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    .mv-interlude h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--linen);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .mv-interlude-sub {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      font-style: italic;
+      color: rgba(245, 237, 224, 0.45);
+      margin-bottom: 18px;
+    }
+
+    .mv-interlude-note {
+      font-size: 0.84rem;
+      color: rgba(245, 237, 224, 0.42);
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    /* Click-to-load YouTube embed */
+    .mv-interlude-embed {
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #0a0704;
+      box-shadow: 0 24px 72px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+    }
+
+    .mv-interlude-embed .mv-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .mv-interlude-embed .mv-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .mv-interlude-embed .mv-play-btn::before {
+      content: '';
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(196, 154, 26, 0.9);
+      position: absolute;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .mv-interlude-embed:hover .mv-play-btn::before {
+      transform: scale(1.1);
+      background: var(--vyshyvanka-gold);
+    }
+
+    .mv-interlude-embed .mv-play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px 0 12px 22px;
+      border-color: transparent transparent transparent var(--night-overture);
+      position: absolute;
+      margin-left: 4px;
+      z-index: 2;
+    }
+
+    .mv-interlude-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+    }
+
+    .mv-interlude-embed.is-playing .mv-poster,
+    .mv-interlude-embed.is-playing .mv-play-btn {
+      display: none;
+    }
+
+    .mv-interlude-embed.is-playing iframe {
+      display: block;
+    }
+
+    /* --- Episode image gallery --- */
+    .ep-gallery {
+      max-width: var(--content-max);
+      margin: clamp(30px, 5vh, 60px) auto 0;
+      padding: 0 var(--side-pad);
+    }
+
+    .ep-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 6px;
+    }
+
+    .ep-gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      background: var(--bark);
+    }
+
+    .ep-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .ep-gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .ep-gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 12px 10px;
+      background: linear-gradient(to top, rgba(14, 10, 6, 0.85) 0%, transparent 100%);
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: rgba(245, 237, 224, 0.55);
+      line-height: 1.4;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .ep-gallery-item:hover .ep-gallery-caption,
+    .ep-gallery-item:focus-within .ep-gallery-caption {
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .ep-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+      }
+    }
+
     /* --- Scroll Reveal --- */
     .reveal {
       opacity: 0;
@@ -768,6 +951,132 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ================================================================
+       LIGHTBOX — native <dialog>
+       ================================================================ */
+    .lightbox {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .lightbox::backdrop {
+      background: rgba(14, 10, 6, 0.96);
+    }
+
+    .lightbox[open] {
+      display: flex;
+    }
+
+    .lb-figure {
+      max-width: min(92vw, 1100px);
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 0;
+    }
+
+    .lb-image {
+      max-width: 100%;
+      max-height: calc(92vh - 64px);
+      object-fit: contain;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .lb-caption {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      color: rgba(245, 237, 224, 0.72);
+      font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.5;
+      max-width: 680px;
+    }
+
+    .lb-close,
+    .lb-prev,
+    .lb-next {
+      position: fixed;
+      width: 44px;
+      height: 44px;
+      background: rgba(245, 237, 224, 0.1);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245, 237, 224, 0.9);
+      transition: background 0.2s ease;
+      z-index: 2;
+    }
+
+    .lb-close:hover,
+    .lb-prev:hover,
+    .lb-next:hover {
+      background: rgba(196, 74, 0, 0.6);
+    }
+
+    .lb-close:focus-visible,
+    .lb-prev:focus-visible,
+    .lb-next:focus-visible {
+      outline: 2px solid rgba(196, 154, 26, 0.8);
+      outline-offset: 2px;
+    }
+
+    .lb-close svg,
+    .lb-prev svg,
+    .lb-next svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .lb-close {
+      top: 16px;
+      right: 16px;
+    }
+
+    .lb-prev {
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+    }
+
+    .lb-next {
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+    }
+
+    .lb-counter {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(245, 237, 224, 0.35);
+    }
+
+    /* Make gallery items feel clickable */
+    .ep-gallery-item {
+      cursor: zoom-in;
+    }
   </style>
 </head>
 
@@ -803,10 +1112,9 @@
     <section class="guide-hero" aria-label="Series introduction">
       <div class="guide-hero-bg">
         <picture>
-          <source srcset="assets/images/ukraine-guide/01_mountains-remember_wide.webp" type="image/webp">
-          <img src="assets/images/ukraine-guide/01_mountains-remember_wide.png"
-            alt="Foxyana on a Carpathian mountain path surrounded by embroidered ritual trees" width="1792"
-            height="1024" fetchpriority="high">
+          <img src="assets/images/Intro/Golden%20sunset%20over%20Ukrainian%20countryside.png"
+            alt="Golden sunset over the Ukrainian countryside — rolling hills bathed in warm light"
+            width="2610" height="1470" fetchpriority="high">
         </picture>
       </div>
       <div class="guide-hero-content">
@@ -958,6 +1266,34 @@
         </div>
       </div>
 
+      <div class="ep-pullquote reveal">
+        <blockquote>Some things are the same as they were. Not because nothing has happened. Because someone kept making them.</blockquote>
+        <cite>Episode 01 &mdash; The Mountains Remember</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/01/Elderly fox stitching traditional vyshyvka pattern.png"
+              alt="An elderly fox stitching vyshyvka — each geometric repeat carries a family's cosmological worldview"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Each stitch is a letter — family lineage written in thread</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/01/Foxyana dancing in morning light.png"
+              alt="Foxyana dancing in Carpathian morning light"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Movement at dawn — the mountains as first teacher</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/01/Intricate Hutsul gate in morning light.png"
+              alt="An intricate Hutsul ornamental gate at dawn — the same geometric language worn on the body"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Hutsul gate at dawn — the same geometric vocabulary embroidered on sleeves</figcaption>
+          </figure>
+        </div>
+      </div>
+
       <div class="ep-atmosphere">
         <picture>
           <source srcset="assets/images/ukraine-guide/01_mountains-remember_atmosphere.webp" type="image/webp">
@@ -1002,6 +1338,7 @@
             <p>In 2022, pysanky were made in bomb shelters. Children in displaced families continue the tradition in
               Warsaw apartments, Berlin refugee housing, Toronto community kitchens. The practice travels because it was
               always meant to.</p>
+            <p><em>Pysanka</em> shares its root with <em>pysmenstvo</em> &mdash; literature. The verb <em>pysaty</em> (to write) holds the egg, the poem, and the alphabet in the same hand.</p>
           </div>
           <dl class="ep-ukr-word">
             <dt>Писанка &mdash; Pysanka</dt>
@@ -1029,6 +1366,35 @@
       <div class="ep-pullquote reveal">
         <blockquote>The egg is already whole. You are just deciding what to preserve.</blockquote>
         <cite>Episode 02 &mdash; The Egg That Holds the World</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/02/Decorating an egg by candlelight.png"
+              alt="Decorating a pysanka by candlelight — the beeswax kistka traces ancestral symbols"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Pysanka by candlelight — the kistka writes in wax before color comes</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/02/Delicate paws and painted pysanka.png"
+              alt="Delicate fox paws holding a finished pysanka — each egg takes hours; some patterns take a lifetime"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">A finished pysanka — hours of work, a lifetime of pattern memory</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/02/Foxyana crafting pysanka in sunlight.png"
+              alt="Foxyana crafting pysanka in spring sunlight — the creation as a form of prayer"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Spring workshop — the act of making as cosmological practice</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/02/Spring morning with colorful dye jars.png"
+              alt="Colorful dye jars on a spring morning workshop table — colors applied light to dark, irreversible"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The dye sequence goes light to dark — you cannot reverse the layers</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="ep-atmosphere">
@@ -1074,8 +1440,7 @@
             </p>
             <p>In the 1920s&ndash;30s, the Soviet government systematically arrested kobzari, confiscated their
               instruments, and executed many of them &mdash; targeted specifically because they memorized Ukrainian
-              historical narratives that ran counter to Soviet historiography. The tradition survived through students
-              and hidden instruments.</p>
+              historical narratives that ran counter to Soviet historiography. You cannot burn a memory that lives in a person's body. So they removed the persons. The tradition survived through students and hidden instruments.</p>
           </div>
           <dl class="ep-ukr-word">
             <dt>Дума &mdash; Duma</dt>
@@ -1098,6 +1463,40 @@
               poetry &mdash; and were
               systematically killed for it.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="ep-pullquote reveal">
+        <blockquote>You cannot burn a memory that lives in a person's body. So they removed the persons.</blockquote>
+        <cite>Episode 03 &mdash; What the Bandura Knows</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/03/Elderly fox playing bandura at sunset.png"
+              alt="An elderly fox kobzar playing the bandura at sunset — the wandering bardic tradition"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">A kobzar at sunset — the duma tradition carried in the body of the performer</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/03/Evening serenade in a Ukrainian village.png"
+              alt="Evening bandura serenade in a Ukrainian village courtyard — duma as community ritual"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Village evening — duma as communal memory, performed in the courtyard</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/03/Foxyana enjoying the evening breeze.png"
+              alt="Foxyana listening at dusk — the duma carries what written words cannot hold"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Listening at dusk — the duma carries what written words cannot hold</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/03/Golden harmony of the bandura.png"
+              alt="Golden light on a bandura's strings — 55 to 68 strings, each a voice of the nation"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The bandura — 55 to 68 strings, each voice of the nation</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -1143,6 +1542,7 @@
               pattern &mdash; the precise way each family crimps the dough &mdash; became an act of intergenerational
               transmission. Now diaspora families make them as cultural survival, hands teaching hands across kitchen
               tables in cities that never heard of the Carpathians.</p>
+            <p>Making varenyky was traditionally a communal act &mdash; women gathered before weddings, before winter, before the long harvest to produce hundreds together. The correct crimp was never described in words. It was learned through years of watching, then muscle memory. The body carries what the document cannot hold.</p>
           </div>
           <dl class="ep-ukr-word">
             <dt>Вареники &mdash; Varenyky</dt>
@@ -1164,6 +1564,34 @@
               learn to make the right way. Varenyky are that, except the fold pattern at the top is how that
               grandmother's grandmother signed her name.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="ep-pullquote reveal">
+        <blockquote>The fold is a form of writing. It signs the thing that it closes.</blockquote>
+        <cite>Episode 04 &mdash; The Fold</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/04/Crimping a varenyky with care.png"
+              alt="Fox paws crimping a varenyky — the fold pattern is each family's identifying signature"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The fold — each family's crimp angle is as identifying as handwriting</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/04/Delicious varenyky with sour cream.png"
+              alt="A bowl of varenyky with sour cream — the taste of belonging across borders"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Varenyky with sour cream — the meal that crossed every border the family crossed</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/04/Making varenyky in a cozy kitchen.png"
+              alt="Making varenyky in a warm communal kitchen — knowledge passing hand to hand without words"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The communal kitchen — the correct crimp was never described in words</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -1208,6 +1636,7 @@
             <p>The city's pre-war Jewish community was approximately 30% of the population, nearly completely destroyed
               in the Holocaust. This absence is part of the architecture now &mdash; the buildings that remain, the
               synagogues that do not.</p>
+            <p><strong>Ivan Franko</strong> &mdash; poet, writer, translator &mdash; is Lviv's civic literary compass. His statue anchors the university district. He wrote in Ukrainian, Polish, and German in a city that required all three, and insisted on the Ukrainian identity of a place that was never only one thing without requiring it to stop being everything else.</p>
             <p>Since 2022, Lviv has served as the primary transit and stabilization city for internally displaced
               Ukrainians. Cultural institutions continue to operate under air raid alerts. The café culture maintains an
               Austro-Hungarian copper cezve coffee tradition &mdash; Ottoman preparation adapted through Habsburg
@@ -1238,6 +1667,35 @@
       <div class="ep-pullquote reveal">
         <blockquote>The city has been named four times and survived them all. The lions know the counting.</blockquote>
         <cite>Episode 05 &mdash; The Golden City</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/05/Cozy café in subterranean Lviv.png"
+              alt="A cozy underground café beneath Lviv's cobblestones — Ottoman copper cezve coffee adapted through Habsburg contact"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">A subterranean Lviv café — Ottoman coffee tradition, Habsburg architecture, Ukrainian city</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/05/Fox paw gripping lion head handle.png"
+              alt="A fox paw gripping a lion-head door handle — Lviv's heraldic guardian in stone"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The lion's grip — Leopolis names itself in Latin, stone, and seven centuries of doors</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/05/Foxyana at dawn in Rynok Square.png"
+              alt="Foxyana at dawn in Rynok Square — Lviv before the day belongs to anyone"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Rynok Square at dawn — the city before the tourists, before the century</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/05/Lviv's lion motifs through history.png"
+              alt="Lviv's lion motifs across architectural details spanning seven centuries"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Seven centuries of lions — Gothic, Renaissance, Baroque, the same heraldic persistence</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="ep-atmosphere">
@@ -1282,6 +1740,7 @@
               the Zaporozhian Sich: a democratic self-governing republic on the Dnipro islands below the rapids. Elected
               leadership. Assembly decision-making. An anti-feudal model centuries before the concept had a name in
               Western political theory.</p>
+            <p>This history is also complex. The Khmelnytsky Uprising of 1648 included documented massacres of Jewish communities across Ukraine. Ukrainian national pride in the Cossack tradition and honest accounting of those events exist in the same history. The serious treatment holds both.</p>
             <p><strong>Hopak</strong> is the dance of this landscape: athletic, improvisational, with explosive
               <em>prysiádka</em> (deep squat-kick). Competition as generosity &mdash; showing what the body can do as a
               gift to the community.
@@ -1307,6 +1766,40 @@
               Ukraine had the steppe and the Cossacks, and they got there four centuries earlier. The word for freedom
               and the word for open space are the same word.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="ep-pullquote reveal">
+        <blockquote>The people who named this landscape called freedom and open space the same word. They were describing the land. They were describing themselves. They were describing the same thing.</blockquote>
+        <cite>Episode 06 &mdash; The Wide Open</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/06/Foxyana dances on the steppe.png"
+              alt="Foxyana dancing on the Poltava steppe — volia in motion, the landscape with no walls"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Volia in motion — the steppe has no walls</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/06/Foxyana on the golden steppe.png"
+              alt="Foxyana standing in the golden Poltava steppe — where Ukrainian history found its widest canvas"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The Poltava steppe — where Ukrainian history found its widest canvas</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/06/Foxyana running through the golden steppe.png"
+              alt="Foxyana running through the golden steppe — toward nothing, toward everything"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Running toward nothing — running toward everything</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/06/Golden hues over the Poltava steppe.png"
+              alt="Golden hour light saturating the Poltava steppe — the color of volia"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Golden hour on the steppe — the color of freedom and open space are also the same</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -1357,6 +1850,7 @@
               identity. Born a serf, he purchased his freedom through art. Exiled by Tsar Nicholas I, forbidden from
               writing or painting, he hid poems underground. He died at 47. His <em>Kobzar</em> &mdash; named after the
               bards of Episode 3 &mdash; defined literary Ukrainian for all subsequent generations.</p>
+            <p>Since 2022, Russian-speaking Ukrainians have been switching to Ukrainian in significant numbers &mdash; not because they did not know it, but as a deliberate act of self-identification. The language carries the memory of two centuries of suppression. Every sentence in Ukrainian now declares what the Ems Ukaz tried to prevent.</p>
           </div>
           <dl class="ep-ukr-word">
             <dt>Ненька &mdash; Nenyia</dt>
@@ -1384,6 +1878,35 @@
         <blockquote>Taras Shevchenko died at 47, exiled by Tsar Nicholas I, forbidden from writing or painting. He hid
           poems underground and in correspondence. He wrote anyway.</blockquote>
         <cite>Episode 07 &mdash; The Word</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/07/Fox paw writing НЕНЬКА in calligraphy.png"
+              alt="A fox paw writing Ненька in Ukrainian calligraphy — the diminutive-tender word for motherland"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Ненька — the word that declares what the Ems Ukaz tried to prevent</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/07/Foxyana in a sunlit library.png"
+              alt="Foxyana in a sunlit Ukrainian library — the library as a site of cultural resistance"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The library as a site of resistance — every book here was once illegal</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/07/Foxyana reading in golden sunlight.png"
+              alt="Foxyana reading in golden sunlight — Shevchenko's words in the light they were written to outlast"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The Kobzar in the light it was written to outlast</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/07/Golden hour at the library window.png"
+              alt="Golden hour light at a library window — language as landscape, the window to everything kept"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Language as landscape — the window to everything kept, everything hidden, everything that survived</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="ep-atmosphere">
@@ -1446,9 +1969,42 @@
           </div>
           <div class="ep-insight">
             <p class="ep-insight-label">Cultural Insight</p>
-            <p>The Lisovik does not want your soul. It wants you to know where you are and who you are dealing with.
-              Respect is the only currency that works in this economy.</p>
+            <p>If you enter a forest and feel the pace of it ask you to slow down &mdash; that is not your imagination. That is accurate perception. The Lisovik is not a belief requiring literal interpretation. It is a posture toward the nonhuman world with practical consequences for how you behave in it.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="ep-pullquote reveal">
+        <blockquote>The forest was here before the categories we use to describe it. The Lisovik is not waiting for anyone to believe in it. It is operating at scale.</blockquote>
+        <cite>Episode 08 &mdash; The Forest Path</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/08/Autumn journey into the forest.png"
+              alt="Foxyana on an autumn forest path entering the Polissia woodland — the forest path into Lisovik's territory"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The path into Polissia — entering on the forest's terms</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/08/Foxyana in a sunlit autumn glade.png"
+              alt="Foxyana in a sunlit autumn forest glade — a clearing that feels watched"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">A clearing that feels watched — accurate perception, not imagination</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/08/Golden afternoon in the autumn woods.png"
+              alt="Golden afternoon light filtering through the Ukrainian autumn forest canopy"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The Ukrainian forest in autumn — amber, shadow, and the intelligence of old growth</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/08/Whispering guardian of the woods.png"
+              alt="The Lisovik — forest guardian whispering from the undergrowth, not waiting for belief, operating at scale"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The Lisovik — not a ghost, not a metaphor, the forest's own subjectivity with agency</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -1490,6 +2046,7 @@
               <em>Hamaliya</em> opens: &ldquo;The wide Dnipro roars and groans.&rdquo; The river is literary
               protagonist.
             </p>
+            <p>Shevchenko made one specific request before his death: to be buried where he could see the Dnipro. He is buried at Kaniv, on a high hill above the river. He specified the view. The river was there when he asked. The river is still there.</p>
             <p><strong>Kyivan Rus</strong> (9th&ndash;13th century) was centered in Kyiv &mdash; ancestor to
               Ukrainian, Belarusian, and Russian cultures. Ukrainian historical scholarship locates Ukrainian cultural
               continuity directly from Kyivan Rus. Moscow was a later principality.</p>
@@ -1525,6 +2082,35 @@
         <blockquote>The wide Dnipro roars and groans. The Dnipro now carries both ancient and contemporary historical
           weight.</blockquote>
         <cite>Episode 09 &mdash; The River</cite>
+      </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/09/Foxyana by the Dnipro at dusk.png"
+              alt="Foxyana standing by the Dnipro at dusk — Ukraine's oldest story, the river as literary protagonist"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The Dnipro at dusk — Kyiv's oldest story, 2,285 kilometers of national memory</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/09/Foxyana watching Kyiv at dusk.png"
+              alt="Foxyana watching Kyiv from the river embankment at dusk — the city built above the water"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Watching Kyiv from the river's edge — Shevchenko's view, still there</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/09/Golden reflections at dusk.png"
+              alt="Golden light reflected on the Dnipro at dusk — the light Shevchenko described from the hill at Kaniv"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Light on the water that Shevchenko described from the hill at Kaniv — the view he requested, and received</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/09/Twilight over Kyiv and the Dnipro.png"
+              alt="Twilight settling over Kyiv and the Dnipro — the threshold of a country's memory"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Twilight over Kyiv — the threshold of a country's memory, the porih between then and now</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="ep-atmosphere">
@@ -1570,6 +2156,7 @@
             <p>Folk dance was traditionally taught body-to-body: the child mirrors the parent or elder without verbal
               instruction. The body carries the step through diaspora displacement &mdash; across kitchen floors in
               cities that never heard of the Carpathians, the feet remember what the language might not.</p>
+            <p>The series closes with a folk tale: <em>Лисичка та Журавель</em> &mdash; The Fox and the Crane. A fox invites a crane to dinner and serves the food on a flat plate. The crane's beak is too long for a flat plate; the fox eats everything. The crane returns the invitation and serves food in a tall narrow jar. The fox's snout cannot reach it; the crane eats everything. Reciprocity requires knowing how the other person receives. It takes exactly one return invitation to learn this.</p>
           </div>
           <dl class="ep-ukr-word">
             <dt>Пружинка &mdash; Pruzhynka</dt>
@@ -1606,7 +2193,73 @@
           is returning the weight the way it returned hers.</blockquote>
         <cite>Episode 10 &mdash; The Child's Step</cite>
       </div>
+
+      <div class="ep-gallery reveal">
+        <div class="ep-gallery-grid">
+          <figure class="ep-gallery-item">
+            <img src="assets/images/10/Foxyana dances in a blooming meadow.png"
+              alt="Foxyana dancing in a blooming spring meadow — the child's step, joy as an act of will"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The child's step — joy as an act of will after everything</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/10/Foxyana in the spring meadow.png"
+              alt="Foxyana in a spring meadow — the bloom after everything, the folk tale's promise kept"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Spring meadow — the bloom that happens whether or not you believed it would</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/10/Foxyana in a golden meadow.png"
+              alt="Foxyana in a golden wildflower meadow — Pruzhynka, the little spring that begins everything"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Pruzhynka in the golden meadow — the foundation spring-step, the beginning of every folk form</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/10/Wildflowers and a vixen in sunlight.png"
+              alt="Wildflowers with Foxyana in sunlight — the Fox and the Crane, reciprocity requires knowing how the other receives"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">Wildflowers reclaiming the field — the Fox and the Crane finish their meal, and both learned something</figcaption>
+          </figure>
+          <figure class="ep-gallery-item">
+            <img src="assets/images/10/Foxyana%27s%20dance%20in%20the%20meadow.png"
+              alt="Foxyana's dance in the meadow — the pruzhynka principle, every ending a beginning"
+              loading="lazy" width="1024" height="1024">
+            <figcaption class="ep-gallery-caption">The dance in the meadow — one step leads to another, and that is enough</figcaption>
+          </figure>
+        </div>
+      </div>
     </article>
+
+
+    <!-- ============================================================= -->
+    <!-- MUSIC VIDEO INTERLUDE — ДУША ВЖЕ ЗНАЛА                           -->
+    <!-- ============================================================= -->
+    <section class="mv-interlude reveal" aria-label="Music video: Душа вже знала">
+      <p class="mv-interlude-label">DJ Foxyana — Official Music Video</p>
+      <h2>Душа вже знала</h2>
+      <p class="mv-interlude-sub">The Soul Already Knew</p>
+      <p class="mv-interlude-note">
+        Ten episodes of heritage, held in the body.
+        Before language, before record —
+        the soul already carried what these mountains taught.
+      </p>
+      <div class="mv-interlude-embed" id="mv-guide-embed" role="button" tabindex="0"
+        aria-label="Play music video: Душа вже знала by DJ Foxyana">
+        <img
+          class="mv-poster"
+          src="https://i.ytimg.com/vi/_TkyufYMEQM/maxresdefault.jpg"
+          alt="DJ Foxyana — Душа вже знала music video thumbnail"
+          loading="lazy"
+          width="1280"
+          height="720">
+        <div class="mv-play-btn" aria-hidden="true"></div>
+        <iframe
+          data-src="https://www.youtube-nocookie.com/embed/_TkyufYMEQM?rel=0&modestbranding=1&autoplay=1"
+          title="DJ Foxyana — Душа вже знала (Official Music Video)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </section>
 
 
     <!-- ============================================================= -->
@@ -1643,10 +2296,59 @@
 
   <!-- ============================================================= -->
   <!-- SCRIPTS                                                         -->
+  <!-- LIGHTBOX ============================================================= -->
+  <dialog id="lb" class="lightbox" aria-label="Image lightbox" aria-modal="true">
+    <button class="lb-close" id="lb-close" aria-label="Close lightbox" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      </svg>
+    </button>
+    <button class="lb-prev" id="lb-prev" aria-label="Previous image" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>
+    </button>
+    <button class="lb-next" id="lb-next" aria-label="Next image" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </button>
+    <figure class="lb-figure">
+      <img id="lb-img" src="data:," alt="" class="lb-image">
+      <figcaption id="lb-caption" class="lb-caption"></figcaption>
+    </figure>
+    <span class="lb-counter" id="lb-counter" aria-live="polite"></span>
+  </dialog>
+
   <!-- ============================================================= -->
   <script>
     (function () {
       'use strict';
+
+      // ---------------------------------------------------------------
+      // Click-to-load music video interlude
+      // ---------------------------------------------------------------
+      var mvEmbed = document.getElementById('mv-guide-embed');
+      if (mvEmbed) {
+        function activateMvEmbed() {
+          var iframe = mvEmbed.querySelector('iframe');
+          if (iframe && iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+            delete iframe.dataset.src;
+          }
+          mvEmbed.classList.add('is-playing');
+          mvEmbed.removeEventListener('click', activateMvEmbed);
+          mvEmbed.removeEventListener('keydown', handleMvKey);
+        }
+        function handleMvKey(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateMvEmbed();
+          }
+        }
+        mvEmbed.addEventListener('click', activateMvEmbed);
+        mvEmbed.addEventListener('keydown', handleMvKey);
+      }
 
       // ---------------------------------------------------------------
       // Scroll-reveal (IntersectionObserver)
@@ -1686,6 +2388,86 @@
         }, { threshold: 0.15, rootMargin: '-56px 0px -60% 0px' });
 
         episodes.forEach(function (ep) { navObserver.observe(ep); });
+      }
+
+      // ---------------------------------------------------------------
+      // Lightbox — native <dialog> for episode galleries
+      // ---------------------------------------------------------------
+      var lbDialog = document.getElementById('lb');
+      if (lbDialog && typeof lbDialog.showModal === 'function') {
+        var lbImg = document.getElementById('lb-img');
+        var lbCaption = document.getElementById('lb-caption');
+        var lbCounter = document.getElementById('lb-counter');
+        var lbClose = document.getElementById('lb-close');
+        var lbPrev = document.getElementById('lb-prev');
+        var lbNext = document.getElementById('lb-next');
+
+        var lbImages = [];
+        var lbIdx = 0;
+
+        function lbBuildList() {
+          lbImages = Array.from(document.querySelectorAll('.ep-gallery-item img'));
+        }
+
+        function lbShow() {
+          var el = lbImages[lbIdx];
+          lbImg.src = el.src;
+          lbImg.alt = el.alt;
+          var cap = el.closest('.ep-gallery-item').querySelector('.ep-gallery-caption');
+          lbCaption.textContent = cap ? cap.textContent : '';
+          lbCounter.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+        }
+
+        function lbOpen(idx) {
+          lbBuildList();
+          lbIdx = idx;
+          lbShow();
+          lbDialog.showModal();
+          lbClose.focus();
+        }
+
+        function lbCloseDialog() {
+          lbDialog.close();
+        }
+
+        lbClose.addEventListener('click', lbCloseDialog);
+
+        lbPrev.addEventListener('click', function () {
+          lbIdx = (lbIdx - 1 + lbImages.length) % lbImages.length;
+          lbShow();
+        });
+
+        lbNext.addEventListener('click', function () {
+          lbIdx = (lbIdx + 1) % lbImages.length;
+          lbShow();
+        });
+
+        lbDialog.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { lbIdx = (lbIdx - 1 + lbImages.length) % lbImages.length; lbShow(); }
+          if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbImages.length; lbShow(); }
+        });
+
+        // Click on backdrop (outside figure) to close
+        lbDialog.addEventListener('click', function (e) {
+          if (e.target === lbDialog) lbCloseDialog();
+        });
+
+        // Wire gallery items — keyboard + click
+        lbBuildList();
+        lbImages.forEach(function (imgEl, i) {
+          var item = imgEl.closest('.ep-gallery-item');
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('role', 'button');
+          item.setAttribute('aria-label', 'View image: ' + (imgEl.alt || 'gallery image'));
+
+          item.addEventListener('click', function () { lbOpen(i); });
+          item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              lbOpen(i);
+            }
+          });
+        });
       }
 
     })();

@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
@@ -632,7 +633,240 @@
             color: var(--vyshyvanka-gold);
         }
 
+        /* --- Featured Music Video Section --- */
+        .mv-feature {
+            padding: clamp(60px, 8vh, 100px) var(--side-pad);
+            border-top: 1px solid rgba(196, 154, 26, 0.08);
+            border-bottom: 1px solid rgba(196, 154, 26, 0.08);
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(196, 74, 0, 0.04) 30%,
+                    rgba(196, 154, 26, 0.04) 60%,
+                    transparent);
+        }
+
+        .mv-feature-inner {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: clamp(30px, 4vw, 60px);
+            align-items: center;
+        }
+
+        .mv-meta-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            opacity: 0.7;
+            margin-bottom: 14px;
+        }
+
+        .mv-meta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            font-weight: 300;
+            color: var(--linen);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .mv-meta-sub {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(245, 237, 224, 0.45);
+            margin-bottom: 20px;
+        }
+
+        .mv-meta-desc {
+            font-size: 0.84rem;
+            color: rgba(245, 237, 224, 0.55);
+            line-height: 1.75;
+        }
+
+        .mv-meta-original {
+            margin-top: 20px;
+            font-size: 0.72rem;
+            color: rgba(245, 237, 224, 0.3);
+            letter-spacing: 0.04em;
+        }
+
+        .mv-meta-original a {
+            color: rgba(245, 237, 224, 0.4);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .mv-meta-original a:hover {
+            color: var(--vyshyvanka-gold);
+        }
+
+        .mv-embed-wrapper {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #0a0704;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .mv-embed-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- DJ Gallery --- */
+        .dj-gallery {
+            padding: clamp(60px, 8vh, 100px) var(--side-pad);
+            border-bottom: 1px solid rgba(196, 154, 26, 0.08);
+        }
+
+        .dj-gallery-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            opacity: 0.7;
+            margin-bottom: 36px;
+            display: block;
+        }
+
+        /* 2-up spotlight row */
+        .dj-spotlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .dj-spotlight-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+        }
+
+        .dj-spotlight-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .dj-spotlight-item:hover img,
+        .dj-spotlight-item:focus-within img {
+            transform: scale(1.03);
+        }
+
+        .dj-spotlight-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(14, 10, 6, 0.88));
+            padding: 40px 20px 18px;
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-style: italic;
+            color: var(--linen);
+            line-height: 1.45;
+        }
+
+        /* Ambient video reel */
+        .dj-reel {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #000;
+        }
+
+        .dj-reel-label {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            font-size: 0.65rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.45);
+            z-index: 2;
+        }
+
+        .dj-reel-video {
+            width: 100%;
+            display: block;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* Masonry grid */
+        .dj-grid {
+            columns: 4 200px;
+            column-gap: 12px;
+        }
+
+        .dj-grid-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dj-grid-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .dj-grid-item:hover img,
+        .dj-grid-item:focus-within img {
+            transform: scale(1.03);
+        }
+
+        .dj-grid-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(14, 10, 6, 0.85);
+            color: var(--linen);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            padding: 8px 12px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .dj-grid-item:hover .dj-grid-caption,
+        .dj-grid-item:focus-within .dj-grid-caption {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .dj-spotlight {
+                grid-template-columns: 1fr;
+            }
+
+            .dj-grid {
+                columns: 2 160px;
+            }
+        }
+
         /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .mv-feature-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 600px) {
             .track {
                 grid-template-columns: 36px 1fr auto;
@@ -711,11 +945,143 @@
     <!-- MAIN -->
     <main id="main-content">
 
+        <!-- FEATURED MUSIC VIDEO — Душа вже знала -->
+        <section class="mv-feature" aria-label="Featured music video: Душа вже знала">
+            <div class="mv-feature-inner">
+                <div class="mv-meta">
+                    <p class="mv-meta-label">Official Music Video</p>
+                    <h2 class="mv-meta-title">Душа вже знала</h2>
+                    <p class="mv-meta-sub">The Soul Already Knew</p>
+                    <p class="mv-meta-desc">
+                        From the debut album <em>The Steppe Is Alive</em> — Track 01.
+                        Electronic frequencies woven through memory.
+                        The soul already knew before the music found its name.
+                    </p>
+                    <p class="mv-meta-original">
+                        Also available: <a href="https://youtu.be/OxBO3o-AMPM" target="_blank" rel="noopener">original visualization</a>
+                    </p>
+                </div>
+                <div class="mv-embed-wrapper">
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/_TkyufYMEQM?rel=0&modestbranding=1"
+                        title="DJ Foxyana — Душа вже знала (Official Music Video)"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- DJ PERFORMANCE GALLERY -->
+        <section class="dj-gallery" aria-labelledby="dj-gallery-label">
+            <span class="dj-gallery-label" id="dj-gallery-label">DJ Foxyana — In the Field</span>
+
+            <!-- Spotlight: two signature performance shots -->
+            <div class="dj-spotlight" aria-label="Featured performance images">
+                <figure class="dj-spotlight-item" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Foxyana%20DJing%20on%20a%20rooftop%20at%20night.png"
+                        alt="DJ Foxyana on a rooftop at night — city skyline and electronic frequencies merging with the dark"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-spotlight-caption">City skyline, midnight — the steppe's frequencies finding their way to the urban horizon</figcaption>
+                </figure>
+                <figure class="dj-spotlight-item" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Foxyana%20DJing%20at%20sunrise%20on%20a%20mountain%20ridge.png"
+                        alt="DJ Foxyana at a set behind her decks at sunrise on a Carpathian mountain ridge, light breaking over the peaks"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-spotlight-caption">Mountain ridge at sunrise — where highland rhythm lifts into open sky</figcaption>
+                </figure>
+            </div>
+
+            <!-- Ambient performance reel -->
+            <div class="dj-reel" aria-label="DJ Foxyana — rooftop performance reel">
+                <span class="dj-reel-label" aria-hidden="true">In Motion</span>
+                <video class="dj-reel-video" autoplay loop muted playsinline preload="none"
+                    aria-label="DJ Foxyana performing on a rooftop — ambient visual loop">
+                    <source src="assets/images/DJ%20Foxyana/Rooftop_DJ_Fox_Elite_Performance.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Masonry: full field archive -->
+            <div class="dj-grid" role="list" aria-label="DJ Foxyana performance archive">
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Dawn%20beats%20with%20Foxyana%20on%20deck.png"
+                        alt="DJ Foxyana at her decks at dawn — first beats before the city wakes"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Dawn on deck — frequencies before the city wakes</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Foxyana%27s%20first%20encounter%20with%20vinyl.png"
+                        alt="Foxyana's first encounter with vinyl — hands on a record, beginning"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">First encounter with vinyl — the record carries what the body already knew</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Focused%20in%20the%20music%20studio.png"
+                        alt="DJ Foxyana in focused studio session — where the folk forms translate to frequency"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Studio — where the folk forms translate to frequency</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/DJ%20at%20sunset%20on%20coastal%20cliff.png"
+                        alt="DJ Foxyana playing at sunset on a coastal cliff — the steppe is alive at the sea's edge"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Coastal cliff at sunset — The Steppe Is Alive reaches the sea</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Foxyana%20in%20the%20underground%20club%20DJ%20booth.png"
+                        alt="DJ Foxyana in a basement club DJ booth — Kolomyika rhythm at 2am"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Underground club — the Kolomyika at 2am</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Foxyana%20at%20sunrise%20on%20a%20ridge.png"
+                        alt="Foxyana standing at a ridge at sunrise — before the first beat drops"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Ridge at sunrise — before the first beat drops</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/DJ%20Foxyana_%20Beats%20in%20nature%27s%20beauty.png"
+                        alt="DJ Foxyana playing outdoors in a natural setting — beats in nature's beauty"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Beats in nature's beauty — outdoor sessions, uncompromised sound</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Glowing%20mountains%20and%20cosmic%20river.png"
+                        alt="Glowing mountains and a cosmic river of light — the steppe's electronic translation"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Glowing mountains, cosmic river — the steppe translated into light</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Neon%20glow%20over%20cosmic%20mountains.png"
+                        alt="Neon glow over cosmic mountains — electronic tradition meeting Carpathian form"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Neon over cosmic mountains — electronic tradition</figcaption>
+                </figure>
+
+                <figure class="dj-grid-item" role="listitem" tabindex="0">
+                    <img src="assets/images/DJ%20Foxyana/Neon%20river%20through%20digital%20mountains.png"
+                        alt="Neon river through digital mountains — folk melodies becoming waveforms"
+                        loading="lazy" width="1024" height="1024">
+                    <figcaption class="dj-grid-caption">Neon river through digital mountains — the folk melodies become waveforms</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
         <!-- TRACKLIST -->
         <section class="tracklist-section" aria-label="Album tracklist">
             <p class="tracklist-label">Tracklist</p>
 
-            <div class="track" data-src="assets/audio/Душа_вже_знала.mp3" data-youtube="OxBO3o-AMPM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
+            <div class="track" data-src="assets/audio/Душа_вже_знала.mp3" data-youtube="_TkyufYMEQM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
                 <div class="track-num">
                     <span class="track-num-text">1</span>
                     <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -726,7 +1092,7 @@
                     <span class="track-title">Душа вже знала<span class="track-title-ukr">The Soul Already Knew</span></span>
                 </div>
                 <span class="track-dur">2:59</span>
-                <button class="track-video-btn" data-youtube="OxBO3o-AMPM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
+                <button class="track-video-btn" data-youtube="_TkyufYMEQM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
             </div>
 
             <div class="track" data-src="assets/audio/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" role="button" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
