@@ -11,6 +11,7 @@ assets/videos/foxyana_hero_v2.bak.mp4
 assets/videos/frames_preview/
 
 # Music videos — now streamed via YouTube embeds
+# Old flat paths (still referenced by name for safety)
 assets/audio/Bone_Into_Current.mp4
 assets/audio/Gravity_Yields.mp4
 assets/audio/New_Breath_Same_Blood.mp4
@@ -19,3 +20,23 @@ assets/audio/The_Steppe_Is_Alive.mp4
 assets/audio/Under_the_Silver_Dome.mp4
 assets/audio/White_Fire_Drift.mp4
 assets/audio/Душа_вже_знала.mp4
+
+# Album 1 subdirectory MP4s
+assets/audio/Album 1/Bone_Into_Current.mp4
+assets/audio/Album 1/Gravity_Yields.mp4
+assets/audio/Album 1/New_Breath_Same_Blood.mp4
+assets/audio/Album 1/Red_Gold_Ghost.mp4
+assets/audio/Album 1/The_Steppe_Is_Alive.mp4
+assets/audio/Album 1/Under_the_Silver_Dome.mp4
+assets/audio/Album 1/White_Fire_Drift.mp4
+assets/audio/Album 1/Душа_вже_знала.mp4
+
+# Album 2 subdirectory MP4s
+assets/audio/Земля Пам'ятає/01 Коріння знає шлях.mp4
+assets/audio/Земля Пам'ятає/02 Гора говорить.mp4
+assets/audio/Земля Пам'ятає/03 Вишиванка на шкірі.mp4
+assets/audio/Земля Пам'ятає/04 Танцюй або відійди.mp4
+assets/audio/Земля Пам'ятає/05 Cobblestones Keep Receipts.mp4
+assets/audio/Земля Пам'ятає/06 Хліб і сіль- ми не чужі.mp4
+assets/audio/Земля Пам'ятає/07 Після заліза завжди мед.mp4
+assets/audio/Земля Пам'ятає/08 Річка під містом.mp4

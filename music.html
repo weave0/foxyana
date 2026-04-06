@@ -186,7 +186,7 @@
             z-index: 0;
         }
 
-        .album-hero > *:not(.album-hero-bg) {
+        .album-hero>*:not(.album-hero-bg) {
             position: relative;
             z-index: 1;
         }
@@ -197,7 +197,7 @@
             inset: 0;
             z-index: 1;
             background:
-                linear-gradient(to bottom, rgba(14,10,6,0.55) 0%, transparent 30%, transparent 70%, rgba(14,10,6,0.75) 100%),
+                linear-gradient(to bottom, rgba(14, 10, 6, 0.55) 0%, transparent 30%, transparent 70%, rgba(14, 10, 6, 0.75) 100%),
                 radial-gradient(ellipse 80% 60% at 50% 30%, rgba(196, 74, 0, 0.1), transparent),
                 radial-gradient(ellipse 50% 50% at 80% 70%, rgba(196, 154, 26, 0.07), transparent);
             pointer-events: none;
@@ -366,8 +366,56 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--vyshyvanka-gold);
-            margin-bottom: 40px;
+            margin-bottom: 24px;
             opacity: 0.7;
+        }
+
+        /* --- Album Selector --- */
+        .album-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(245, 237, 224, 0.08);
+        }
+
+        .album-tab {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: rgba(245, 237, 224, 0.4);
+            font-family: var(--font-display);
+            font-size: clamp(0.78rem, 1.4vw, 0.92rem);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            padding: 10px 20px 12px;
+            cursor: pointer;
+            margin-bottom: -1px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            min-height: 44px;
+            white-space: nowrap;
+        }
+
+        .album-tab:hover {
+            color: var(--linen);
+        }
+
+        .album-tab.is-active {
+            color: var(--linen);
+            border-bottom-color: var(--fox-auburn);
+        }
+
+        .album-tab .tab-year {
+            font-size: 0.72em;
+            opacity: 0.5;
+            margin-left: 6px;
+        }
+
+        .album-panel {
+            display: none;
+        }
+
+        .album-panel.is-active {
+            display: block;
         }
 
         .track {
@@ -648,6 +696,18 @@
 
         .album-footer-links a:hover {
             color: var(--vyshyvanka-gold);
+        }
+
+        .album-footer-dev {
+            font-size: 0.6rem;
+            opacity: 0.35;
+            margin-top: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        .album-footer-dev a {
+            color: inherit;
+            opacity: 1;
         }
 
         /* --- Featured Music Video Section --- */
@@ -1193,118 +1253,255 @@
 
         <!-- TRACKLIST -->
         <section class="tracklist-section" aria-label="Album tracklist">
-            <p class="tracklist-label">Tracklist</p>
+            <p class="tracklist-label">Discography</p>
 
-            <div class="track" data-src="assets/audio/Душа_вже_знала.mp3" data-youtube="_TkyufYMEQM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
-                <div class="track-num">
-                    <span class="track-num-text">1</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                </div>
-                <div class="track-info">
-                    <span class="track-title">Душа вже знала<span class="track-title-ukr">The Soul Already Knew</span></span>
-                </div>
-                <span class="track-dur">2:59</span>
-                <button class="track-video-btn" data-youtube="_TkyufYMEQM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
+            <!-- Album tabs -->
+            <div class="album-tabs" role="tablist" aria-label="Select album">
+                <button class="album-tab is-active" role="tab" aria-selected="true" aria-controls="panel-album1" id="tab-album1" type="button">
+                    The Steppe Is Alive<span class="tab-year">2026</span>
+                </button>
+                <button class="album-tab" role="tab" aria-selected="false" aria-controls="panel-album2" id="tab-album2" type="button">
+                    Земля Пам'ятає<span class="tab-year">2026</span>
+                </button>
             </div>
 
-            <div class="track" data-src="assets/audio/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" role="button" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
-                <div class="track-num">
-                    <span class="track-num-text">2</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+            <!-- ALBUM 1: The Steppe Is Alive -->
+            <div class="album-panel is-active" id="panel-album1" role="tabpanel" aria-labelledby="tab-album1">
+
+                <div class="track" data-src="assets/audio/Album 1/Душа_вже_знала.mp3" data-youtube="_TkyufYMEQM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
+                    <div class="track-num">
+                        <span class="track-num-text">1</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Душа вже знала<span class="track-title-ukr">The Soul Already Knew</span></span>
+                    </div>
+                    <span class="track-dur">3:59</span>
+                    <button class="track-video-btn" data-youtube="_TkyufYMEQM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">The Steppe Is Alive<span class="track-title-ukr">Степ живий</span></span>
+
+                <div class="track" data-src="assets/audio/Album 1/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" role="button" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
+                    <div class="track-num">
+                        <span class="track-num-text">2</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">The Steppe Is Alive<span class="track-title-ukr">Степ живий</span></span>
+                    </div>
+                    <span class="track-dur">3:59</span>
+                    <button class="track-video-btn" data-youtube="p0esyMlH5IE" type="button" aria-label="Watch on YouTube: The Steppe Is Alive">YouTube</button>
                 </div>
-                <span class="track-dur">2:59</span>
-                <button class="track-video-btn" data-youtube="p0esyMlH5IE" type="button" aria-label="Watch on YouTube: The Steppe Is Alive">YouTube</button>
+
+                <div class="track" data-src="assets/audio/Album 1/Under_the_Silver_Dome.mp3" data-youtube="kn8VDsYbRJ0" data-title="Under the Silver Dome" role="button" tabindex="0" aria-label="Play track 3: Under the Silver Dome">
+                    <div class="track-num">
+                        <span class="track-num-text">3</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Under the Silver Dome<span class="track-title-ukr">Під срібним куполом</span></span>
+                    </div>
+                    <span class="track-dur">3:01</span>
+                    <button class="track-video-btn" data-youtube="kn8VDsYbRJ0" type="button" aria-label="Watch on YouTube: Under the Silver Dome">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/White_Fire_Drift.mp3" data-youtube="v6QFqEGnsD4" data-title="White Fire Drift" role="button" tabindex="0" aria-label="Play track 4: White Fire Drift">
+                    <div class="track-num">
+                        <span class="track-num-text">4</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">White Fire Drift<span class="track-title-ukr">Білий вогонь</span></span>
+                    </div>
+                    <span class="track-dur">3:01</span>
+                    <button class="track-video-btn" data-youtube="v6QFqEGnsD4" type="button" aria-label="Watch on YouTube: White Fire Drift">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/Bone_Into_Current.mp3" data-youtube="yEcQi9MIfrA" data-title="Bone into Current" role="button" tabindex="0" aria-label="Play track 5: Bone into Current">
+                    <div class="track-num">
+                        <span class="track-num-text">5</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Bone into Current<span class="track-title-ukr">Кістка в течію</span></span>
+                    </div>
+                    <span class="track-dur">3:37</span>
+                    <button class="track-video-btn" data-youtube="yEcQi9MIfrA" type="button" aria-label="Watch on YouTube: Bone into Current">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/Gravity_Yields.mp3" data-youtube="5DrJbQ0Rr94" data-title="Gravity Yields" role="button" tabindex="0" aria-label="Play track 6: Gravity Yields">
+                    <div class="track-num">
+                        <span class="track-num-text">6</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Gravity Yields<span class="track-title-ukr">Тяжіння поступається</span></span>
+                    </div>
+                    <span class="track-dur">3:36</span>
+                    <button class="track-video-btn" data-youtube="5DrJbQ0Rr94" type="button" aria-label="Watch on YouTube: Gravity Yields">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/New_Breath_Same_Blood.mp3" data-youtube="IMXr5-hwgJc" data-title="New Breath, Same Blood" role="button" tabindex="0" aria-label="Play track 7: New Breath, Same Blood">
+                    <div class="track-num">
+                        <span class="track-num-text">7</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">New Breath, Same Blood<span class="track-title-ukr">Новий подих, та ж кров</span></span>
+                    </div>
+                    <span class="track-dur">2:28</span>
+                    <button class="track-video-btn" data-youtube="IMXr5-hwgJc" type="button" aria-label="Watch on YouTube: New Breath, Same Blood">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/Red_Gold_Ghost.mp3" data-youtube="GHBV5APRwP0" data-title="Red Gold Ghost" role="button" tabindex="0" aria-label="Play track 8: Red Gold Ghost">
+                    <div class="track-num">
+                        <span class="track-num-text">8</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Red Gold Ghost<span class="track-title-ukr">Червоно-золотий привид</span></span>
+                    </div>
+                    <span class="track-dur">3:02</span>
+                    <button class="track-video-btn" data-youtube="GHBV5APRwP0" type="button" aria-label="Watch on YouTube: Red Gold Ghost">YouTube</button>
+                </div>
+
+                <div class="track" data-src="assets/audio/Album 1/Three_Turns_on_Wood.mp3" data-title="Three Turns on Wood" role="button" tabindex="0" aria-label="Play track 9: Three Turns on Wood">
+                    <div class="track-num">
+                        <span class="track-num-text">9</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Three Turns on Wood<span class="track-title-ukr">Три оберти на дереві</span></span>
+                    </div>
+                    <span class="track-dur">1:56</span>
+                </div>
+
             </div>
 
-            <div class="track" data-src="assets/audio/Under_the_Silver_Dome.mp3" data-youtube="kn8VDsYbRJ0" data-title="Under the Silver Dome" role="button" tabindex="0" aria-label="Play track 3: Under the Silver Dome">
-                <div class="track-num">
-                    <span class="track-num-text">3</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                </div>
-                <div class="track-info">
-                    <span class="track-title">Under the Silver Dome<span class="track-title-ukr">Під срібним куполом</span></span>
-                </div>
-                <span class="track-dur">3:01</span>
-                <button class="track-video-btn" data-youtube="kn8VDsYbRJ0" type="button" aria-label="Watch on YouTube: Under the Silver Dome">YouTube</button>
-            </div>
+            <!-- ALBUM 2: Земля Пам'ятає -->
+            <div class="album-panel" id="panel-album2" role="tabpanel" aria-labelledby="tab-album2">
 
-            <div class="track" data-src="assets/audio/White_Fire_Drift.mp3" data-youtube="v6QFqEGnsD4" data-title="White Fire Drift" role="button" tabindex="0" aria-label="Play track 4: White Fire Drift">
-                <div class="track-num">
-                    <span class="track-num-text">4</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/01 Коріння знає шлях.mp3" data-title="Коріння знає шлях" role="button" tabindex="0" aria-label="Play track 1: Коріння знає шлях">
+                    <div class="track-num">
+                        <span class="track-num-text">1</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Коріння знає шлях<span class="track-title-ukr">The Roots Know the Way</span></span>
+                    </div>
+                    <span class="track-dur">3:57</span>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">White Fire Drift<span class="track-title-ukr">Білий вогонь</span></span>
-                </div>
-                <span class="track-dur">3:01</span>
-                <button class="track-video-btn" data-youtube="v6QFqEGnsD4" type="button" aria-label="Watch on YouTube: White Fire Drift">YouTube</button>
-            </div>
 
-            <div class="track" data-src="assets/audio/Bone_Into_Current.mp3" data-youtube="yEcQi9MIfrA" data-title="Bone into Current" role="button" tabindex="0" aria-label="Play track 5: Bone into Current">
-                <div class="track-num">
-                    <span class="track-num-text">5</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/02 Гора говорить.mp3" data-title="Гора говорить" role="button" tabindex="0" aria-label="Play track 2: Гора говорить">
+                    <div class="track-num">
+                        <span class="track-num-text">2</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Гора говорить<span class="track-title-ukr">The Mountain Speaks</span></span>
+                    </div>
+                    <span class="track-dur">2:28</span>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">Bone into Current<span class="track-title-ukr">Кістка в течію</span></span>
-                </div>
-                <span class="track-dur">2:37</span>
-                <button class="track-video-btn" data-youtube="yEcQi9MIfrA" type="button" aria-label="Watch on YouTube: Bone into Current">YouTube</button>
-            </div>
 
-            <div class="track" data-src="assets/audio/Gravity_Yields.mp3" data-youtube="5DrJbQ0Rr94" data-title="Gravity Yields" role="button" tabindex="0" aria-label="Play track 6: Gravity Yields">
-                <div class="track-num">
-                    <span class="track-num-text">6</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/03 Вишиванка на шкірі.mp3" data-title="Вишиванка на шкірі" role="button" tabindex="0" aria-label="Play track 3: Вишиванка на шкірі">
+                    <div class="track-num">
+                        <span class="track-num-text">3</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Вишиванка на шкірі<span class="track-title-ukr">Vyshyvanka on Skin</span></span>
+                    </div>
+                    <span class="track-dur">3:00</span>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">Gravity Yields<span class="track-title-ukr">Тяжіння поступається</span></span>
-                </div>
-                <span class="track-dur">2:36</span>
-                <button class="track-video-btn" data-youtube="5DrJbQ0Rr94" type="button" aria-label="Watch on YouTube: Gravity Yields">YouTube</button>
-            </div>
 
-            <div class="track" data-src="assets/audio/New_Breath_Same_Blood.mp3" data-youtube="IMXr5-hwgJc" data-title="New Breath, Same Blood" role="button" tabindex="0" aria-label="Play track 7: New Breath, Same Blood">
-                <div class="track-num">
-                    <span class="track-num-text">7</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/04 Танцюй або відійди.mp3" data-title="Танцюй або відійди" role="button" tabindex="0" aria-label="Play track 4: Танцюй або відійди">
+                    <div class="track-num">
+                        <span class="track-num-text">4</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Танцюй або відійди<span class="track-title-ukr">Dance or Step Aside</span></span>
+                    </div>
+                    <span class="track-dur">2:29</span>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">New Breath, Same Blood<span class="track-title-ukr">Новий подих, та ж кров</span></span>
-                </div>
-                <span class="track-dur">2:28</span>
-                <button class="track-video-btn" data-youtube="IMXr5-hwgJc" type="button" aria-label="Watch on YouTube: New Breath, Same Blood">YouTube</button>
-            </div>
 
-            <div class="track" data-src="assets/audio/Red_Gold_Ghost.mp3" data-youtube="GHBV5APRwP0" data-title="Red Gold Ghost" role="button" tabindex="0" aria-label="Play track 8: Red Gold Ghost">
-                <div class="track-num">
-                    <span class="track-num-text">8</span>
-                    <svg class="track-play-icon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/05 Cobblestones Keep Receipts.mp3" data-title="Cobblestones Keep Receipts" role="button" tabindex="0" aria-label="Play track 5: Cobblestones Keep Receipts">
+                    <div class="track-num">
+                        <span class="track-num-text">5</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Cobblestones Keep Receipts</span>
+                    </div>
+                    <span class="track-dur">3:58</span>
                 </div>
-                <div class="track-info">
-                    <span class="track-title">Red Gold Ghost<span class="track-title-ukr">Червоно-золотий привид</span></span>
+
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/06 Хліб і сіль- ми не чужі.mp3" data-title="Хліб і сіль: ми не чужі" role="button" tabindex="0" aria-label="Play track 6: Хліб і сіль: ми не чужі">
+                    <div class="track-num">
+                        <span class="track-num-text">6</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Хліб і сіль: ми не чужі<span class="track-title-ukr">Bread and Salt: We Are Not Strangers</span></span>
+                    </div>
+                    <span class="track-dur">3:58</span>
                 </div>
-                <span class="track-dur">3:02</span>
-                <button class="track-video-btn" data-youtube="GHBV5APRwP0" type="button" aria-label="Watch on YouTube: Red Gold Ghost">YouTube</button>
+
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/07 Після заліза завжди мед.mp3" data-title="Після заліза завжди мед" role="button" tabindex="0" aria-label="Play track 7: Після заліза завжди мед">
+                    <div class="track-num">
+                        <span class="track-num-text">7</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Після заліза завжди мед<span class="track-title-ukr">After Iron, Always Honey</span></span>
+                    </div>
+                    <span class="track-dur">3:01</span>
+                </div>
+
+                <div class="track" data-src="assets/audio/Земля Пам'ятає/08 Річка під містом.mp3" data-title="Річка під містом" role="button" tabindex="0" aria-label="Play track 8: Річка під містом">
+                    <div class="track-num">
+                        <span class="track-num-text">8</span>
+                        <svg class="track-play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <span class="track-title">Річка під містом<span class="track-title-ukr">River Under the City</span></span>
+                    </div>
+                    <span class="track-dur">3:03</span>
+                </div>
+
             </div>
 
         </section>
@@ -1352,6 +1549,7 @@
             <li><a href="https://u24.gov.ua/" target="_blank" rel="noopener">Support Ukraine</a></li>
             <li><a href="https://www.youtube.com/playlist?list=PLveg0fPWx8QGTT63eGrriP2nFpV6g9QU1" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
+        <p class="album-footer-dev">Site by <a href="https://goodflippindesign.com" target="_blank" rel="noopener">Good Flippin' Design</a></p>
     </footer>
 
     <!-- VIDEO VIEWER OVERLAY -->
@@ -1366,7 +1564,6 @@
             'use strict';
 
             var audio = new Audio();
-            var tracks = document.querySelectorAll('.track');
             var currentIndex = -1;
             var isPlaying = false;
 
@@ -1387,6 +1584,14 @@
             var videoTitle = document.getElementById('video-title');
             var videoClose = document.getElementById('video-close');
 
+            // Album tabs
+            var albumTabs = document.querySelectorAll('.album-tab');
+            var albumPanels = document.querySelectorAll('.album-panel');
+
+            function getActiveTracks() {
+                return Array.from(document.querySelectorAll('.album-panel.is-active .track'));
+            }
+
             function formatTime(sec) {
                 if (isNaN(sec)) return '0:00';
                 var m = Math.floor(sec / 60);
@@ -1394,7 +1599,7 @@
                 return m + ':' + (s < 10 ? '0' : '') + s;
             }
 
-            function setPlaying(idx) {
+            function setPlaying(tracks, idx) {
                 tracks.forEach(function (t) { t.classList.remove('is-playing'); });
                 if (idx >= 0 && idx < tracks.length) {
                     tracks[idx].classList.add('is-playing');
@@ -1402,6 +1607,7 @@
             }
 
             function playTrack(idx) {
+                var tracks = getActiveTracks();
                 if (idx < 0 || idx >= tracks.length) return;
                 var t = tracks[idx];
                 var src = t.getAttribute('data-src');
@@ -1414,7 +1620,7 @@
 
                 npTitle.textContent = t.getAttribute('data-title') || '';
                 npBar.classList.remove('is-hidden');
-                setPlaying(idx);
+                setPlaying(tracks, idx);
                 updateToggleIcon();
             }
 
@@ -1432,12 +1638,44 @@
 
             function updateToggleIcon() {
                 var path = isPlaying
-                    ? 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'   // pause
-                    : 'M8 5v14l11-7z';                       // play
+                    ? 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'
+                    : 'M8 5v14l11-7z';
                 npToggleIcon.innerHTML = '<path d="' + path + '"/>';
             }
 
-            // Progress
+            // Album tab switching
+            albumTabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    if (tab.getAttribute('aria-selected') === 'true') return;
+
+                    // Stop playback
+                    audio.pause();
+                    audio.src = '';
+                    isPlaying = false;
+                    currentIndex = -1;
+                    npBar.classList.add('is-hidden');
+                    updateToggleIcon();
+                    document.querySelectorAll('.track.is-playing').forEach(function (t) {
+                        t.classList.remove('is-playing');
+                    });
+
+                    // Switch tabs
+                    albumTabs.forEach(function (t) {
+                        t.classList.remove('is-active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    tab.classList.add('is-active');
+                    tab.setAttribute('aria-selected', 'true');
+
+                    // Switch panels
+                    var panelId = tab.getAttribute('aria-controls');
+                    albumPanels.forEach(function (p) { p.classList.remove('is-active'); });
+                    var targetPanel = document.getElementById(panelId);
+                    if (targetPanel) targetPanel.classList.add('is-active');
+                });
+            });
+
+            // Progress bar
             audio.addEventListener('timeupdate', function () {
                 if (audio.duration) {
                     var pct = (audio.currentTime / audio.duration) * 100;
@@ -1448,6 +1686,7 @@
             });
 
             audio.addEventListener('ended', function () {
+                var tracks = getActiveTracks();
                 if (currentIndex < tracks.length - 1) {
                     playTrack(currentIndex + 1);
                 } else {
@@ -1464,46 +1703,50 @@
                 audio.currentTime = pct * audio.duration;
             });
 
-            // Controls
+            // Playback controls
             npToggle.addEventListener('click', togglePlay);
             npPrev.addEventListener('click', function () { playTrack(Math.max(0, currentIndex - 1)); });
-            npNext.addEventListener('click', function () { playTrack(Math.min(tracks.length - 1, currentIndex + 1)); });
-
-            // Track click → play
-            tracks.forEach(function (t, i) {
-                t.addEventListener('click', function (e) {
-                    if (e.target.closest('.track-video-btn')) return;
-                    playTrack(i);
-                });
-                t.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        playTrack(i);
-                    }
-                });
+            npNext.addEventListener('click', function () {
+                var tracks = getActiveTracks();
+                playTrack(Math.min(tracks.length - 1, currentIndex + 1));
             });
 
-            // Video buttons — YouTube embeds
-            document.querySelectorAll('.track-video-btn').forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
+            // Track / video-btn clicks via event delegation
+            var tracklistSection = document.querySelector('.tracklist-section');
+            tracklistSection.addEventListener('click', function (e) {
+                var btn = e.target.closest('.track-video-btn');
+                if (btn) {
                     e.stopPropagation();
                     var ytId = btn.getAttribute('data-youtube');
                     if (!ytId) return;
-
-                    // Pause audio
                     audio.pause();
                     isPlaying = false;
                     updateToggleIcon();
-
-                    // Open YouTube viewer
                     var trackEl = btn.closest('.track');
                     videoTitle.textContent = trackEl ? trackEl.getAttribute('data-title') : '';
                     videoPlayer.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
                     videoViewer.classList.add('is-open');
                     videoViewer.setAttribute('aria-hidden', 'false');
-                });
+                    return;
+                }
+                var trackEl = e.target.closest('.track');
+                if (!trackEl) return;
+                var tracks = getActiveTracks();
+                var idx = tracks.indexOf(trackEl);
+                if (idx !== -1) playTrack(idx);
             });
 
+            tracklistSection.addEventListener('keydown', function (e) {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                var trackEl = e.target.closest('.track');
+                if (!trackEl) return;
+                e.preventDefault();
+                var tracks = getActiveTracks();
+                var idx = tracks.indexOf(trackEl);
+                if (idx !== -1) playTrack(idx);
+            });
+
+            // Video overlay
             function closeVideo() {
                 videoPlayer.src = '';
                 videoViewer.classList.remove('is-open');
