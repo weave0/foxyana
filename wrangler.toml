@@ -1,6 +1,12 @@
 name = "foxyana"
 compatibility_date = "2025-01-01"
 
+# Custom domain — routes foxyana.com and www.foxyana.com to this worker
+routes = [
+    { pattern = "foxyana.com", custom_domain = true },
+    { pattern = "www.foxyana.com", custom_domain = true },
+]
+
 # Static assets — served from repo root via wrangler deploy
 [assets]
 directory = "."
