@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DJ Foxyana — The Steppe Is Alive</title>
+    <title>DJ Foxyana — The Music</title>
     <meta name="description"
-        content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths. DJ Foxyana's debut album — electronic music rooted in Ukrainian cultural heritage.">
+        content="Electronic music translating Ukrainian heritage into contemporary sound: track stories, source motifs, and the cultural spine of DJ Foxyana's albums.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="DJ Foxyana — The Steppe Is Alive">
+    <meta property="og:title" content="DJ Foxyana — The Steppe Is Alive &amp; Земля Пам'ятає">
     <meta property="og:description"
-        content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths. DJ Foxyana's debut album.">
+        content="Seventeen tracks across two albums. Ukrainian heritage rendered in electronic sound — Carpathian bass, steppe-wide synths, Kolomyika pulse.">
     <meta property="og:url" content="https://foxyana.com/music">
     <meta property="og:type" content="music.album">
+    <meta property="og:image" content="https://foxyana.com/assets/images/DJ%20Foxyana/Foxyana%20DJing%20at%20sunrise%20on%20a%20mountain%20ridge.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DJ Foxyana — The Steppe Is Alive">
+    <meta name="twitter:title" content="DJ Foxyana — The Music">
     <meta name="twitter:description"
         content="Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths.">
+    <meta name="twitter:image" content="https://foxyana.com/assets/images/DJ%20Foxyana/Foxyana%20DJing%20at%20sunrise%20on%20a%20mountain%20ridge.png">
     <link rel="canonical" href="https://foxyana.com/music">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,8 +113,8 @@
             right: 0;
             z-index: 100;
             background: rgba(14, 10, 6, 0.92);
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(196, 154, 26, 0.12);
             padding: 0 var(--side-pad);
             height: 56px;
@@ -258,6 +260,145 @@
             transition: background 0.2s ease, color 0.2s ease;
         }
 
+        .translation-intro {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 0 var(--side-pad) 72px;
+        }
+
+        .translation-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: clamp(24px, 4vw, 48px);
+            padding: clamp(28px, 4vw, 42px);
+            border: 1px solid rgba(196, 154, 26, 0.12);
+            background: linear-gradient(180deg, rgba(245, 237, 224, 0.05), rgba(245, 237, 224, 0.02));
+        }
+
+        .translation-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            opacity: 0.8;
+            margin-bottom: 14px;
+        }
+
+        .translation-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            color: var(--linen);
+        }
+
+        .translation-copy p {
+            max-width: 38rem;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            color: rgba(245, 237, 224, 0.68);
+        }
+
+        .translation-grid {
+            display: grid;
+            gap: 14px;
+            align-content: start;
+        }
+
+        .release-system-bridge {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 0 var(--side-pad) 70px;
+        }
+
+        .release-system-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 20px;
+            padding: clamp(22px, 3.2vw, 36px);
+            border: 1px solid rgba(196, 154, 26, 0.22);
+            background:
+                radial-gradient(circle at 12% 25%, rgba(196, 74, 0, 0.14), transparent 42%),
+                linear-gradient(155deg, rgba(245, 237, 224, 0.06), rgba(245, 237, 224, 0.02));
+        }
+
+        .release-system-label {
+            font-size: 0.66rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin-bottom: 10px;
+        }
+
+        .release-system-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--linen);
+            margin: 0 0 10px;
+        }
+
+        .release-system-copy {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: rgba(245, 237, 224, 0.62);
+            max-width: 48rem;
+        }
+
+        .release-system-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border: 1px solid var(--vyshyvanka-gold);
+            color: var(--vyshyvanka-gold);
+            border-radius: 4px;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            min-height: 44px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .release-system-btn:hover {
+            background: var(--vyshyvanka-gold);
+            color: var(--night-overture);
+            text-decoration: none;
+        }
+
+        .translation-card {
+            padding: 18px 18px 20px;
+            background: rgba(245, 237, 224, 0.04);
+            border-left: 3px solid var(--fox-auburn);
+        }
+
+        .translation-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--linen);
+            margin-bottom: 10px;
+        }
+
+        .translation-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(245, 237, 224, 0.6);
+        }
+
+        .translation-card p + p {
+            margin-top: 10px;
+        }
+
+        .translation-card strong {
+            color: rgba(245, 237, 224, 0.82);
+            font-weight: 400;
+        }
+
         .yt-playlist-btn:hover {
             background: var(--vyshyvanka-gold);
             color: var(--night-overture);
@@ -270,6 +411,7 @@
             top: 56px;
             z-index: 90;
             background: rgba(14, 10, 6, 0.95);
+            -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(196, 154, 26, 0.08);
             padding: 12px var(--side-pad);
@@ -500,6 +642,50 @@
             font-weight: 300;
         }
 
+        .track-context-link {
+            display: block;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            color: rgba(196, 154, 26, 0.45);
+            margin-top: 4px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .track-context-link:hover,
+        .track.is-playing .track-context-link {
+            color: var(--vyshyvanka-gold);
+            text-decoration: none;
+        }
+
+        .album2-context {
+            margin: 0 0 20px;
+            padding: 16px 20px;
+            background: rgba(196, 154, 26, 0.04);
+            border-left: 2px solid rgba(196, 154, 26, 0.22);
+        }
+
+        .album2-context-label {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin: 0 0 8px;
+        }
+
+        .album2-context-text {
+            font-size: 0.82rem;
+            line-height: 1.65;
+            color: rgba(245, 237, 224, 0.6);
+            margin: 0;
+        }
+
+        .album2-context-text em {
+            font-style: italic;
+            color: rgba(245, 237, 224, 0.85);
+        }
+
         .track-dur {
             font-size: 0.78rem;
             color: rgba(245, 237, 224, 0.35);
@@ -618,11 +804,35 @@
             margin-top: 1.4em;
         }
 
+        .guide-bridge {
+            margin-top: 26px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+        }
+
+        .guide-bridge:hover {
+            text-decoration: none;
+            color: var(--linen);
+        }
+
         /* --- Stand With Ukraine + Footer --- */
         .stand-section {
             text-align: center;
             padding: 80px var(--side-pad);
             border-top: 1px solid rgba(196, 154, 26, 0.08);
+        }
+
+        .stand-section .stand-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--vyshyvanka-gold);
+            margin-bottom: 14px;
         }
 
         .stand-section h2 {
@@ -1008,6 +1218,14 @@
 
         /* --- Responsive --- */
         @media (max-width: 900px) {
+            .translation-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .release-system-shell {
+                grid-template-columns: 1fr;
+            }
+
             .mv-feature-inner {
                 grid-template-columns: 1fr;
             }
@@ -1031,7 +1249,55 @@
                 flex: 0 0 60px;
             }
         }
+
+        @view-transition {
+            navigation: auto;
+        }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MusicAlbum",
+          "name": "The Steppe Is Alive",
+          "byArtist": {"@type": "MusicGroup", "name": "DJ Foxyana"},
+          "numTracks": 9,
+          "url": "https://foxyana.com/music",
+          "genre": ["Electronic", "Ukrainian Heritage"],
+          "track": [
+            {"@type": "MusicRecording", "name": "Душа вже знала"},
+            {"@type": "MusicRecording", "name": "The Steppe Is Alive"},
+            {"@type": "MusicRecording", "name": "Under the Silver Dome"},
+            {"@type": "MusicRecording", "name": "White Fire Drift"},
+            {"@type": "MusicRecording", "name": "Bone into Current"},
+            {"@type": "MusicRecording", "name": "Gravity Yields"},
+            {"@type": "MusicRecording", "name": "New Breath, Same Blood"},
+            {"@type": "MusicRecording", "name": "Red Gold Ghost"},
+            {"@type": "MusicRecording", "name": "Three Turns on Wood"}
+          ]
+        },
+        {
+          "@type": "MusicAlbum",
+          "name": "Земля Пам'ятає",
+          "byArtist": {"@type": "MusicGroup", "name": "DJ Foxyana"},
+          "numTracks": 8,
+          "url": "https://foxyana.com/music",
+          "genre": ["Electronic", "Ukrainian Heritage"],
+          "track": [
+            {"@type": "MusicRecording", "name": "Коріння знає шлях"},
+            {"@type": "MusicRecording", "name": "Гора говорить"},
+            {"@type": "MusicRecording", "name": "Вишиванка на шкірі"},
+            {"@type": "MusicRecording", "name": "Танцюй або відійди"},
+            {"@type": "MusicRecording", "name": "Cobblestones Keep Receipts"},
+            {"@type": "MusicRecording", "name": "Хліб і сіль: ми не чужі"},
+            {"@type": "MusicRecording", "name": "Після заліза завжди мед"},
+            {"@type": "MusicRecording", "name": "Річка під містом"}
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -1046,6 +1312,7 @@
                 <li><a href="guide.html">Guide</a></li>
                 <li><a href="dance.html">Dance</a></li>
                 <li><a href="music.html" aria-current="page" class="is-active">Music</a></li>
+                <li><a href="official-release.html">Official Release</a></li>
             </ul>
         </nav>
     </header>
@@ -1060,10 +1327,54 @@
         <h1 id="album-title">The Steppe <em>Is Alive</em></h1>
         <p class="album-hero-sub">
             Eight tracks. Auburn frequencies, Carpathian bass, steppe-wide synths.<br>
-            Electronic music rooted in Ukrainian soil.
+            Contemporary sound carrying Ukrainian memory forward.
         </p>
         <p class="album-hero-meta">8 tracks &middot; 2026</p>
         <a href="https://www.youtube.com/playlist?list=PLveg0fPWx8QGTT63eGrriP2nFpV6g9QU1" target="_blank" rel="noopener" class="yt-playlist-btn" aria-label="Listen on YouTube">▶ Listen on YouTube</a>
+    </section>
+
+    <section class="translation-intro" aria-labelledby="translation-title">
+        <div class="translation-shell">
+            <div class="translation-copy">
+                <p class="translation-label">Heritage Translation</p>
+                <h2 class="translation-title" id="translation-title">This is not heritage as backdrop. It is heritage translated into frequency.</h2>
+                <p>
+                    The point of these records is not only atmosphere. Each track pulls from a cultural source: movement logic, ritual tempo, landscape memory, or the emotional pressure of Ukrainian history, then rebuilds it in contemporary electronic form.
+                </p>
+            </div>
+
+            <div class="translation-grid" aria-label="How to listen to the album">
+                <article class="translation-card">
+                    <h3>Source</h3>
+                    <p><strong>What it draws from:</strong> Kolomyika pulse, bandura-like melodic lift, mountain weather, ritual cadence, and the physical memory of dance.</p>
+                </article>
+
+                <article class="translation-card">
+                    <h3>Transformation</h3>
+                    <p><strong>What changes:</strong> Folk structures become bass pressure, synth texture, clipped percussion, and space built for headphones, clubs, and contemporary listening.</p>
+                </article>
+
+                <article class="translation-card">
+                    <h3>What To Notice</h3>
+                    <p><strong>Listen for:</strong> repeated step patterns, breath before the drop, melodic intervals that feel older than the production, and silence used like a held dance phrase.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="release-system-bridge" aria-label="Official release blueprint">
+        <div class="release-system-shell">
+            <div>
+                <p class="release-system-label">Official 2026 Direction</p>
+                <h2 class="release-system-title">From demo albums to the gala-grade official release</h2>
+                <p class="release-system-copy">
+                    The full production packet is now live: cultural research framework, 12-track BPM and key map,
+                    Ukrainian-first fusion rules, instrumentation plan, and luxury mix standards built for a formal
+                    global dance evening hosted by Ukraine.
+                </p>
+            </div>
+            <a class="release-system-btn" href="official-release.html" aria-label="Open official release system">Open Release System</a>
+        </div>
     </section>
 
     <!-- NOW PLAYING BAR -->
@@ -1086,7 +1397,7 @@
                 </svg>
             </button>
         </div>
-        <div class="np-progress" id="np-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="np-progress" id="np-progress" role="progressbar" aria-label="Track progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
             <div class="np-progress-fill" id="np-fill"></div>
         </div>
         <span class="np-time" id="np-time">0:00</span>
@@ -1095,27 +1406,23 @@
     <!-- MAIN -->
     <main id="main-content">
 
-        <!-- FEATURED MUSIC VIDEO — Душа вже знала -->
-        <section class="mv-feature" aria-label="Featured music video: Душа вже знала">
+        <!-- FEATURED MUSIC VIDEO — Fox and Cat (First Official Single) -->
+        <section class="mv-feature" aria-label="Featured music video: Fox and Cat — first official single">
             <div class="mv-feature-inner">
                 <div class="mv-meta">
-                    <p class="mv-meta-label">Official Music Video</p>
-                    <h2 class="mv-meta-title">Душа вже знала</h2>
-                    <p class="mv-meta-sub">The Soul Already Knew</p>
+                    <p class="mv-meta-label">First Official Single</p>
+                    <h2 class="mv-meta-title">Fox and Cat</h2>
+                    <p class="mv-meta-sub">Good Flippin Vibes Presents Foxyana</p>
                     <p class="mv-meta-desc">
-                        From the debut album <em>The Steppe Is Alive</em> — Track 01.
-                        Electronic frequencies woven through memory.
-                        The soul already knew before the music found its name.
-                    </p>
-                    <p class="mv-meta-original">
-                        Also available: <a href="https://youtu.be/OxBO3o-AMPM" target="_blank" rel="noopener">original visualization</a>
-                        &ensp;·&ensp; <a href="#mv-perf">original performance ↓</a>
+                        The first official release from Foxyana — where the fox meets the cat,
+                        and Ukrainian soul finds its electronic frequency.
+                        Watch the official music video now.
                     </p>
                 </div>
                 <div class="mv-embed-wrapper">
                     <iframe
-                        src="https://www.youtube-nocookie.com/embed/_TkyufYMEQM?rel=0&modestbranding=1"
-                        title="DJ Foxyana — Душа вже знала (Official Music Video)"
+                        src="https://www.youtube-nocookie.com/embed/4mh-X0Q9SGY?rel=0&modestbranding=1"
+                        title="Good Flippin Vibes Presents FOXYANA — Fox and Cat (Official Music Video)"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
                         loading="lazy"></iframe>
@@ -1123,22 +1430,22 @@
             </div>
         </section>
 
-        <!-- ORIGINAL PERFORMANCE — Душа вже знала -->
-        <section id="mv-perf" class="mv-perf" aria-label="Original performance recording: Душа вже знала">
+        <!-- SECOND MUSIC VIDEO — Душа вже знала -->
+        <section class="mv-perf" aria-label="Official music video: Душа вже знала">
             <div class="mv-perf-inner">
                 <div class="mv-perf-header">
-                    <p class="mv-perf-label">Original Performance</p>
-                    <h3 class="mv-perf-title">As it began — before the frequencies</h3>
+                    <p class="mv-perf-label">Official Music Video</p>
+                    <h3 class="mv-perf-title">Душа вже знала</h3>
                     <p class="mv-perf-desc">
-                        The soul knew first in the body. Before the electronic production,
-                        before the DJ set — the dance itself held the memory.
-                        This is where the track was born.
+                        <em>The Soul Already Knew.</em>
+                        From the debut album <em>The Steppe Is Alive</em> — Track 01.
+                        Electronic frequencies woven through memory.
                     </p>
                 </div>
                 <div class="mv-perf-video">
                     <iframe
-                        src="https://www.youtube-nocookie.com/embed/OxBO3o-AMPM?rel=0&modestbranding=1"
-                        title="DJ Foxyana — Душа вже знала, original performance recording"
+                        src="https://www.youtube-nocookie.com/embed/_TkyufYMEQM?rel=0&modestbranding=1"
+                        title="DJ Foxyana — Душа вже знала (Official Music Video)"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
                         loading="lazy"></iframe>
@@ -1268,7 +1575,7 @@
             <!-- ALBUM 1: The Steppe Is Alive -->
             <div class="album-panel is-active" id="panel-album1" role="tabpanel" aria-labelledby="tab-album1">
 
-                <div class="track" data-src="assets/audio/Album 1/Душа_вже_знала.mp3" data-youtube="_TkyufYMEQM" data-title="Душа вже знала" role="button" tabindex="0" aria-label="Play track 1: Душа вже знала">
+                <div class="track" id="t-a1-1" data-src="assets/audio/Album 1/Душа_вже_знала.mp3" data-youtube="_TkyufYMEQM" data-title="Душа вже знала" tabindex="0" aria-label="Play track 1: Душа вже знала">
                     <div class="track-num">
                         <span class="track-num-text">1</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1277,12 +1584,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Душа вже знала<span class="track-title-ukr">The Soul Already Knew</span></span>
+                        <a class="track-context-link" href="guide.html#ep03">Ep 03 &mdash; What the Bandura Knows</a>
                     </div>
                     <span class="track-dur">3:59</span>
                     <button class="track-video-btn" data-youtube="_TkyufYMEQM" type="button" aria-label="Watch on YouTube: Душа вже знала">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" role="button" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
+                <div class="track" id="t-a1-2" data-src="assets/audio/Album 1/The_Steppe_Is_Alive.mp3" data-youtube="p0esyMlH5IE" data-title="The Steppe Is Alive" tabindex="0" aria-label="Play track 2: The Steppe Is Alive">
                     <div class="track-num">
                         <span class="track-num-text">2</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1291,12 +1599,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">The Steppe Is Alive<span class="track-title-ukr">Степ живий</span></span>
+                        <a class="track-context-link" href="guide.html#ep06">Ep 06 &mdash; The Wide Open</a>
                     </div>
                     <span class="track-dur">3:59</span>
                     <button class="track-video-btn" data-youtube="p0esyMlH5IE" type="button" aria-label="Watch on YouTube: The Steppe Is Alive">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/Under_the_Silver_Dome.mp3" data-youtube="kn8VDsYbRJ0" data-title="Under the Silver Dome" role="button" tabindex="0" aria-label="Play track 3: Under the Silver Dome">
+                <div class="track" id="t-a1-3" data-src="assets/audio/Album 1/Under_the_Silver_Dome.mp3" data-youtube="kn8VDsYbRJ0" data-title="Under the Silver Dome" tabindex="0" aria-label="Play track 3: Under the Silver Dome">
                     <div class="track-num">
                         <span class="track-num-text">3</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1305,12 +1614,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Under the Silver Dome<span class="track-title-ukr">Під срібним куполом</span></span>
+                        <a class="track-context-link" href="guide.html#ep05">Ep 05 &mdash; The Golden City</a>
                     </div>
                     <span class="track-dur">3:01</span>
                     <button class="track-video-btn" data-youtube="kn8VDsYbRJ0" type="button" aria-label="Watch on YouTube: Under the Silver Dome">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/White_Fire_Drift.mp3" data-youtube="v6QFqEGnsD4" data-title="White Fire Drift" role="button" tabindex="0" aria-label="Play track 4: White Fire Drift">
+                <div class="track" id="t-a1-4" data-src="assets/audio/Album 1/White_Fire_Drift.mp3" data-youtube="v6QFqEGnsD4" data-title="White Fire Drift" tabindex="0" aria-label="Play track 4: White Fire Drift">
                     <div class="track-num">
                         <span class="track-num-text">4</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1319,12 +1629,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">White Fire Drift<span class="track-title-ukr">Білий вогонь</span></span>
+                        <a class="track-context-link" href="guide.html#ep02">Ep 02 &mdash; The Egg That Holds the World</a>
                     </div>
                     <span class="track-dur">3:01</span>
                     <button class="track-video-btn" data-youtube="v6QFqEGnsD4" type="button" aria-label="Watch on YouTube: White Fire Drift">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/Bone_Into_Current.mp3" data-youtube="yEcQi9MIfrA" data-title="Bone into Current" role="button" tabindex="0" aria-label="Play track 5: Bone into Current">
+                <div class="track" id="t-a1-5" data-src="assets/audio/Album 1/Bone_Into_Current.mp3" data-youtube="yEcQi9MIfrA" data-title="Bone into Current" tabindex="0" aria-label="Play track 5: Bone into Current">
                     <div class="track-num">
                         <span class="track-num-text">5</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1333,12 +1644,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Bone into Current<span class="track-title-ukr">Кістка в течію</span></span>
+                        <a class="track-context-link" href="guide.html#ep08">Ep 08 &mdash; The Forest</a>
                     </div>
                     <span class="track-dur">3:37</span>
                     <button class="track-video-btn" data-youtube="yEcQi9MIfrA" type="button" aria-label="Watch on YouTube: Bone into Current">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/Gravity_Yields.mp3" data-youtube="5DrJbQ0Rr94" data-title="Gravity Yields" role="button" tabindex="0" aria-label="Play track 6: Gravity Yields">
+                <div class="track" id="t-a1-6" data-src="assets/audio/Album 1/Gravity_Yields.mp3" data-youtube="5DrJbQ0Rr94" data-title="Gravity Yields" tabindex="0" aria-label="Play track 6: Gravity Yields">
                     <div class="track-num">
                         <span class="track-num-text">6</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1347,12 +1659,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Gravity Yields<span class="track-title-ukr">Тяжіння поступається</span></span>
+                        <a class="track-context-link" href="guide.html#ep10">Ep 10 &mdash; The Child's Step</a>
                     </div>
                     <span class="track-dur">3:36</span>
                     <button class="track-video-btn" data-youtube="5DrJbQ0Rr94" type="button" aria-label="Watch on YouTube: Gravity Yields">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/New_Breath_Same_Blood.mp3" data-youtube="IMXr5-hwgJc" data-title="New Breath, Same Blood" role="button" tabindex="0" aria-label="Play track 7: New Breath, Same Blood">
+                <div class="track" id="t-a1-7" data-src="assets/audio/Album 1/New_Breath_Same_Blood.mp3" data-youtube="IMXr5-hwgJc" data-title="New Breath, Same Blood" tabindex="0" aria-label="Play track 7: New Breath, Same Blood">
                     <div class="track-num">
                         <span class="track-num-text">7</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1361,12 +1674,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">New Breath, Same Blood<span class="track-title-ukr">Новий подих, та ж кров</span></span>
+                        <a class="track-context-link" href="guide.html#ep01">Ep 01 &mdash; The Mountains Remember</a>
                     </div>
                     <span class="track-dur">2:28</span>
                     <button class="track-video-btn" data-youtube="IMXr5-hwgJc" type="button" aria-label="Watch on YouTube: New Breath, Same Blood">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/Red_Gold_Ghost.mp3" data-youtube="GHBV5APRwP0" data-title="Red Gold Ghost" role="button" tabindex="0" aria-label="Play track 8: Red Gold Ghost">
+                <div class="track" id="t-a1-8" data-src="assets/audio/Album 1/Red_Gold_Ghost.mp3" data-youtube="GHBV5APRwP0" data-title="Red Gold Ghost" tabindex="0" aria-label="Play track 8: Red Gold Ghost">
                     <div class="track-num">
                         <span class="track-num-text">8</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1375,12 +1689,13 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Red Gold Ghost<span class="track-title-ukr">Червоно-золотий привид</span></span>
+                        <a class="track-context-link" href="guide.html#ep07">Ep 07 &mdash; The Word</a>
                     </div>
                     <span class="track-dur">3:02</span>
                     <button class="track-video-btn" data-youtube="GHBV5APRwP0" type="button" aria-label="Watch on YouTube: Red Gold Ghost">YouTube</button>
                 </div>
 
-                <div class="track" data-src="assets/audio/Album 1/Three_Turns_on_Wood.mp3" data-title="Three Turns on Wood" role="button" tabindex="0" aria-label="Play track 9: Three Turns on Wood">
+                <div class="track" id="t-a1-9" data-src="assets/audio/Album 1/Three_Turns_on_Wood.mp3" data-title="Three Turns on Wood" tabindex="0" aria-label="Play track 9: Three Turns on Wood">
                     <div class="track-num">
                         <span class="track-num-text">9</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1389,6 +1704,7 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Three Turns on Wood<span class="track-title-ukr">Три оберти на дереві</span></span>
+                        <a class="track-context-link" href="guide.html#ep10">Ep 10 &mdash; The Child's Step</a>
                     </div>
                     <span class="track-dur">1:56</span>
                 </div>
@@ -1398,7 +1714,12 @@
             <!-- ALBUM 2: Земля Пам'ятає -->
             <div class="album-panel" id="panel-album2" role="tabpanel" aria-labelledby="tab-album2">
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/01 Коріння знає шлях.mp3" data-title="Коріння знає шлях" role="button" tabindex="0" aria-label="Play track 1: Коріння знає шлях">
+                <div class="album2-context">
+                    <p class="album2-context-label">Земля Пам'ятає — The Land Remembers</p>
+                    <p class="album2-context-text">Where <em>The Steppe Is Alive</em> charts the Carpathian arc, this album presses deeper — into soil and diaspora memory. <em>Zemlia pam’yataye</em> means the land remembers. The Kolomyika 2/4 pulse carries here too, now transmitted by bodies displaced from that land, refusing to let the music travel without the earth beneath it.</p>
+                </div>
+
+                <div class="track" id="t-a2-1" data-src="assets/audio/Земля Пам'ятає/01 Коріння знає шлях.mp3" data-title="Коріння знає шлях" tabindex="0" aria-label="Play track 1: Коріння знає шлях">
                     <div class="track-num">
                         <span class="track-num-text">1</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1407,11 +1728,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Коріння знає шлях<span class="track-title-ukr">The Roots Know the Way</span></span>
+                        <a class="track-context-link" href="guide.html#ep01">Ep 01 &mdash; The Mountains Remember</a>
                     </div>
                     <span class="track-dur">3:57</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/02 Гора говорить.mp3" data-title="Гора говорить" role="button" tabindex="0" aria-label="Play track 2: Гора говорить">
+                <div class="track" id="t-a2-2" data-src="assets/audio/Земля Пам'ятає/02 Гора говорить.mp3" data-title="Гора говорить" tabindex="0" aria-label="Play track 2: Гора говорить">
                     <div class="track-num">
                         <span class="track-num-text">2</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1420,11 +1742,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Гора говорить<span class="track-title-ukr">The Mountain Speaks</span></span>
+                        <a class="track-context-link" href="guide.html#ep01">Ep 01 &mdash; The Mountains Remember</a>
                     </div>
                     <span class="track-dur">2:28</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/03 Вишиванка на шкірі.mp3" data-title="Вишиванка на шкірі" role="button" tabindex="0" aria-label="Play track 3: Вишиванка на шкірі">
+                <div class="track" id="t-a2-3" data-src="assets/audio/Земля Пам'ятає/03 Вишиванка на шкірі.mp3" data-title="Вишиванка на шкірі" tabindex="0" aria-label="Play track 3: Вишиванка на шкірі">
                     <div class="track-num">
                         <span class="track-num-text">3</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1433,11 +1756,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Вишиванка на шкірі<span class="track-title-ukr">Vyshyvanka on Skin</span></span>
+                        <a class="track-context-link" href="guide.html#ep01">Ep 01 &mdash; The Mountains Remember</a>
                     </div>
                     <span class="track-dur">3:00</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/04 Танцюй або відійди.mp3" data-title="Танцюй або відійди" role="button" tabindex="0" aria-label="Play track 4: Танцюй або відійди">
+                <div class="track" id="t-a2-4" data-src="assets/audio/Земля Пам'ятає/04 Танцюй або відійди.mp3" data-title="Танцюй або відійди" tabindex="0" aria-label="Play track 4: Танцюй або відійди">
                     <div class="track-num">
                         <span class="track-num-text">4</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1446,11 +1770,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Танцюй або відійди<span class="track-title-ukr">Dance or Step Aside</span></span>
+                        <a class="track-context-link" href="guide.html#ep10">Ep 10 &mdash; The Child's Step</a>
                     </div>
                     <span class="track-dur">2:29</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/05 Cobblestones Keep Receipts.mp3" data-title="Cobblestones Keep Receipts" role="button" tabindex="0" aria-label="Play track 5: Cobblestones Keep Receipts">
+                <div class="track" id="t-a2-5" data-src="assets/audio/Земля Пам'ятає/05 Cobblestones Keep Receipts.mp3" data-title="Cobblestones Keep Receipts" tabindex="0" aria-label="Play track 5: Cobblestones Keep Receipts">
                     <div class="track-num">
                         <span class="track-num-text">5</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1459,11 +1784,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Cobblestones Keep Receipts</span>
+                        <a class="track-context-link" href="guide.html#ep05">Ep 05 &mdash; The Golden City</a>
                     </div>
                     <span class="track-dur">3:58</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/06 Хліб і сіль- ми не чужі.mp3" data-title="Хліб і сіль: ми не чужі" role="button" tabindex="0" aria-label="Play track 6: Хліб і сіль: ми не чужі">
+                <div class="track" id="t-a2-6" data-src="assets/audio/Земля Пам'ятає/06 Хліб і сіль- ми не чужі.mp3" data-title="Хліб і сіль: ми не чужі" tabindex="0" aria-label="Play track 6: Хліб і сіль: ми не чужі">
                     <div class="track-num">
                         <span class="track-num-text">6</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1472,11 +1798,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Хліб і сіль: ми не чужі<span class="track-title-ukr">Bread and Salt: We Are Not Strangers</span></span>
+                        <a class="track-context-link" href="guide.html#ep04">Ep 04 &mdash; The Fold</a>
                     </div>
                     <span class="track-dur">3:58</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/07 Після заліза завжди мед.mp3" data-title="Після заліза завжди мед" role="button" tabindex="0" aria-label="Play track 7: Після заліза завжди мед">
+                <div class="track" id="t-a2-7" data-src="assets/audio/Земля Пам'ятає/07 Після заліза завжди мед.mp3" data-title="Після заліза завжди мед" tabindex="0" aria-label="Play track 7: Після заліза завжди мед">
                     <div class="track-num">
                         <span class="track-num-text">7</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1485,11 +1812,12 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Після заліза завжди мед<span class="track-title-ukr">After Iron, Always Honey</span></span>
+                        <a class="track-context-link" href="guide.html#ep07">Ep 07 &mdash; The Word</a>
                     </div>
                     <span class="track-dur">3:01</span>
                 </div>
 
-                <div class="track" data-src="assets/audio/Земля Пам'ятає/08 Річка під містом.mp3" data-title="Річка під містом" role="button" tabindex="0" aria-label="Play track 8: Річка під містом">
+                <div class="track" id="t-a2-8" data-src="assets/audio/Земля Пам'ятає/08 Річка під містом.mp3" data-title="Річка під містом" tabindex="0" aria-label="Play track 8: Річка під містом">
                     <div class="track-num">
                         <span class="track-num-text">8</span>
                         <svg class="track-play-icon" viewBox="0 0 24 24">
@@ -1498,6 +1826,7 @@
                     </div>
                     <div class="track-info">
                         <span class="track-title">Річка під містом<span class="track-title-ukr">River Under the City</span></span>
+                        <a class="track-context-link" href="guide.html#ep09">Ep 09 &mdash; The River</a>
                     </div>
                     <span class="track-dur">3:03</span>
                 </div>
@@ -1525,16 +1854,25 @@
                     between frequencies.
                 </p>
             </div>
+            <a class="guide-bridge" href="guide.html">Continue with the heritage guide &rarr;</a>
         </section>
 
     </main>
 
     <!-- STAND WITH UKRAINE -->
-    <section class="stand-section" aria-label="Support Ukraine">
-        <h2>This art belongs to a country still standing.</h2>
-        <p>Ukraine continues to defend its culture, its people, and its future. United24 is the official
-            fundraising platform of the Ukrainian government — transparent, publicly reported, and direct.</p>
-        <a href="https://u24.gov.ua/" target="_blank" rel="noopener">Donate to Ukraine via United24</a>
+    <section class="stand-section" aria-labelledby="music-ukraine-headline">
+        <p class="stand-eyebrow">Stand with Ukraine</p>
+        <h2 id="music-ukraine-headline">This art belongs to a country still standing.</h2>
+        <p>Every track in this collection carries the memory of a living culture.
+           Ukraine continues to defend its people, its heritage, and its future.
+           United24 is the official fundraising platform of the Ukrainian government —
+           transparent, publicly reported, and direct.</p>
+        <a href="https://u24.gov.ua/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Support Ukraine via United24 — opens in a new tab">
+            Support Ukraine — United24 ↗
+        </a>
     </section>
 
     <!-- FOOTER -->
@@ -1547,6 +1885,7 @@
             <li><a href="/#stage">Stage</a></li>
             <li><a href="dance.html">Dance Engine</a></li>
             <li><a href="https://u24.gov.ua/" target="_blank" rel="noopener">Support Ukraine</a></li>
+            <li><a href="/#participate">Get Involved</a></li>
             <li><a href="https://www.youtube.com/playlist?list=PLveg0fPWx8QGTT63eGrriP2nFpV6g9QU1" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
         <p class="album-footer-dev">Site by <a href="https://goodflippindesign.com" target="_blank" rel="noopener">Good Flippin' Design</a></p>
@@ -1615,7 +1954,8 @@
 
                 currentIndex = idx;
                 audio.src = src;
-                audio.play();
+                var playPromise = audio.play();
+                if (playPromise !== undefined) { playPromise.catch(function () {}); }
                 isPlaying = true;
 
                 npTitle.textContent = t.getAttribute('data-title') || '';
@@ -1627,7 +1967,8 @@
             function togglePlay() {
                 if (!audio.src) return;
                 if (audio.paused) {
-                    audio.play();
+                    var playPromise = audio.play();
+                    if (playPromise !== undefined) { playPromise.catch(function () {}); }
                     isPlaying = true;
                 } else {
                     audio.pause();

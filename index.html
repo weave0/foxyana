@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foxyana — Grace is not given. It is practiced.</title>
-  <meta name="description" content="Foxyana — master of Kozachok, Kolomyika, and classical form. Rooted in the Carpathian highlands. Devoted to movement, craft, and the art of presence.">
+  <meta name="description" content="Foxyana is a contemporary Ukrainian cultural project translating Carpathian heritage through dance, music, story, and image.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Foxyana">
   <meta property="og:description" content="Grace is not given. It is practiced.">
@@ -20,6 +20,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -273,8 +275,8 @@
 
     .site-nav.scrolled {
       background: rgba(14, 10, 6, 0.92);
-      backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
     }
 
     .nav-inner {
@@ -508,6 +510,84 @@
       color: rgba(251, 247, 242, 0.75);
       margin-top: 20px;
       line-height: 1.85;
+    }
+
+    /* ================================================================
+       MISSION PORTAL — orientation and primary paths
+       ================================================================ */
+    .mission-portal {
+      position: relative;
+      margin-top: clamp(-48px, -6vw, -72px);
+      z-index: 2;
+    }
+
+    .mission-shell {
+      background:
+        linear-gradient(180deg,
+          rgba(251, 247, 242, 0.98) 0%,
+          rgba(245, 237, 224, 0.96) 100%);
+      border: 1px solid rgba(90, 64, 48, 0.12);
+      box-shadow: 0 20px 60px rgba(14, 10, 6, 0.12);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 48px);
+      padding: clamp(28px, 4vw, 48px);
+    }
+
+    .mission-copy .section-headline {
+      margin-bottom: 18px;
+      max-width: 14ch;
+    }
+
+    .mission-copy .body-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .mission-paths {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .mission-path {
+      display: block;
+      padding: 20px 22px;
+      background: rgba(251, 247, 242, 0.82);
+      border-left: 3px solid var(--fox-auburn);
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .mission-path:hover,
+    .mission-path:focus-visible {
+      transform: translateY(-2px);
+      border-left-color: var(--hutsul-cobalt);
+      background: var(--studio-white);
+      outline: none;
+    }
+
+    .mission-path-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fox-auburn);
+      margin-bottom: 6px;
+    }
+
+    .mission-path-title {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--mountain-dark);
+    }
+
+    .mission-path-desc {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--bark);
     }
 
     /* ================================================================
@@ -1216,6 +1296,10 @@
     }
 
     @media (max-width: 900px) {
+      .mission-shell {
+        grid-template-columns: 1fr;
+      }
+
       .about-inner {
         grid-template-columns: 1fr;
       }
@@ -1251,6 +1335,10 @@
     }
 
     @media (max-width: 768px) {
+      .mission-portal {
+        margin-top: 0;
+      }
+
       .site-nav {
         padding: 16px 20px;
       }
@@ -1752,6 +1840,93 @@
       transform: translateY(-1px);
     }
 
+    /* --- Participate section --- */
+    .participate {
+      padding: var(--section-pad) var(--side-pad);
+      background: rgba(196, 74, 0, 0.03);
+      border-top: 1px solid rgba(196, 74, 0, 0.08);
+    }
+
+    .participate-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .participate-sub {
+      font-size: 1rem;
+      color: var(--bark);
+      max-width: 540px;
+      margin: 0 auto 56px;
+      line-height: 1.8;
+    }
+
+    .participate-cards {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+
+    @media (max-width: 860px) {
+      .participate-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .participate-card {
+      padding: 32px 28px 28px;
+      border: 1px solid rgba(196, 74, 0, 0.14);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .participate-card-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--fox-auburn);
+      opacity: 0.75;
+    }
+
+    .participate-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      font-weight: 300;
+      color: var(--mountain-dark);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .participate-card-desc {
+      font-size: 0.88rem;
+      color: var(--bark);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .participate-card-cta {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--fox-auburn);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196, 74, 0, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .participate-card-cta:hover {
+      color: var(--ember);
+      border-color: var(--ember);
+      text-decoration: none;
+    }
+
     /* --- Ambient audio player --- */
     .ambient-player {
       position: fixed;
@@ -1891,6 +2066,40 @@
       margin-top: 12px;
     }
 
+    .guide-kicker {
+      margin-top: 18px;
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245, 237, 224, 0.68);
+    }
+
+    .guide-link-wrap {
+      margin-top: 20px;
+    }
+
+    .guide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: rgba(196, 154, 26, 0.1);
+      border: 1px solid rgba(196, 154, 26, 0.25);
+      border-radius: 6px;
+      color: var(--vyshyvanka-gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .guide-link:hover,
+    .guide-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(196, 154, 26, 0.5);
+      outline: none;
+    }
+
     .guide-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -1979,6 +2188,83 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    /* --- New Single — video highlight --- */
+    .new-single {
+      background: var(--night-overture);
+      padding: clamp(60px, 8vh, 100px) var(--side-pad);
+      text-align: center;
+    }
+
+    .new-single-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .new-single-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--vyshyvanka-gold);
+      margin-bottom: 16px;
+    }
+
+    .new-single-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--linen);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .new-single-sub {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(245, 237, 224, 0.45);
+      margin-bottom: 40px;
+    }
+
+    .new-single-embed {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #0a0704;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      margin-bottom: 32px;
+    }
+
+    .new-single-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .new-single-cta {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--vyshyvanka-gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196, 154, 26, 0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .new-single-cta:hover {
+      color: var(--linen);
+      border-color: var(--linen);
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -2050,6 +2336,7 @@
         <a href="guide.html" class="nav-link nav-ukraine">Guide</a>
         <a href="music.html" class="nav-link">Music</a>
         <a href="dance.html" class="nav-link">Dance</a>
+        <a href="#participate" class="nav-link">Get Involved</a>
       </nav>
     </div>
   </header>
@@ -2079,10 +2366,67 @@
         <span class="section-label" aria-hidden="true">FOXYANA</span>
         <h1 class="hero-headline" id="hero-headline">She dances where the mountains meet the sky.</h1>
         <p class="hero-sub">
-          Kozachok. Kolomyika. Classical form. Ballroom.<br>
-          Rooted in the Carpathians — at home on any stage.
+          A contemporary Ukrainian cultural project shaped through dance, music, story, and image.<br>
+          Rooted in the Carpathians. Made for the present.
         </p>
-        <a href="#movement" class="cta-btn">Discover her work</a>
+        <a href="#mission" class="cta-btn">Start here</a>
+      </div>
+    </section>
+
+    <section class="mission-portal" id="mission" aria-labelledby="mission-headline">
+      <div class="container">
+        <div class="mission-shell" data-reveal>
+          <div class="mission-copy">
+            <span class="section-label">Start Here</span>
+            <h2 class="section-headline" id="mission-headline">A contemporary cultural portal carrying Ukrainian heritage through performance.</h2>
+            <p class="body-lead">
+              Foxyana is not only a stage figure. She is the guide through a living world of Carpathian memory, Ukrainian sound, movement, and visual language.
+            </p>
+            <p class="body-text">
+              Begin with the path that fits you best: learn the cultural context, hear how heritage becomes contemporary music, or enter the interactive performance space.
+            </p>
+          </div>
+
+          <div class="mission-paths" aria-label="Primary site paths">
+            <a class="mission-path" href="guide.html">
+              <span class="mission-path-label">Learn</span>
+              <span class="mission-path-title">Learn Ukraine</span>
+              <span class="mission-path-desc">Start with the guide and move through language, landscape, ritual, music, and memory.</span>
+            </a>
+
+            <a class="mission-path" href="music.html">
+              <span class="mission-path-label">Listen</span>
+              <span class="mission-path-title">Hear the Music</span>
+              <span class="mission-path-desc">Follow how Ukrainian motifs are carried into electronic sound, atmosphere, and contemporary release.</span>
+            </a>
+
+            <a class="mission-path" href="dance.html">
+              <span class="mission-path-label">Enter</span>
+              <span class="mission-path-title">Enter the Performance</span>
+              <span class="mission-path-desc">Step into the interactive dance engine and experience rhythm, tempo, and embodied tradition in motion.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         NEW SINGLE — Fox and Cat (Official Release)
+         =================================================================== -->
+    <section class="new-single" id="new-single" aria-labelledby="new-single-title">
+      <div class="new-single-inner" data-reveal>
+        <p class="new-single-label">New Release</p>
+        <h2 class="new-single-title" id="new-single-title">Fox and Cat</h2>
+        <p class="new-single-sub">Good Flippin Vibes Presents Foxyana — First Official Release</p>
+        <div class="new-single-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/4mh-X0Q9SGY?rel=0&modestbranding=1"
+            title="Good Flippin Vibes Presents FOXYANA — Fox and Cat (Official Music Video)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+        <a class="new-single-cta" href="music.html" aria-label="Explore the full Foxyana music catalogue">Explore the full catalogue →</a>
       </div>
     </section>
 
@@ -2897,6 +3241,39 @@
     </section>
 
     <!-- ===================================================================
+         PARTICIPATE — ways to go deeper
+         =================================================================== -->
+    <section class="participate section-pad" id="participate" aria-labelledby="participate-headline">
+      <div class="container">
+        <div class="participate-inner" data-reveal>
+          <span class="section-label section-label--center">Get Involved</span>
+          <h2 class="section-headline" id="participate-headline">Ways to go deeper.</h2>
+          <p class="participate-sub">Whether you are new to Ukrainian culture or already deep in it, there are concrete ways to stay connected.</p>
+          <ul class="participate-cards" aria-label="Ways to engage">
+            <li class="participate-card">
+              <p class="participate-card-label">First time here?</p>
+              <h3 class="participate-card-title">Start with the guide</h3>
+              <p class="participate-card-desc">Ten episodes covering embroidery, eggs, the bandura, varenyky, Lviv, the steppe, poetry, the forest, the Dnipro, and dance. Read one episode and see if it opens a door.</p>
+              <a class="participate-card-cta" href="guide.html">Begin with Episode 01 &rarr;</a>
+            </li>
+            <li class="participate-card">
+              <p class="participate-card-label">Stay in the world</p>
+              <h3 class="participate-card-title">Join the mailing list</h3>
+              <p class="participate-card-desc">New releases, cultural essays, guide episodes, and the occasional behind-the-scenes note. One email address is enough.</p>
+              <a class="participate-card-cta" href="mailto:getsome@goodflippinvibes.com?subject=Mailing%20List%20%E2%80%94%20Add%20Me&body=Please%20add%20me%20to%20the%20Foxyana%20mailing%20list.">Subscribe by email &rarr;</a>
+            </li>
+            <li class="participate-card">
+              <p class="participate-card-label">For educators &amp; programmers</p>
+              <h3 class="participate-card-title">Workshops &amp; cultural programming</h3>
+              <p class="participate-card-desc">Foxyana works with schools, cultural institutions, and arts organisations bringing Ukrainian heritage into live and educational contexts.</p>
+              <a class="participate-card-cta" href="mailto:getsome@goodflippinvibes.com?subject=Workshop%20%2F%20Cultural%20Program%20Inquiry">Discuss a collaboration &rarr;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          CONTACT — inquiries
          =================================================================== -->
     <section class="contact section-pad" id="contact" aria-labelledby="contact-headline">
@@ -2923,14 +3300,15 @@
       <div class="container">
 
         <header class="guide-header" data-reveal>
-          <span class="section-label">Through Foxyana's Eyes</span>
-          <h2 class="guide-headline" id="guide-headline">A guide to Ukraine.</h2>
+          <span class="section-label">Knowledge Hub</span>
+          <h2 class="guide-headline" id="guide-headline">Begin with the guide to Ukraine.</h2>
           <p class="guide-sub">
             Ten episodes. Mountains, kitchens, poetry, rivers.<br>
-            One word per episode. A country's story, told through movement.
+            The site's clearest path into Ukrainian language, ritual, landscape, and memory.
           </p>
-          <p style="margin-top: 20px;">
-            <a href="guide.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: rgba(196,154,26,0.1); border: 1px solid rgba(196,154,26,0.25); border-radius: 6px; color: var(--vyshyvanka-gold); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: transform 0.2s ease, border-color 0.2s ease;">Explore the full guide &rarr;</a>
+          <p class="guide-kicker">If you start anywhere, start here.</p>
+          <p class="guide-link-wrap">
+            <a href="guide.html" class="guide-link">Explore the full guide &rarr;</a>
           </p>
         </header>
 
@@ -3155,6 +3533,8 @@
         <a href="#stage" class="footer-link">Stage</a>
         <a href="#presence" class="footer-link">Presence</a>
         <a href="#contact" class="footer-link">Contact</a>
+        <a href="guide.html" class="footer-link">Guide</a>
+        <a href="music.html" class="footer-link">Music</a>
         <a href="dance.html" class="footer-link">Dance</a>
       </nav>
 
