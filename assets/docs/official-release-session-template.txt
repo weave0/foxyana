@@ -1,0 +1,65 @@
+FOXYANA OFFICIAL RELEASE SESSION TEMPLATE
+
+Project: Danced the World, Hosted by Ukraine
+Version: 1.0
+
+1) SESSION HEADER
+- Track Name:
+- Track Number:
+- BPM:
+- Key:
+- Ukrainian Anchor Motif:
+- Global Fusion Partner:
+- Dance Focus:
+
+2) ARRANGEMENT MAP
+- Intro:
+- Build A:
+- Main Groove A:
+- Breakdown:
+- Main Groove B:
+- Peak Section:
+- Exit / Transition:
+
+3) STEM BUS STRUCTURE
+- DRUM BUS
+- PERCUSSION BUS
+- BASS BUS
+- UKRAINIAN INSTRUMENT BUS
+- GLOBAL FUSION BUS
+- SYNTH BUS
+- FX BUS
+- VOCAL / CHOP BUS (if applicable)
+- MUSIC BUS
+- MASTER BUS
+
+4) MIX CHECKPOINTS
+- Kick and bass balance verified in mono:
+- Upper-mid fatigue check at performance level:
+- Motif intelligibility at low playback volume:
+- Transition cue clarity for dancers:
+
+5) CULTURAL INTEGRITY GATE
+- Anchor source documented:
+- Advisor notes completed:
+- Fusion justification documented:
+
+6) REVISION LOG
+- V1 Notes:
+- V2 Notes:
+- Final Print Notes:
+
+7) A/B RELEASE GATE
+- Gate A (Prestige Gala) Pass/Fail:
+- Gate A Notes:
+- Gate B (World Dance Floor) Pass/Fail:
+- Gate B Notes:
+- Combined Decision (Release or Hold):
+- Retest Date:
+
+8) EXPORTS
+- Full Mix 24-bit WAV
+- Instrumental Mix
+- Performance Edit
+- DJ Intro / Outro Edit
+- Stem Pack

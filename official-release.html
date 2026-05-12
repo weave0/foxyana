@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxyana — Official Release</title>
+    <meta name="description"
+        content="Fox and Cat — the first official single from DJ Foxyana. Watch the music video, stream now, and follow the production of Danced the World, Hosted by Ukraine.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Foxyana — Official Release">
+    <meta property="og:description"
+        content="Fox and Cat — first official single from DJ Foxyana. Ukrainian soul meets electronic frequency.">
+    <meta property="og:url" content="https://foxyana.com/official-release">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://foxyana.com/assets/images/DJ%20Foxyana/Foxyana%20DJing%20at%20sunrise%20on%20a%20mountain%20ridge.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Foxyana — Official Release">
+    <meta name="twitter:description" content="Fox and Cat — first official single from DJ Foxyana.">
+    <meta name="twitter:image" content="https://foxyana.com/assets/images/DJ%20Foxyana/Foxyana%20DJing%20at%20sunrise%20on%20a%20mountain%20ridge.png">
+    <link rel="canonical" href="https://foxyana.com/official-release">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =============================================================
+           DJ FOXYANA — OFFICIAL RELEASE PAGE
+           ============================================================= */
+
+        :root {
+            --fox-auburn: #C44A00;
+            --ember: #9B3800;
+            --hutsul-cobalt: #1A3A8F;
+            --vyshyvanka-gold: #C49A1A;
+            --carpathian-burgundy: #7A1818;
+            --linen: #F5EDE0;
+            --studio-white: #FBF7F2;
+            --mountain-dark: #1E1510;
+            --bark: #5A4030;
+            --carpathian-forest: #1A4A2A;
+            --night-overture: #0E0A06;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --side-pad: clamp(20px, 5vw, 80px);
+            --content-max: 1100px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--linen);
+            background: var(--night-overture);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--vyshyvanka-gold); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--vyshyvanka-gold); outline-offset: 3px; border-radius: 2px; }
+
+        /* Skip link */
+        .skip-link {
+            position: fixed; top: -60px; left: 16px; z-index: 9999;
+            padding: 10px 18px; background: var(--vyshyvanka-gold); color: var(--night-overture);
+            font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+            border-radius: 4px; transition: top 0.2s;
+        }
+        .skip-link:focus { top: 16px; outline: 2px solid var(--linen); outline-offset: 2px; }
+
+        /* Nav */
+        .album-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(14, 10, 6, 0.92);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(196, 154, 26, 0.12);
+            padding: 0 var(--side-pad); height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .album-nav-home {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 300;
+            color: var(--linen); letter-spacing: 0.04em;
+        }
+        .album-nav-home:hover { color: var(--vyshyvanka-gold); text-decoration: none; }
+        .album-nav-links { display: flex; gap: 6px; list-style: none; }
+        .album-nav-links a {
+            font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.5); padding: 6px 10px; white-space: nowrap;
+            border-radius: 4px; transition: color 0.2s ease, background 0.2s ease;
+        }
+        .album-nav-links a:hover { color: var(--vyshyvanka-gold); background: rgba(196, 154, 26, 0.08); text-decoration: none; }
+        .album-nav-links a.is-active { color: var(--vyshyvanka-gold); }
+
+        @media (max-width: 640px) {
+            .album-nav-links { gap: 2px; }
+            .album-nav-links a { font-size: 0.62rem; padding: 6px 7px; letter-spacing: 0.06em; }
+        }
+
+        /* ---- SINGLE FEATURE ---- */
+        .single-feature {
+            padding: 100px var(--side-pad) 0;
+            max-width: var(--content-max);
+            margin: 0 auto;
+        }
+
+        .single-label {
+            font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--vyshyvanka-gold); opacity: 0.85; margin-bottom: 12px;
+        }
+
+        .single-title {
+            font-family: var(--font-display); font-weight: 300;
+            font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1.06;
+            color: var(--linen); margin-bottom: 8px;
+        }
+
+        .single-presenter {
+            font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.35); margin-bottom: 24px;
+        }
+
+        .single-desc {
+            font-size: 1rem; color: rgba(245, 237, 224, 0.65);
+            max-width: 560px; margin-bottom: 36px; line-height: 1.75;
+        }
+
+        /* Video embed */
+        .single-video {
+            width: 100%; max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 40px var(--side-pad) 0;
+        }
+
+        .single-video-inner {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            border-radius: 6px; overflow: hidden;
+            background: #000;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .single-video-inner iframe {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* Stream links */
+        .stream-section {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 48px var(--side-pad) 0;
+        }
+
+        .stream-label {
+            font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3); margin-bottom: 16px;
+        }
+
+        .stream-links {
+            display: flex; gap: 12px; flex-wrap: wrap;
+        }
+
+        .stream-link {
+            font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 10px 22px;
+            border: 1px solid rgba(196, 154, 26, 0.3);
+            border-radius: 4px; color: var(--linen);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .stream-link:hover { border-color: var(--vyshyvanka-gold); color: var(--vyshyvanka-gold); text-decoration: none; }
+
+        /* Divider */
+        .section-divider {
+            max-width: var(--content-max);
+            margin: 80px auto 0;
+            padding: 0 var(--side-pad);
+            border-top: 1px solid rgba(196, 154, 26, 0.1);
+            display: flex; align-items: center; gap: 20px;
+        }
+
+        .section-divider-line {
+            flex: 1; height: 1px;
+            background: rgba(196, 154, 26, 0.08);
+        }
+
+        .section-divider-text {
+            font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.2); white-space: nowrap;
+            padding: 16px 0;
+        }
+
+        /* ---- ALBUM IN DEVELOPMENT ---- */
+        .album-coming {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 60px var(--side-pad) 0;
+        }
+
+        .album-coming-label {
+            font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3); margin-bottom: 12px;
+        }
+
+        .album-coming h2 {
+            font-family: var(--font-display); font-weight: 300;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--linen); margin-bottom: 16px; line-height: 1.15;
+        }
+        .album-coming h2 em { font-style: italic; color: rgba(196, 154, 26, 0.6); }
+
+        .album-coming-desc {
+            font-size: 0.9rem; color: rgba(245, 237, 224, 0.5);
+            max-width: 600px; line-height: 1.75; margin-bottom: 40px;
+        }
+
+        .album-badges {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 0;
+        }
+
+        .album-badge {
+            font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+            border: 1px solid rgba(245, 237, 224, 0.1);
+            color: rgba(245, 237, 224, 0.35);
+            padding: 5px 14px; border-radius: 20px;
+        }
+
+        /* Framework grid */
+        .framework-section {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 60px var(--side-pad) 0;
+        }
+
+        .framework-section-label {
+            font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3); margin-bottom: 10px;
+        }
+
+        .framework-section h3 {
+            font-family: var(--font-display); font-weight: 300;
+            font-size: 1.5rem; color: rgba(245, 237, 224, 0.6);
+            margin-bottom: 28px;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1px;
+            background: rgba(245, 237, 224, 0.04);
+            border: 1px solid rgba(245, 237, 224, 0.04);
+            border-radius: 6px; overflow: hidden;
+        }
+
+        .framework-card {
+            background: rgba(14, 10, 6, 0.7);
+            padding: 24px 20px;
+        }
+
+        .framework-card-num {
+            font-family: var(--font-display); font-size: 1.5rem; font-style: italic;
+            color: rgba(196, 154, 26, 0.18); line-height: 1; margin-bottom: 8px;
+        }
+
+        .framework-card h4 {
+            font-family: var(--font-display); font-weight: 400;
+            font-size: 0.95rem; color: rgba(245, 237, 224, 0.6); margin-bottom: 6px;
+        }
+
+        .framework-card p {
+            font-size: 0.75rem; color: rgba(245, 237, 224, 0.3); line-height: 1.6;
+        }
+
+        /* Track scorecard */
+        .scorecard-section {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 60px var(--side-pad) 0;
+        }
+
+        .scorecard-section-label {
+            font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3); margin-bottom: 10px;
+        }
+
+        .scorecard-section h3 {
+            font-family: var(--font-display); font-weight: 300;
+            font-size: 1.5rem; color: rgba(245, 237, 224, 0.6); margin-bottom: 28px;
+        }
+
+        .scorecard-table-wrap {
+            overflow-x: auto;
+            border: 1px solid rgba(245, 237, 224, 0.05);
+            border-radius: 6px;
+        }
+
+        .scorecard-table {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.73rem; min-width: 680px;
+        }
+
+        .scorecard-table thead th {
+            font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.25); padding: 12px 14px 9px;
+            text-align: left; border-bottom: 1px solid rgba(245, 237, 224, 0.05);
+            white-space: nowrap; background: rgba(14, 10, 6, 0.9);
+        }
+
+        .scorecard-table tbody tr {
+            border-bottom: 1px solid rgba(245, 237, 224, 0.03);
+            transition: background 0.15s ease;
+        }
+        .scorecard-table tbody tr:hover { background: rgba(196, 154, 26, 0.03); }
+        .scorecard-table tbody tr:last-child { border-bottom: none; }
+
+        .scorecard-table tbody td {
+            padding: 12px 14px;
+            color: rgba(245, 237, 224, 0.45); vertical-align: middle;
+        }
+
+        .scorecard-table .td-track { color: rgba(245, 237, 224, 0.6); font-weight: 400; }
+        .scorecard-table .td-num {
+            font-family: var(--font-display); font-style: italic;
+            color: rgba(196, 154, 26, 0.25); font-size: 0.85rem; white-space: nowrap;
+        }
+
+        .badge-pass {
+            display: inline-block; font-size: 0.55rem; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 2px 7px; border-radius: 10px;
+            background: rgba(26, 74, 42, 0.35); color: #6ECF8A;
+            border: 1px solid rgba(110, 207, 138, 0.2);
+        }
+        .badge-pending {
+            display: inline-block; font-size: 0.55rem; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 2px 7px; border-radius: 10px;
+            background: rgba(90, 64, 48, 0.3); color: rgba(245, 237, 224, 0.28);
+            border: 1px solid rgba(245, 237, 224, 0.07);
+        }
+        .badge-hold {
+            display: inline-block; font-size: 0.55rem; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 2px 7px; border-radius: 10px;
+            background: rgba(122, 24, 24, 0.25); color: rgba(245, 160, 140, 0.6);
+            border: 1px solid rgba(122, 24, 24, 0.35);
+        }
+
+        /* Gates */
+        .gates-section {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 60px var(--side-pad) 0;
+        }
+
+        .gates-section-label {
+            font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3); margin-bottom: 10px;
+        }
+
+        .gates-section h3 {
+            font-family: var(--font-display); font-weight: 300;
+            font-size: 1.5rem; color: rgba(245, 237, 224, 0.6); margin-bottom: 28px;
+        }
+
+        .gates-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+
+        @media (max-width: 600px) { .gates-grid { grid-template-columns: 1fr; } }
+
+        .gate-card {
+            border: 1px solid rgba(245, 237, 224, 0.05); border-radius: 8px;
+            padding: 28px 24px; background: rgba(245, 237, 224, 0.015);
+        }
+
+        .gate-card-label {
+            font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(196, 154, 26, 0.5); margin-bottom: 8px;
+        }
+
+        .gate-card h4 {
+            font-family: var(--font-display); font-weight: 400;
+            font-size: 1.2rem; color: rgba(245, 237, 224, 0.6); margin-bottom: 12px;
+        }
+
+        .gate-card p {
+            font-size: 0.8rem; color: rgba(245, 237, 224, 0.35); line-height: 1.65;
+        }
+
+        .gate-card ul {
+            margin-top: 12px; padding-left: 16px;
+            font-size: 0.76rem; color: rgba(245, 237, 224, 0.28); line-height: 1.8;
+        }
+
+        /* Footer */
+        .album-footer {
+            text-align: center;
+            padding: 60px var(--side-pad) 60px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(245, 237, 224, 0.04);
+        }
+        .album-footer-brand {
+            font-family: var(--font-display); font-size: 1rem;
+            letter-spacing: 0.2em; color: rgba(245, 237, 224, 0.3); margin-bottom: 6px;
+        }
+        .album-footer p {
+            font-size: 0.78rem; color: rgba(245, 237, 224, 0.2); font-style: italic;
+        }
+        .album-footer-links {
+            list-style: none; display: flex; justify-content: center;
+            gap: 20px; margin-top: 20px; flex-wrap: wrap;
+        }
+        .album-footer-links a {
+            font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(245, 237, 224, 0.3);
+        }
+        .album-footer-links a:hover { color: var(--vyshyvanka-gold); }
+        .album-footer-dev {
+            font-size: 0.6rem; opacity: 0.35; margin-top: 18px; letter-spacing: 0.05em;
+        }
+        .album-footer-dev a { color: inherit; opacity: 1; }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="album-nav" role="banner">
+        <a href="/" class="album-nav-home" aria-label="Foxyana — return to homepage">Foxyana</a>
+        <nav aria-label="Site navigation">
+            <ul class="album-nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="dance.html">Dance</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="official-release.html" aria-current="page" class="is-active">Official Release</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SINGLE FEATURE -->
+        <section aria-labelledby="single-title">
+            <div class="single-feature">
+                <p class="single-label">First Official Single</p>
+                <h1 class="single-title" id="single-title">Fox and Cat</h1>
+                <p class="single-presenter">Good Flippin Vibes Presents Foxyana</p>
+                <p class="single-desc">
+                    The first official release from Foxyana — where the fox meets the cat,
+                    and Ukrainian soul finds its electronic frequency. Available now on all streaming platforms.
+                </p>
+            </div>
+
+            <div class="single-video">
+                <div class="single-video-inner">
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/4mh-X0Q9SGY?rel=0&modestbranding=1"
+                        title="Good Flippin Vibes Presents FOXYANA — Fox and Cat (Official Music Video)"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="stream-section">
+                <p class="stream-label">Stream now</p>
+                <div class="stream-links">
+                    <a href="https://open.spotify.com/artist/foxyana" target="_blank" rel="noopener" class="stream-link">Spotify</a>
+                    <a href="https://music.apple.com/search?term=foxyana" target="_blank" rel="noopener" class="stream-link">Apple Music</a>
+                    <a href="https://www.youtube.com/watch?v=4mh-X0Q9SGY" target="_blank" rel="noopener" class="stream-link">YouTube</a>
+                    <a href="https://soundcloud.com/foxyana" target="_blank" rel="noopener" class="stream-link">SoundCloud</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider-line"></span>
+            <span class="section-divider-text">In Production</span>
+            <span class="section-divider-line"></span>
+        </div>
+
+        <!-- ALBUM IN DEVELOPMENT -->
+        <section aria-labelledby="album-title">
+            <div class="album-coming">
+                <p class="album-coming-label">Coming 2026</p>
+                <h2 id="album-title">Danced the World,<br><em>Hosted by Ukraine</em></h2>
+                <p class="album-coming-desc">
+                    A 12-track gala release built on Ukrainian cultural integrity, luxury mix standards,
+                    and a dual-gate approval system designed for prestige dance floors worldwide.
+                    Every track enters a structured production protocol — nothing clears without passing both gates.
+                </p>
+                <div class="album-badges">
+                    <span class="album-badge">12 Tracks</span>
+                    <span class="album-badge">Gala Grade</span>
+                    <span class="album-badge">Ukrainian-First Fusion</span>
+                    <span class="album-badge">Dual Release Gate</span>
+                </div>
+            </div>
+
+            <!-- PRODUCTION FRAMEWORK -->
+            <div class="framework-section">
+                <p class="framework-section-label">Session Framework</p>
+                <h3>Eight-phase production protocol</h3>
+                <div class="framework-grid" role="list">
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">01</p>
+                        <h4>Session Header</h4>
+                        <p>Track name, BPM, key, Ukrainian anchor motif, global fusion partner, and primary dance focus.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">02</p>
+                        <h4>Arrangement Map</h4>
+                        <p>Seven structural waypoints: groove entry, build, breakdown, peak, and transition cue.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">03</p>
+                        <h4>Stem Bus Structure</h4>
+                        <p>Nine discrete busses ensuring full separation at mixdown from drum through master.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">04</p>
+                        <h4>Mix Checkpoints</h4>
+                        <p>Mono balance, upper-mid fatigue, motif intelligibility at low volume, transition cue clarity.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">05</p>
+                        <h4>Cultural Integrity Gate</h4>
+                        <p>Anchor source documented, advisor notes complete, fusion justification on record.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">06</p>
+                        <h4>Revision Log</h4>
+                        <p>V1, V2, and final print notes kept per track. Every change traceable.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">07</p>
+                        <h4>A/B Release Gate</h4>
+                        <p>Prestige Gala and World Dance Floor — two independent approval paths. Both must clear.</p>
+                    </article>
+                    <article class="framework-card" role="listitem">
+                        <p class="framework-card-num">08</p>
+                        <h4>Export Pack</h4>
+                        <p>Full mix (24-bit WAV), instrumental, performance edit, DJ edit, and stem pack per approved track.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- TRACK SCORECARD -->
+            <div class="scorecard-section">
+                <p class="scorecard-section-label">Track Scorecard</p>
+                <h3>12-track production status</h3>
+                <div class="scorecard-table-wrap">
+                    <table class="scorecard-table" aria-label="Official release track scorecard">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Track</th>
+                                <th scope="col">Creative Anchor</th>
+                                <th scope="col">Fusion Integrity</th>
+                                <th scope="col">Hook</th>
+                                <th scope="col">Transition</th>
+                                <th scope="col">Low End</th>
+                                <th scope="col">Upper Mid</th>
+                                <th scope="col">Version</th>
+                                <th scope="col">Gala Gate</th>
+                                <th scope="col">Dance Gate</th>
+                                <th scope="col">Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-num">01</td>
+                                <td class="td-track">Kyiv Arrival Overture</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">02</td>
+                                <td class="td-track">Rumba of the Dnipro</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">03</td>
+                                <td class="td-track">Lviv Tango de Cristal</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">04</td>
+                                <td class="td-track">Carpathian Silk Waltz</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">05</td>
+                                <td class="td-track">Odessa Night Cha-Cha</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">06</td>
+                                <td class="td-track">Black-Tie Hopak House</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">07</td>
+                                <td class="td-track">Arkan Midnight Circuit</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">08</td>
+                                <td class="td-track">Kyiv Skyline Pop Noire</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">09</td>
+                                <td class="td-track">World Suite I: Mediterranean Hand-Off</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">10</td>
+                                <td class="td-track">World Suite II: Afro Pulse Accord</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">11</td>
+                                <td class="td-track">World Suite III: East-Asia Crystal Lines</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-num">12</td>
+                                <td class="td-track">Finale: Memory on the River</td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pass">Pass</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-pending">Pending</span></td>
+                                <td><span class="badge-hold">Hold</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- RELEASE GATES -->
+            <div class="gates-section">
+                <p class="gates-section-label">A/B Release Gate</p>
+                <h3>Two paths. Both must clear.</h3>
+                <div class="gates-grid">
+                    <article class="gate-card">
+                        <p class="gate-card-label">Gate A</p>
+                        <h4>Prestige Gala</h4>
+                        <p>Tonal weight and cultural representation appropriate for a formal international event hosted by Ukraine at the highest level.</p>
+                        <ul>
+                            <li>Mix translates to large, reflective acoustics</li>
+                            <li>Cultural representation above reproach</li>
+                            <li>No element that misrepresents heritage</li>
+                        </ul>
+                    </article>
+                    <article class="gate-card">
+                        <p class="gate-card-label">Gate B</p>
+                        <h4>World Dance Floor</h4>
+                        <p>Groove, transitions, and low end hold across global contemporary dance contexts — club, festival, and competitive floors.</p>
+                        <ul>
+                            <li>Groove unconditional at dancefloor volume</li>
+                            <li>Transition cues unambiguous for DJs</li>
+                            <li>Energy arc sustains from intro to exit</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="album-footer">
+        <p class="album-footer-brand">FOXYANA</p>
+        <p>Grace is not given. It is practiced.</p>
+        <ul class="album-footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="guide.html">Heritage Guide</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="dance.html">Dance Engine</a></li>
+            <li><a href="https://u24.gov.ua/" target="_blank" rel="noopener">Support Ukraine</a></li>
+        </ul>
+        <p class="album-footer-dev">Site by <a href="https://goodflippindesign.com" target="_blank" rel="noopener">Good Flippin' Design</a></p>
+    </footer>
+
+</body>
+</html>
